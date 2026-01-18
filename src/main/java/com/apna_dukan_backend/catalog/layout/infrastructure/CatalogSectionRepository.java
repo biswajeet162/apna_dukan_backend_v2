@@ -3,8 +3,12 @@ package com.apna_dukan_backend.catalog.layout.infrastructure;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.UUID;
+
 @Repository
-public interface CatalogSectionRepository extends JpaRepository<CatalogSectionEntity, String> {
-    // TODO: Add custom query methods
+public interface CatalogSectionRepository extends JpaRepository<CatalogSectionEntity, UUID> {
+    List<CatalogSectionEntity> findAllByOrderByDisplayOrderAsc();
+    List<CatalogSectionEntity> findByEnabledTrueOrderByDisplayOrderAsc();
 }
 
