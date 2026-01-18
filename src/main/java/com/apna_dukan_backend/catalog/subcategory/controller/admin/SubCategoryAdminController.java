@@ -1,4 +1,4 @@
-package com.apna_dukan_backend.catalog.subcategory.api.admin;
+package com.apna_dukan_backend.catalog.subcategory.controller.admin;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
