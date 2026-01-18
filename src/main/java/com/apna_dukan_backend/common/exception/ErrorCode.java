@@ -7,6 +7,7 @@ public enum ErrorCode {
     CATEGORY_NOT_FOUND("CATEGORY_NOT_FOUND", "Category not found"),
     SUB_CATEGORY_NOT_FOUND("SUB_CATEGORY_NOT_FOUND", "SubCategory not found"),
     PRODUCT_GROUP_NOT_FOUND("PRODUCT_GROUP_NOT_FOUND", "ProductGroup not found"),
+    PRODUCT_NOT_FOUND("PRODUCT_NOT_FOUND", "Product not found"),
     
     // Bad Request (400)
     INVALID_REQUEST("INVALID_REQUEST", "Invalid request data"),

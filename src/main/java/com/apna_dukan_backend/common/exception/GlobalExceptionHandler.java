@@ -6,6 +6,7 @@ import com.apna_dukan_backend.catalog.category.exception.InvalidSectionException
 import com.apna_dukan_backend.catalog.layout.exception.SectionNotFoundException;
 import com.apna_dukan_backend.catalog.subcategory.exception.SubCategoryNotFoundException;
 import com.apna_dukan_backend.catalog.productgroup.exception.ProductGroupNotFoundException;
+import com.apna_dukan_backend.catalog.product.exception.ProductNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
@@ -122,6 +123,25 @@ public class GlobalExceptionHandler {
                 ex.getMessage(),
                 request.getRequestURI(),
                 ErrorCode.PRODUCT_GROUP_NOT_FOUND.getCode()
+        );
+        
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
+
+    /**
+     * Handle product not found exceptions (404)
+     */
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleProductNotFoundException(
+            ProductNotFoundException ex, HttpServletRequest request) {
+        logger.warn("Product not found: {}", ex.getMessage());
+        
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.NOT_FOUND.value(),
+                HttpStatus.NOT_FOUND.getReasonPhrase(),
+                ex.getMessage(),
+                request.getRequestURI(),
+                ErrorCode.PRODUCT_NOT_FOUND.getCode()
         );
         
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);

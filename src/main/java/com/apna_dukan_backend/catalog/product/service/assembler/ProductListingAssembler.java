@@ -8,6 +8,7 @@ import com.apna_dukan_backend.pricing.model.PricingEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -64,7 +65,10 @@ public class ProductListingAssembler {
             boolean inStock) {
 
         // Assemble image
-        ProductImageDto image = new ProductImageDto(product.getPrimaryImageUrl());
+        ProductImageDto image = new ProductImageDto(
+                product.getPrimaryImageUrl(),
+                Collections.emptyList() // ProductEntity doesn't have gallery field
+        );
 
         // Assemble variant summary
         VariantSummaryDto variantSummary = new VariantSummaryDto(
@@ -81,7 +85,7 @@ public class ProductListingAssembler {
         );
 
         // Assemble availability
-        AvailabilityDto availability = new AvailabilityDto(inStock);
+        AvailabilityDto availability = new AvailabilityDto(inStock, 0); // InventoryEntity doesn't have availableQuantity field
 
         // Assemble product item
         return new ProductListItemDto(
