@@ -1,0 +1,244 @@
+API Summary for Flutter Frontend Development
+Base URL Structure
+User APIs: /api/v1/ or /api/user/
+Admin APIs: /api/admin/ or /api/v1/admin/
+All IDs are UUIDs (String format in Flutter)
+1. USER-FACING APIs (Customer App)
+1.1 Catalog Layout & Navigation
+Get Enabled Catalog Sections
+Endpoint: GET /api/user/catalog/layout
+Description: Returns enabled catalog sections sorted by display order for UI rendering
+Response: List of CatalogSectionDto with:
+sectionId, sectionCode, name, description, displayOrder, enabled
+Use Case: Homepage navigation, category menu
+1.2 Categories good
+Get Enabled Categories for a Section
+Endpoint: GET /api/v1/section/{sectionId}/categories
+Description: Returns only enabled categories for a section (sectionCode = PRODUCT_CATEGORY), sorted by displayOrder
+Path Parameter: sectionId (UUID)
+Response: CategorySectionResponseDto containing:
+sectionId, sectionCode
+categories[]: categoryId, sectionId, name, description, code, displayOrder, enabled
+Use Case: Category listing page, category selection
+1.3 Subcategories
+Get Enabled Subcategories for a Category
+Endpoint: GET /api/v1/category/{categoryId}/subCategories
+Description: Returns only enabled subcategories for a category, sorted by displayOrder
+Path Parameter: categoryId (UUID)
+Response: SubCategoryResponseDto containing:
+categoryId, categoryName
+subCategories[]: subCategoryId, categoryId, name, description, code, displayOrder, enabled, imageUrl[]
+Use Case: Subcategory listing, category detail page
+1.4 Product Groups
+Get Enabled Product Groups for a Subcategory
+Endpoint: GET /api/v1/subCategory/{subCategoryId}/productGroups (if exists)
+Note: Check if this user endpoint exists, or use admin endpoint with filtering
+1.5 Product Listing
+Get Product Listing for a Product Group
+Endpoint: GET /api/v1/productGroup/{productGroupId}/products
+Description: Returns paginated list of enabled products with default variants, pricing, and availability
+Path Parameter: productGroupId (UUID)
+Query Parameters:
+page (int, default: 0, 0-based)
+size (int, default: 20, max: 100)
+Response: ProductListingResponseDto containing:
+productGroupId, productGroupName
+products[]: Each product has:
+productId, name, brand
+image: { primary: string }
+defaultVariant: { variantId, label }
+pricing: { sellingPrice, mrp, discountPercent, currency }
+availability: { inStock: boolean }
+pagination: { page, size, totalElements, totalPages, hasNext, hasPrevious }
+Use Case: Product listing page, product grid
+1.6 Product Details (PDP)
+Get Product Details
+Endpoint: GET /api/v1/product/{productId}
+Description: Returns complete product details including all enabled variants with pricing and availability
+Path Parameter: productId (UUID)
+Response: ProductDetailsDto containing:
+productId, name, brand, description
+images: { primary: string, gallery: string[] }
+variants[]: Each variant has:
+variantId, label, attributes: {}
+pricing: { sellingPrice, mrp, discountPercent, currency }
+availability: { inStock: boolean, availableQuantity: number }
+Use Case: Product detail page, variant selection
+2. ADMIN APIs (Admin Panel)
+2.1 Catalog Layout Management
+Get All Catalog Sections (Admin)
+Endpoint: GET /api/admin/catalog/layout
+Response: All sections (enabled and disabled) with timestamps
+Get Catalog Section by ID
+Endpoint: GET /api/admin/catalog/layout/{sectionId}
+Create Catalog Section
+Endpoint: POST /api/admin/catalog/layout
+Body: CreateSectionRequest with sectionCode, name, description, displayOrder
+Update Catalog Section
+Endpoint: PUT /api/admin/catalog/layout/{sectionId}
+Body: UpdateSectionRequest (partial update)
+Delete Catalog Section
+Endpoint: DELETE /api/admin/catalog/layout/{sectionId}
+Bulk Update Catalog Sections
+Endpoint: PATCH /api/admin/catalog/layout/bulk
+Body: Array of section updates
+Enable/Disable Catalog Section
+Endpoint: PUT /api/admin/catalog/layout/{sectionId}/enabled
+Body: { enabled: boolean }
+2.2 Category Management
+Get All Categories for a Section (Admin)
+Endpoint: GET /api/v1/admin/section/{sectionId}/categories
+Response: All categories (enabled and disabled) with timestamps
+Get Category by ID
+Endpoint: GET /api/v1/admin/category/{categoryId}
+Create Category
+Endpoint: POST /api/v1/admin/category
+Body: CreateCategoryRequest with sectionId, name, description, code, displayOrder
+Update Category
+Endpoint: PUT /api/v1/admin/category/{categoryId}
+Body: UpdateCategoryRequest (partial update)
+Delete Category
+Endpoint: DELETE /api/v1/admin/category/{categoryId}
+Bulk Update Categories
+Endpoint: PATCH /api/v1/admin/category/bulk
+Body: Array of category updates
+2.3 Subcategory Management
+Get All Subcategories for a Category (Admin)
+Endpoint: GET /api/v1/admin/category/{categoryId}/subCategories
+Response: All subcategories (enabled and disabled) with timestamps
+Get Subcategory by ID
+Endpoint: GET /api/v1/admin/category/subCategory/{subCategoryId}
+Create Subcategory
+Endpoint: POST /api/v1/admin/category/subCategory
+Body: CreateSubCategoryRequest with categoryId, name, description, code, displayOrder, imageUrl[]
+Update Subcategory
+Endpoint: PUT /api/v1/admin/category/subCategory/{subCategoryId}
+Body: UpdateSubCategoryRequest (partial update)
+Delete Subcategory
+Endpoint: DELETE /api/v1/admin/category/subCategory/{subCategoryId}
+Bulk Update Subcategories
+Endpoint: PATCH /api/v1/admin/category/subCategory/bulk
+Body: Array of subcategory updates
+2.4 Product Group Management
+Get All Product Groups for a Subcategory (Admin)
+Endpoint: GET /api/v1/admin/subCategory/{subCategoryId}/productGroups
+Response: All product groups (enabled and disabled) with timestamps
+Get Product Group by ID
+Endpoint: GET /api/v1/admin/subCategory/productGroup/{productGroupId}
+Create Product Group
+Endpoint: POST /api/v1/admin/subCategory/productGroup
+Body: CreateProductGroupRequest with subCategoryId, name, description, code, displayOrder, imageUrl[]
+Update Product Group
+Endpoint: PUT /api/v1/admin/subCategory/productGroup/{productGroupId}
+Body: UpdateProductGroupRequest (partial update)
+Delete Product Group
+Endpoint: DELETE /api/v1/admin/subCategory/productGroup/{productGroupId}
+Bulk Update Product Groups
+Endpoint: PATCH /api/v1/admin/subCategory/productGroup/bulk
+Body: Array of product group updates
+2.5 Product Management
+Get Product by ID (Admin)
+Endpoint: GET /api/admin/products/{productId}
+Response: Full product details with timestamps
+Create Product
+Endpoint: POST /api/admin/products
+Body: ProductCreateRequestDto with productGroupId, name, brand, code, description, displayOrder, images
+Note: Product is disabled by default; not sellable until variants, pricing, and inventory are added
+Update Product
+Endpoint: PUT /api/admin/products/{productId}
+Body: ProductUpdateRequestDto (partial update)
+Note: code and productGroupId cannot be changed
+Enable/Disable Product
+Endpoint: PUT /api/admin/products/{productId}/enable
+Body: { enabled: boolean }
+Get Product Listing for Admin
+Endpoint: GET /api/admin/products/productGroup/{productGroupId}/products
+Query Parameters: page (default: 0), size (default: 20, max: 100)
+Response: All products (enabled and disabled) with pagination
+2.6 Variant Management
+Get All Variants
+Endpoint: GET /api/admin/variants
+Response: All variants (enabled and disabled)
+Get Variant by ID
+Endpoint: GET /api/admin/variants/{variantId}
+Get All Variants for a Product
+Endpoint: GET /api/admin/products/{productId}/variants
+Response: All variants (enabled and disabled) for the product
+Create Variant
+Endpoint: POST /api/admin/products/{productId}/variants
+Body: VariantCreateRequestDto with sku, label, attributes, isDefault, displayOrder
+Note: Variant is disabled by default; not sellable until pricing and inventory are added
+Update Variant
+Endpoint: PUT /api/admin/variants/{variantId}
+Body: VariantUpdateRequestDto (partial update)
+Note: sku and productId cannot be changed
+Enable/Disable Variant
+Endpoint: PUT /api/admin/variants/{variantId}/enable
+Body: { enabled: boolean }
+2.7 Pricing Management
+Get All Pricing Records
+Endpoint: GET /api/admin/pricing
+Response: All pricing records (active and inactive)
+Get Pricing by Variant ID
+Endpoint: GET /api/admin/variants/{variantId}/pricing
+Response: All pricing records for the variant
+Get Pricing by Product ID
+Endpoint: GET /api/admin/products/{productId}/pricing
+Response: All pricing records for all variants of the product
+Get Pricing by Product Group ID
+Endpoint: GET /api/admin/product-groups/{productGroupId}/pricing
+Response: All pricing records for all variants of all products in the group
+Create Pricing
+Endpoint: POST /api/admin/variants/{variantId}/pricing
+Body: PricingCreateRequestDto with sellingPrice, mrp, currency, active
+Note: If active pricing exists, it will be deactivated. Only one active pricing per variant.
+Update Pricing
+Endpoint: PUT /api/admin/pricing/{pricingId}
+Body: PricingUpdateRequestDto (partial update)
+Note: variantId and currency cannot be changed
+2.8 Inventory Management
+Get All Inventories
+Endpoint: GET /api/admin/inventory
+Response: All inventory records
+Get Inventory by ID
+Endpoint: GET /api/admin/inventory/{inventoryId}
+Get Inventories by Variant ID
+Endpoint: GET /api/admin/variants/{variantId}/inventory
+Response: All inventory records for the variant (can have multiple warehouses)
+Get Inventories by Product ID
+Endpoint: GET /api/admin/products/{productId}/inventory
+Response: All inventory records for all variants of the product
+Create Inventory
+Endpoint: POST /api/admin/variants/{variantId}/inventory
+Body: InventoryCreateRequestDto with warehouseId, quantity, reservedQuantity
+Note: Variant must exist and be enabled. Returns 409 if inventory already exists for variant+warehouse.
+Update Inventory
+Endpoint: PUT /api/admin/inventory/{inventoryId}
+Body: InventoryUpdateRequestDto with quantity, reservedQuantity
+Note: warehouseId and variantId cannot be changed. availableQuantity and inStock are auto-calculated.
+3. Important Notes for Flutter Development
+Data Flow Hierarchy
+Catalog Layout → Sections
+Categories → Belong to sections
+Subcategories → Belong to categories
+Product Groups → Belong to subcategories
+Products → Belong to product groups
+Variants → Belong to products
+Pricing → Belongs to variants
+Inventory → Belongs to variants
+Key Concepts
+Enabled/Disabled: User APIs only return enabled items; Admin APIs return all
+Pagination: Product listing APIs support pagination (page, size)
+UUIDs: All IDs are UUIDs (use String in Flutter)
+Default Variant: Each product has a default variant for listing display
+Active Pricing: Only one active pricing per variant; creating new active pricing deactivates old one
+Inventory: Variants can have multiple inventory records (different warehouses)
+Error Handling
+404: Resource not found
+400: Invalid request data
+409: Conflict (duplicate code/SKU, existing inventory, etc.)
+204: Success with no content (DELETE operations)
+Swagger Documentation
+Access Swagger UI at: /swagger-ui.html
+API docs at: /api-docs
+This structure supports building both the customer-facing app and the admin panel. Start with the user APIs for the customer app, then add admin APIs for management features.
