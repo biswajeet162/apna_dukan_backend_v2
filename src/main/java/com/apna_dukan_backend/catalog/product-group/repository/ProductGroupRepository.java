@@ -13,3 +13,4 @@ public interface ProductGroupRepository extends JpaRepository<ProductGroupEntity
     List<ProductGroupEntity> findBySubCategoryIdAndEnabledTrueOrderByDisplayOrderAsc(UUID subCategoryId);
 }
 
+

@@ -1,6 +1,11 @@
 package com.apna_dukan_backend.catalog.productgroup.controller.admin;
 
+import com.apna_dukan_backend.catalog.productgroup.dto.BulkUpdateProductGroupRequest;
+import com.apna_dukan_backend.catalog.productgroup.dto.CreateProductGroupRequest;
+import com.apna_dukan_backend.catalog.productgroup.dto.ProductGroupAdminDto;
 import com.apna_dukan_backend.catalog.productgroup.dto.ProductGroupAdminResponseDto;
+import com.apna_dukan_backend.catalog.productgroup.dto.UpdateProductGroupRequest;
+import com.apna_dukan_backend.catalog.productgroup.service.ProductGroupCommandService;
 import com.apna_dukan_backend.catalog.productgroup.service.ProductGroupQueryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -9,12 +14,20 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -22,9 +35,12 @@ import java.util.UUID;
 @Tag(name = "ProductGroup Admin", description = "Admin API for managing product groups within subcategories")
 public class ProductGroupAdminController {
     private final ProductGroupQueryService productGroupQueryService;
+    private final ProductGroupCommandService productGroupCommandService;
 
-    public ProductGroupAdminController(ProductGroupQueryService productGroupQueryService) {
+    public ProductGroupAdminController(ProductGroupQueryService productGroupQueryService,
+                                     ProductGroupCommandService productGroupCommandService) {
         this.productGroupQueryService = productGroupQueryService;
+        this.productGroupCommandService = productGroupCommandService;
     }
 
     @GetMapping("/{subCategoryId}/productGroups")
@@ -83,6 +99,76 @@ public class ProductGroupAdminController {
     public ResponseEntity<ProductGroupAdminResponseDto> getProductGroups(@PathVariable UUID subCategoryId) {
         ProductGroupAdminResponseDto response = productGroupQueryService.getProductGroupsForAdmin(subCategoryId);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/productGroup/{productGroupId}")
+    @Operation(summary = "Get product group by ID",
+               description = "Returns a single product group by its ID with all details including timestamps")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved product group",
+                    content = @Content(schema = @Schema(implementation = ProductGroupAdminDto.class))),
+            @ApiResponse(responseCode = "404", description = "ProductGroup not found")
+    })
+    public ResponseEntity<ProductGroupAdminDto> getProductGroupById(@PathVariable UUID productGroupId) {
+        ProductGroupAdminDto productGroup = productGroupQueryService.getProductGroupById(productGroupId);
+        return ResponseEntity.ok(productGroup);
+    }
+
+    @PostMapping("/productGroup")
+    @Operation(summary = "Create a new product group",
+               description = "Creates a new product group for a subcategory")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "ProductGroup created successfully",
+                    content = @Content(schema = @Schema(implementation = ProductGroupAdminDto.class))),
+            @ApiResponse(responseCode = "400", description = "Invalid request data"),
+            @ApiResponse(responseCode = "404", description = "SubCategory not found")
+    })
+    public ResponseEntity<ProductGroupAdminDto> createProductGroup(@Valid @RequestBody CreateProductGroupRequest request) {
+        ProductGroupAdminDto created = productGroupCommandService.createProductGroup(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
+    }
+
+    @PutMapping("/productGroup/{productGroupId}")
+    @Operation(summary = "Update a product group",
+               description = "Updates an existing product group. Only provided fields will be updated.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "ProductGroup updated successfully",
+                    content = @Content(schema = @Schema(implementation = ProductGroupAdminDto.class))),
+            @ApiResponse(responseCode = "404", description = "ProductGroup not found"),
+            @ApiResponse(responseCode = "400", description = "Invalid request data")
+    })
+    public ResponseEntity<ProductGroupAdminDto> updateProductGroup(
+            @PathVariable UUID productGroupId,
+            @Valid @RequestBody UpdateProductGroupRequest request) {
+        ProductGroupAdminDto updated = productGroupCommandService.updateProductGroup(productGroupId, request);
+        return ResponseEntity.ok(updated);
+    }
+
+    @DeleteMapping("/productGroup/{productGroupId}")
+    @Operation(summary = "Delete a product group",
+               description = "Deletes a product group by its ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "ProductGroup deleted successfully"),
+            @ApiResponse(responseCode = "404", description = "ProductGroup not found")
+    })
+    public ResponseEntity<Void> deleteProductGroup(@PathVariable UUID productGroupId) {
+        productGroupCommandService.deleteProductGroup(productGroupId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/productGroup/bulk")
+    @Operation(summary = "Bulk update product groups",
+               description = "Updates multiple product groups at once. Each product group can have different field values. Only provided fields will be updated.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "ProductGroups updated successfully",
+                    content = @Content(schema = @Schema(implementation = ProductGroupAdminDto.class))),
+            @ApiResponse(responseCode = "400", description = "Invalid request data"),
+            @ApiResponse(responseCode = "404", description = "Some product groups not found")
+    })
+    public ResponseEntity<List<ProductGroupAdminDto>> bulkUpdateProductGroups(
+            @Valid @RequestBody BulkUpdateProductGroupRequest request) {
+        List<ProductGroupAdminDto> updated = productGroupCommandService.bulkUpdate(request);
+        return ResponseEntity.ok(updated);
     }
 }
 

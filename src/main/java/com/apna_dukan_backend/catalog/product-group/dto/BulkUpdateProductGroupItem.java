@@ -1,48 +1,30 @@
 package com.apna_dukan_backend.catalog.productgroup.dto;
 
+import jakarta.validation.constraints.NotNull;
+
 import java.util.List;
 import java.util.UUID;
 
-public class ProductGroupDto {
+public class BulkUpdateProductGroupItem {
+    @NotNull(message = "ProductGroup ID is required")
     private UUID productGroupId;
-    private UUID subCategoryId;
+
     private String name;
     private String description;
     private String code;
-    private int displayOrder;
-    private boolean enabled;
+    private Integer displayOrder;
+    private Boolean enabled;
     private List<String> imageUrl;
 
-    public ProductGroupDto() {
+    public BulkUpdateProductGroupItem() {
     }
 
-    public ProductGroupDto(UUID productGroupId, UUID subCategoryId, String name, String description,
-                          String code, int displayOrder, boolean enabled, List<String> imageUrl) {
-        this.productGroupId = productGroupId;
-        this.subCategoryId = subCategoryId;
-        this.name = name;
-        this.description = description;
-        this.code = code;
-        this.displayOrder = displayOrder;
-        this.enabled = enabled;
-        this.imageUrl = imageUrl;
-    }
-
-    // Getters and Setters
     public UUID getProductGroupId() {
         return productGroupId;
     }
 
     public void setProductGroupId(UUID productGroupId) {
         this.productGroupId = productGroupId;
-    }
-
-    public UUID getSubCategoryId() {
-        return subCategoryId;
-    }
-
-    public void setSubCategoryId(UUID subCategoryId) {
-        this.subCategoryId = subCategoryId;
     }
 
     public String getName() {
@@ -69,19 +51,19 @@ public class ProductGroupDto {
         this.code = code;
     }
 
-    public int getDisplayOrder() {
+    public Integer getDisplayOrder() {
         return displayOrder;
     }
 
-    public void setDisplayOrder(int displayOrder) {
+    public void setDisplayOrder(Integer displayOrder) {
         this.displayOrder = displayOrder;
     }
 
-    public boolean isEnabled() {
+    public Boolean getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(boolean enabled) {
+    public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
 

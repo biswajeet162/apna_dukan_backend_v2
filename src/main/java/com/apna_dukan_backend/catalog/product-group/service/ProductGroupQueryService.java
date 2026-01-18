@@ -55,6 +55,13 @@ public class ProductGroupQueryService {
         );
     }
 
+    public ProductGroupAdminDto getProductGroupById(UUID productGroupId) {
+        ProductGroupEntity entity = productGroupRepository.findById(productGroupId)
+                .orElseThrow(() -> new com.apna_dukan_backend.catalog.productgroup.exception.ProductGroupNotFoundException(
+                        "ProductGroup not found with id: " + productGroupId));
+        return productGroupMapper.toAdminDto(entity);
+    }
+
     private SubCategoryEntity validateSubCategory(UUID subCategoryId) {
         return subCategoryRepository.findById(subCategoryId)
                 .orElseThrow(() -> new SubCategoryNotFoundException("SubCategory not found with id: " + subCategoryId));

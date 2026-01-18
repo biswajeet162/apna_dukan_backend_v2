@@ -149,3 +149,59 @@ VALUES ('b1c2d3e4-f5a6-4789-b012-345678901234', 'e5f6a7b8-c9d0-4123-e456-7890123
 
 INSERT INTO sub_category (sub_category_id, category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
 VALUES ('c2d3e4f5-a6b7-4890-c123-456789012345', 'e5f6a7b8-c9d0-4123-e456-789012345678', 'Personal Hygiene', 'Soaps, deodorants, and hygiene products', 'PERSONAL_HYGIENE', 4, true, '[]', TIMESTAMP '2026-01-17 10:40:00.000000', TIMESTAMP '2026-01-17 10:40:00.000000');
+
+-- Product Group Data
+-- Product Groups for Fruits & Vegetables (sub_category_id: f1a2b3c4-d5e6-4789-f012-345678901234)
+
+INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES (CAST('a1a2b3c4-d5e6-4789-a012-345678901234' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Fresh Fruits', 'Fresh seasonal fruits', 'FRESH_FRUITS', 1, true, '["https://example.com/fruits1.jpg", "https://example.com/fruits2.jpg"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+
+INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES (CAST('a2b3c4d5-e6f7-4890-a123-456789012345' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Fresh Vegetables', 'Fresh seasonal vegetables', 'FRESH_VEGETABLES', 2, true, '["https://example.com/vegetables1.jpg"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+
+INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES (CAST('a3c4d5e6-f7a8-4901-a234-567890123456' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Organic Produce', 'Organic fruits and vegetables', 'ORGANIC_PRODUCE', 3, false, '[]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+
+-- Product Groups for Dairy Products (sub_category_id: a2b3c4d5-e6f7-4890-a123-456789012345)
+
+INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES (CAST('a4d5e6f7-a8b9-4012-a345-678901234567' AS UUID), CAST('a2b3c4d5-e6f7-4890-a123-456789012345' AS UUID), 'Milk & Cream', 'Fresh milk and cream products', 'MILK_CREAM', 1, true, '["https://example.com/milk.jpg"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+
+INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES (CAST('a5e6f7a8-b9c0-4123-a456-789012345678' AS UUID), CAST('a2b3c4d5-e6f7-4890-a123-456789012345' AS UUID), 'Cheese & Butter', 'Various cheese and butter products', 'CHEESE_BUTTER', 2, true, '["https://example.com/cheese1.jpg", "https://example.com/cheese2.jpg"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+
+INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES (CAST('a6f7a8b9-c0d1-4234-a567-890123456789' AS UUID), CAST('a2b3c4d5-e6f7-4890-a123-456789012345' AS UUID), 'Yogurt & Curd', 'Yogurt and curd products', 'YOGURT_CURD', 3, true, '[]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+
+-- Product Groups for Mobile Phones (sub_category_id: e6f7a8b9-c0d1-4234-e567-890123456789)
+
+INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES (CAST('a7a8b9c0-d1e2-4345-a678-901234567890' AS UUID), CAST('e6f7a8b9-c0d1-4234-e567-890123456789' AS UUID), 'Smartphones', 'Latest smartphones from top brands', 'SMARTPHONES', 1, true, '["https://example.com/smartphones1.jpg", "https://example.com/smartphones2.jpg"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+
+INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES (CAST('a8b9c0d1-e2f3-4456-a789-012345678901' AS UUID), CAST('e6f7a8b9-c0d1-4234-e567-890123456789' AS UUID), 'Budget Phones', 'Affordable smartphones', 'BUDGET_PHONES', 2, true, '["https://example.com/budget.jpg"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+
+INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES (CAST('a9c0d1e2-f3a4-4567-a890-123456789012' AS UUID), CAST('e6f7a8b9-c0d1-4234-e567-890123456789' AS UUID), 'Premium Phones', 'Flagship and premium smartphones', 'PREMIUM_PHONES', 3, true, '[]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+
+-- Product Groups for Men's Clothing (sub_category_id: d1e2f3a4-b5c6-4789-d012-345678901234)
+
+INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES (CAST('a0d1e2f3-a4b5-4678-a901-234567890123' AS UUID), CAST('d1e2f3a4-b5c6-4789-d012-345678901234' AS UUID), 'Casual Wear', 'Casual shirts, t-shirts, and pants', 'CASUAL_WEAR', 1, true, '["https://example.com/casual1.jpg"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+
+INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES (CAST('b1e2f3a4-b5c6-4789-a012-345678901234' AS UUID), CAST('d1e2f3a4-b5c6-4789-d012-345678901234' AS UUID), 'Formal Wear', 'Formal shirts, suits, and trousers', 'FORMAL_WEAR', 2, true, '["https://example.com/formal1.jpg", "https://example.com/formal2.jpg"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+
+INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES (CAST('c2f3a4b5-c6d7-4890-a123-456789012345' AS UUID), CAST('d1e2f3a4-b5c6-4789-d012-345678901234' AS UUID), 'Sports Wear', 'Activewear and sports clothing', 'SPORTS_WEAR', 3, false, '[]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+
+-- Product Groups for Skincare (sub_category_id: f9a0b1c2-d3e4-4567-f890-123456789012)
+
+INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES (CAST('d3a4b5c6-d7e8-4901-a234-567890123456' AS UUID), CAST('f9a0b1c2-d3e4-4567-f890-123456789012' AS UUID), 'Face Care', 'Face creams, cleansers, and toners', 'FACE_CARE', 1, true, '["https://example.com/facecare1.jpg"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+
+INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES (CAST('e4b5c6d7-e8f9-4012-a345-678901234567' AS UUID), CAST('f9a0b1c2-d3e4-4567-f890-123456789012' AS UUID), 'Body Care', 'Body lotions, moisturizers, and scrubs', 'BODY_CARE', 2, true, '["https://example.com/bodycare1.jpg", "https://example.com/bodycare2.jpg"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+
+INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES (CAST('f5c6d7e8-f9a0-4123-a456-789012345678' AS UUID), CAST('f9a0b1c2-d3e4-4567-f890-123456789012' AS UUID), 'Anti-Aging', 'Anti-aging serums and creams', 'ANTI_AGING', 3, true, '[]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');

@@ -1,40 +1,31 @@
 package com.apna_dukan_backend.catalog.productgroup.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import java.util.List;
 import java.util.UUID;
 
-public class ProductGroupDto {
-    private UUID productGroupId;
+public class CreateProductGroupRequest {
+    @NotNull(message = "SubCategory ID is required")
     private UUID subCategoryId;
+
+    @NotBlank(message = "ProductGroup name is required")
     private String name;
+
     private String description;
+
+    @NotBlank(message = "ProductGroup code is required")
     private String code;
-    private int displayOrder;
-    private boolean enabled;
+
+    @NotNull(message = "Display order is required")
+    private Integer displayOrder;
+
+    private Boolean enabled = true;
+
     private List<String> imageUrl;
 
-    public ProductGroupDto() {
-    }
-
-    public ProductGroupDto(UUID productGroupId, UUID subCategoryId, String name, String description,
-                          String code, int displayOrder, boolean enabled, List<String> imageUrl) {
-        this.productGroupId = productGroupId;
-        this.subCategoryId = subCategoryId;
-        this.name = name;
-        this.description = description;
-        this.code = code;
-        this.displayOrder = displayOrder;
-        this.enabled = enabled;
-        this.imageUrl = imageUrl;
-    }
-
-    // Getters and Setters
-    public UUID getProductGroupId() {
-        return productGroupId;
-    }
-
-    public void setProductGroupId(UUID productGroupId) {
-        this.productGroupId = productGroupId;
+    public CreateProductGroupRequest() {
     }
 
     public UUID getSubCategoryId() {
@@ -69,19 +60,19 @@ public class ProductGroupDto {
         this.code = code;
     }
 
-    public int getDisplayOrder() {
+    public Integer getDisplayOrder() {
         return displayOrder;
     }
 
-    public void setDisplayOrder(int displayOrder) {
+    public void setDisplayOrder(Integer displayOrder) {
         this.displayOrder = displayOrder;
     }
 
-    public boolean isEnabled() {
+    public Boolean getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(boolean enabled) {
+    public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
 
