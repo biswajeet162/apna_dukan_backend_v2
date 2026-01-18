@@ -1,4 +1,4 @@
-package com.apna_dukan_backend.catalog.subcategory.controller.admin;
+package com.apna_dukan_backend.catalog.subcategory.controller;
 
 import com.apna_dukan_backend.catalog.subcategory.dto.BulkUpdateSubCategoryRequest;
 import com.apna_dukan_backend.catalog.subcategory.dto.CreateSubCategoryRequest;

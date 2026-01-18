@@ -1,4 +1,4 @@
-package com.apna_dukan_backend.catalog.category.controller.user;
+package com.apna_dukan_backend.catalog.category.controller;
 
 import com.apna_dukan_backend.catalog.category.dto.CategorySectionResponseDto;
 import com.apna_dukan_backend.catalog.category.service.CategoryQueryService;

@@ -1,4 +1,4 @@
-package com.apna_dukan_backend.catalog.subcategory.controller.user;
+package com.apna_dukan_backend.catalog.subcategory.controller;
 
 import com.apna_dukan_backend.catalog.subcategory.dto.SubCategoryResponseDto;
 import com.apna_dukan_backend.catalog.subcategory.service.SubCategoryQueryService;

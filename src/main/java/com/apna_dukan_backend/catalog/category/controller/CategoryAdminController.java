@@ -1,4 +1,4 @@
-package com.apna_dukan_backend.catalog.category.controller.admin;
+package com.apna_dukan_backend.catalog.category.controller;
 
 import com.apna_dukan_backend.catalog.category.dto.*;
 import com.apna_dukan_backend.catalog.category.service.CategoryCommandService;
