@@ -27,7 +27,7 @@ public class CategoryController {
         this.categoryQueryService = categoryQueryService;
     }
 
-    @GetMapping("/{sectionId}/ProductCategories")
+    @GetMapping("/{sectionId}/categories")
     @Operation(summary = "Get enabled product categories for a section", 
                description = "Returns only enabled categories for a section with sectionCode = PRODUCT_CATEGORY, sorted by displayOrder")
     @ApiResponses(value = {

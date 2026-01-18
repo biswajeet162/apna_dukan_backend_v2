@@ -31,7 +31,7 @@ public class CategoryAdminController {
         this.categoryCommandService = categoryCommandService;
     }
 
-    @GetMapping("/section/{sectionId}/ProductCategories")
+    @GetMapping("/section/{sectionId}/categories")
     @Operation(summary = "Get all product categories for a section", 
                description = "Returns all categories (enabled and disabled) for a section with sectionCode = PRODUCT_CATEGORY")
     @ApiResponses(value = {
