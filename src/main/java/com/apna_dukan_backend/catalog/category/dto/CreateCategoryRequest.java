@@ -3,7 +3,12 @@ package com.apna_dukan_backend.catalog.category.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.UUID;
+
 public class CreateCategoryRequest {
+    @NotNull(message = "Section ID is required")
+    private UUID sectionId;
+
     @NotBlank(message = "Category name is required")
     private String name;
 
@@ -18,6 +23,14 @@ public class CreateCategoryRequest {
     private Boolean enabled = true;
 
     public CreateCategoryRequest() {
+    }
+
+    public UUID getSectionId() {
+        return sectionId;
+    }
+
+    public void setSectionId(UUID sectionId) {
+        this.sectionId = sectionId;
     }
 
     public String getName() {
