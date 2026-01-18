@@ -14,7 +14,7 @@ import java.util.UUID;
 public interface InventoryRepository extends JpaRepository<InventoryEntity, UUID> {
     Optional<InventoryEntity> findByVariantIdAndWarehouseId(UUID variantId, String warehouseId);
     
-    Optional<InventoryEntity> findByVariantId(UUID variantId);
+    List<InventoryEntity> findByVariantId(UUID variantId);
     
     @Query("SELECT i FROM InventoryEntity i WHERE i.variantId IN :variantIds")
     List<InventoryEntity> findByVariantIdIn(@Param("variantIds") List<UUID> variantIds);
