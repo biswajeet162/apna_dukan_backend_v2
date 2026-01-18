@@ -5,6 +5,8 @@ public enum ErrorCode {
     RESOURCE_NOT_FOUND("RESOURCE_NOT_FOUND", "The requested resource was not found"),
     SECTION_NOT_FOUND("SECTION_NOT_FOUND", "Section not found"),
     CATEGORY_NOT_FOUND("CATEGORY_NOT_FOUND", "Category not found"),
+    SUB_CATEGORY_NOT_FOUND("SUB_CATEGORY_NOT_FOUND", "SubCategory not found"),
+    PRODUCT_GROUP_NOT_FOUND("PRODUCT_GROUP_NOT_FOUND", "ProductGroup not found"),
     
     // Bad Request (400)
     INVALID_REQUEST("INVALID_REQUEST", "Invalid request data"),

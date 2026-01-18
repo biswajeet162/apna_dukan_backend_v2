@@ -4,6 +4,8 @@ import com.apna_dukan_backend.common.exception.dto.ErrorResponse;
 import com.apna_dukan_backend.catalog.category.exception.CategoryNotFoundException;
 import com.apna_dukan_backend.catalog.category.exception.InvalidSectionException;
 import com.apna_dukan_backend.catalog.layout.exception.SectionNotFoundException;
+import com.apna_dukan_backend.catalog.subcategory.exception.SubCategoryNotFoundException;
+import com.apna_dukan_backend.catalog.productgroup.exception.ProductGroupNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
@@ -82,6 +84,44 @@ public class GlobalExceptionHandler {
                 ex.getMessage(),
                 request.getRequestURI(),
                 ErrorCode.CATEGORY_NOT_FOUND.getCode()
+        );
+        
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
+
+    /**
+     * Handle subcategory not found exceptions (404)
+     */
+    @ExceptionHandler(SubCategoryNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleSubCategoryNotFoundException(
+            SubCategoryNotFoundException ex, HttpServletRequest request) {
+        logger.warn("SubCategory not found: {}", ex.getMessage());
+        
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.NOT_FOUND.value(),
+                HttpStatus.NOT_FOUND.getReasonPhrase(),
+                ex.getMessage(),
+                request.getRequestURI(),
+                ErrorCode.SUB_CATEGORY_NOT_FOUND.getCode()
+        );
+        
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
+
+    /**
+     * Handle product group not found exceptions (404)
+     */
+    @ExceptionHandler(ProductGroupNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleProductGroupNotFoundException(
+            ProductGroupNotFoundException ex, HttpServletRequest request) {
+        logger.warn("ProductGroup not found: {}", ex.getMessage());
+        
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.NOT_FOUND.value(),
+                HttpStatus.NOT_FOUND.getReasonPhrase(),
+                ex.getMessage(),
+                request.getRequestURI(),
+                ErrorCode.PRODUCT_GROUP_NOT_FOUND.getCode()
         );
         
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
