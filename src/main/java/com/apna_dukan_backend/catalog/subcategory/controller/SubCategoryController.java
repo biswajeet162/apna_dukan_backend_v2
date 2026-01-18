@@ -47,17 +47,17 @@ public class SubCategoryController {
                                                     "      \"code\": \"FRUITS_VEGETABLES\",\n" +
                                                     "      \"displayOrder\": 1,\n" +
                                                     "      \"enabled\": true,\n" +
-                                                    "      \"imageUrl\": [\"https://example.com/image1.jpg\", \"https://example.com/image2.jpg\"]\n" +
+                                                    "      \"imageUrl\": [\"https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=800&h=600&fit=crop\", \"https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=800&h=600&fit=crop\", \"https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=800&h=600&fit=crop\"]\n" +
                                                     "    },\n" +
                                                     "    {\n" +
-                                                    "      \"subCategoryId\": \"g2b3c4d5-e6f7-4890-g123-456789012345\",\n" +
+                                                    "      \"subCategoryId\": \"a2b3c4d5-e6f7-4890-a123-456789012345\",\n" +
                                                     "      \"categoryId\": \"a1b2c3d4-e5f6-4789-a012-345678901234\",\n" +
                                                     "      \"name\": \"Dairy Products\",\n" +
                                                     "      \"description\": \"Milk, cheese, yogurt and other dairy items\",\n" +
                                                     "      \"code\": \"DAIRY_PRODUCTS\",\n" +
                                                     "      \"displayOrder\": 2,\n" +
                                                     "      \"enabled\": true,\n" +
-                                                    "      \"imageUrl\": [\"https://example.com/dairy.jpg\"]\n" +
+                                                    "      \"imageUrl\": [\"https://images.unsplash.com/photo-1550583724-b2692b85b150?w=800&h=600&fit=crop\", \"https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=800&h=600&fit=crop\", \"https://images.unsplash.com/photo-1618164436269-4c11f564107e?w=800&h=600&fit=crop\"]\n" +
                                                     "    }\n" +
                                                     "  ]\n" +
                                                     "}")
