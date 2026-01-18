@@ -2,12 +2,12 @@ package com.apna_dukan_backend.catalog.layout.dto;
 
 import com.apna_dukan_backend.catalog.layout.model.LayoutType;
 import com.apna_dukan_backend.catalog.layout.model.ScrollType;
-import com.apna_dukan_backend.catalog.layout.model.SectionCode;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public class CreateSectionRequest {
-    @NotNull
-    private SectionCode sectionCode;
+    @NotBlank
+    private String sectionCode;
     
     @NotNull
     private String title;
@@ -30,11 +30,11 @@ public class CreateSectionRequest {
     public CreateSectionRequest() {
     }
 
-    public SectionCode getSectionCode() {
+    public String getSectionCode() {
         return sectionCode;
     }
 
-    public void setSectionCode(SectionCode sectionCode) {
+    public void setSectionCode(String sectionCode) {
         this.sectionCode = sectionCode;
     }
 

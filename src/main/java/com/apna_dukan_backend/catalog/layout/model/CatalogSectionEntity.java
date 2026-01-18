@@ -16,9 +16,8 @@ public class CatalogSectionEntity {
     @Column(columnDefinition = "UUID")
     private UUID sectionId;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private SectionCode sectionCode;
+    private String sectionCode;
 
     @Column(nullable = false)
     private String title;
@@ -53,7 +52,7 @@ public class CatalogSectionEntity {
     public CatalogSectionEntity() {
     }
 
-    public CatalogSectionEntity(UUID sectionId, SectionCode sectionCode, String title, String description,
+    public CatalogSectionEntity(UUID sectionId, String sectionCode, String title, String description,
                                LayoutType layoutType, ScrollType scrollType, int displayOrder,
                                boolean enabled, boolean personalized, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.sectionId = sectionId;
@@ -78,11 +77,11 @@ public class CatalogSectionEntity {
         this.sectionId = sectionId;
     }
 
-    public SectionCode getSectionCode() {
+    public String getSectionCode() {
         return sectionCode;
     }
 
-    public void setSectionCode(SectionCode sectionCode) {
+    public void setSectionCode(String sectionCode) {
         this.sectionCode = sectionCode;
     }
 

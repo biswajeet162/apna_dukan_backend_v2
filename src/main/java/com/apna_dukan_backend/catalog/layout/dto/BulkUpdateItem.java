@@ -2,8 +2,14 @@ package com.apna_dukan_backend.catalog.layout.dto;
 
 import com.apna_dukan_backend.catalog.layout.model.LayoutType;
 import com.apna_dukan_backend.catalog.layout.model.ScrollType;
+import jakarta.validation.constraints.NotNull;
 
-public class UpdateSectionRequest {
+import java.util.UUID;
+
+public class BulkUpdateItem {
+    @NotNull
+    private UUID sectionId;
+    
     private String sectionCode;
     private String title;
     private String description;
@@ -13,7 +19,15 @@ public class UpdateSectionRequest {
     private Boolean enabled;
     private Boolean personalized;
 
-    public UpdateSectionRequest() {
+    public BulkUpdateItem() {
+    }
+
+    public UUID getSectionId() {
+        return sectionId;
+    }
+
+    public void setSectionId(UUID sectionId) {
+        this.sectionId = sectionId;
     }
 
     public String getSectionCode() {

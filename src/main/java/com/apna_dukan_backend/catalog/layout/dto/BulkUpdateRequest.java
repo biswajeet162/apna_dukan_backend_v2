@@ -1,47 +1,24 @@
 package com.apna_dukan_backend.catalog.layout.dto;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+
 import java.util.List;
-import java.util.UUID;
 
 public class BulkUpdateRequest {
-    private List<UUID> sectionIds;
-    private Boolean enabled;
-    private Boolean personalized;
-    private Integer displayOrder;
+    @NotEmpty
+    @Valid
+    private List<BulkUpdateItem> sections;
 
     public BulkUpdateRequest() {
     }
 
-    public List<UUID> getSectionIds() {
-        return sectionIds;
+    public List<BulkUpdateItem> getSections() {
+        return sections;
     }
 
-    public void setSectionIds(List<UUID> sectionIds) {
-        this.sectionIds = sectionIds;
-    }
-
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public Boolean getPersonalized() {
-        return personalized;
-    }
-
-    public void setPersonalized(Boolean personalized) {
-        this.personalized = personalized;
-    }
-
-    public Integer getDisplayOrder() {
-        return displayOrder;
-    }
-
-    public void setDisplayOrder(Integer displayOrder) {
-        this.displayOrder = displayOrder;
+    public void setSections(List<BulkUpdateItem> sections) {
+        this.sections = sections;
     }
 }
 

@@ -2,7 +2,6 @@ package com.apna_dukan_backend.catalog.layout.dto;
 
 import com.apna_dukan_backend.catalog.layout.model.LayoutType;
 import com.apna_dukan_backend.catalog.layout.model.ScrollType;
-import com.apna_dukan_backend.catalog.layout.model.SectionCode;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDateTime;
@@ -10,7 +9,7 @@ import java.util.UUID;
 
 public class CatalogSectionDto {
     private UUID sectionId;
-    private SectionCode sectionCode;
+    private String sectionCode;
     private String title;
     private String description;
     private LayoutType layoutType;
@@ -28,7 +27,7 @@ public class CatalogSectionDto {
     public CatalogSectionDto() {
     }
 
-    public CatalogSectionDto(UUID sectionId, SectionCode sectionCode, String title, String description,
+    public CatalogSectionDto(UUID sectionId, String sectionCode, String title, String description,
                             LayoutType layoutType, ScrollType scrollType, int displayOrder,
                             boolean enabled, boolean personalized, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.sectionId = sectionId;
@@ -53,11 +52,11 @@ public class CatalogSectionDto {
         this.sectionId = sectionId;
     }
 
-    public SectionCode getSectionCode() {
+    public String getSectionCode() {
         return sectionCode;
     }
 
-    public void setSectionCode(SectionCode sectionCode) {
+    public void setSectionCode(String sectionCode) {
         this.sectionCode = sectionCode;
     }
 

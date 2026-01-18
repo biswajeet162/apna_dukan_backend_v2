@@ -3,6 +3,7 @@ package com.apna_dukan_backend.catalog.layout.controller;
 import com.apna_dukan_backend.catalog.layout.dto.BulkUpdateRequest;
 import com.apna_dukan_backend.catalog.layout.dto.CatalogSectionDto;
 import com.apna_dukan_backend.catalog.layout.dto.CreateSectionRequest;
+import com.apna_dukan_backend.catalog.layout.dto.EnableDisableSectionRequest;
 import com.apna_dukan_backend.catalog.layout.dto.UpdateSectionRequest;
 import com.apna_dukan_backend.catalog.layout.service.CatalogLayoutCommandService;
 import com.apna_dukan_backend.catalog.layout.service.CatalogLayoutQueryService;
@@ -83,7 +84,7 @@ public class CatalogLayoutAdminController {
     }
 
     @PatchMapping("/bulk")
-    @Operation(summary = "Bulk update catalog sections", description = "Updates multiple catalog sections at once (enabled, personalized, displayOrder)")
+    @Operation(summary = "Bulk update catalog sections", description = "Updates multiple catalog sections at once. Each section can have different field values. Only provided fields will be updated.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Sections updated successfully",
                     content = @Content(schema = @Schema(implementation = CatalogSectionDto.class))),
@@ -94,39 +95,18 @@ public class CatalogLayoutAdminController {
         return ResponseEntity.ok(updated);
     }
 
-    @PatchMapping("/{sectionId}/enable")
-    @Operation(summary = "Enable catalog section", description = "Quickly enables a catalog section")
+    @PutMapping("/{sectionId}/enabled")
+    @Operation(summary = "Update section enabled status", description = "Updates the enabled status of a catalog section. Pass enabled=true to enable, enabled=false to disable")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Section enabled successfully",
+            @ApiResponse(responseCode = "200", description = "Section status updated successfully",
                     content = @Content(schema = @Schema(implementation = CatalogSectionDto.class))),
-            @ApiResponse(responseCode = "404", description = "Section not found")
+            @ApiResponse(responseCode = "404", description = "Section not found"),
+            @ApiResponse(responseCode = "400", description = "Invalid request data")
     })
-    public ResponseEntity<CatalogSectionDto> enableSection(@PathVariable UUID sectionId) {
-        CatalogSectionDto updated = catalogLayoutCommandService.enableDisable(sectionId, true);
-        return ResponseEntity.ok(updated);
-    }
-
-    @PatchMapping("/{sectionId}/disable")
-    @Operation(summary = "Disable catalog section", description = "Quickly disables a catalog section")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Section disabled successfully",
-                    content = @Content(schema = @Schema(implementation = CatalogSectionDto.class))),
-            @ApiResponse(responseCode = "404", description = "Section not found")
-    })
-    public ResponseEntity<CatalogSectionDto> disableSection(@PathVariable UUID sectionId) {
-        CatalogSectionDto updated = catalogLayoutCommandService.enableDisable(sectionId, false);
-        return ResponseEntity.ok(updated);
-    }
-
-    @PatchMapping("/{sectionId}/toggle")
-    @Operation(summary = "Toggle catalog section enabled status", description = "Toggles the enabled status of a catalog section")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Section status toggled successfully",
-                    content = @Content(schema = @Schema(implementation = CatalogSectionDto.class))),
-            @ApiResponse(responseCode = "404", description = "Section not found")
-    })
-    public ResponseEntity<CatalogSectionDto> toggleSection(@PathVariable UUID sectionId) {
-        CatalogSectionDto updated = catalogLayoutCommandService.toggleSection(sectionId);
+    public ResponseEntity<CatalogSectionDto> updateSectionEnabledStatus(
+            @PathVariable UUID sectionId,
+            @Valid @RequestBody EnableDisableSectionRequest request) {
+        CatalogSectionDto updated = catalogLayoutCommandService.enableDisable(sectionId, request.getEnabled());
         return ResponseEntity.ok(updated);
     }
 }

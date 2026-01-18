@@ -1,5 +1,6 @@
 package com.apna_dukan_backend.catalog.layout.service;
 
+import com.apna_dukan_backend.catalog.layout.dto.BulkUpdateItem;
 import com.apna_dukan_backend.catalog.layout.dto.BulkUpdateRequest;
 import com.apna_dukan_backend.catalog.layout.dto.CatalogSectionDto;
 import com.apna_dukan_backend.catalog.layout.dto.CreateSectionRequest;
@@ -13,7 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -87,24 +90,52 @@ public class CatalogLayoutCommandService {
     }
 
     public List<CatalogSectionDto> bulkUpdate(BulkUpdateRequest request) {
-        List<CatalogSectionEntity> entities = catalogSectionRepository.findAllById(request.getSectionIds());
+        List<UUID> sectionIds = request.getSections().stream()
+                .map(BulkUpdateItem::getSectionId)
+                .toList();
         
-        if (entities.size() != request.getSectionIds().size()) {
+        List<CatalogSectionEntity> entities = catalogSectionRepository.findAllById(sectionIds);
+        
+        if (entities.size() != sectionIds.size()) {
             throw new SectionNotFoundException("Some sections not found");
         }
 
+        // Create a map for quick lookup
+        Map<UUID, CatalogSectionEntity> entityMap = entities.stream()
+                .collect(Collectors.toMap(CatalogSectionEntity::getSectionId, e -> e));
+
         LocalDateTime now = LocalDateTime.now();
-        entities.forEach(entity -> {
-            if (request.getEnabled() != null) {
-                entity.setEnabled(request.getEnabled());
+        
+        // Update each entity based on the corresponding BulkUpdateItem
+        request.getSections().forEach(item -> {
+            CatalogSectionEntity entity = entityMap.get(item.getSectionId());
+            if (entity != null) {
+                if (item.getSectionCode() != null) {
+                    entity.setSectionCode(item.getSectionCode());
+                }
+                if (item.getTitle() != null) {
+                    entity.setTitle(item.getTitle());
+                }
+                if (item.getDescription() != null) {
+                    entity.setDescription(item.getDescription());
+                }
+                if (item.getLayoutType() != null) {
+                    entity.setLayoutType(item.getLayoutType());
+                }
+                if (item.getScrollType() != null) {
+                    entity.setScrollType(item.getScrollType());
+                }
+                if (item.getDisplayOrder() != null) {
+                    entity.setDisplayOrder(item.getDisplayOrder());
+                }
+                if (item.getEnabled() != null) {
+                    entity.setEnabled(item.getEnabled());
+                }
+                if (item.getPersonalized() != null) {
+                    entity.setPersonalized(item.getPersonalized());
+                }
+                entity.setUpdatedAt(now);
             }
-            if (request.getPersonalized() != null) {
-                entity.setPersonalized(request.getPersonalized());
-            }
-            if (request.getDisplayOrder() != null) {
-                entity.setDisplayOrder(request.getDisplayOrder());
-            }
-            entity.setUpdatedAt(now);
         });
 
         List<CatalogSectionEntity> updated = catalogSectionRepository.saveAll(entities);
@@ -116,18 +147,6 @@ public class CatalogLayoutCommandService {
                 .orElseThrow(() -> new SectionNotFoundException("Section not found with id: " + sectionId));
 
         entity.setEnabled(enabled);
-        entity.setUpdatedAt(LocalDateTime.now());
-
-        CatalogSectionEntity updated = catalogSectionRepository.save(entity);
-        return catalogSectionMapper.toDto(updated);
-    }
-
-    public CatalogSectionDto toggleSection(UUID sectionId) {
-        CatalogSectionEntity entity = catalogSectionRepository.findById(sectionId)
-                .orElseThrow(() -> new SectionNotFoundException("Section not found with id: " + sectionId));
-
-        boolean newStatus = !entity.isEnabled();
-        entity.setEnabled(newStatus);
         entity.setUpdatedAt(LocalDateTime.now());
 
         CatalogSectionEntity updated = catalogSectionRepository.save(entity);

@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public class CatalogSection {
     private UUID sectionId;
-    private SectionCode sectionCode;
+    private String sectionCode;
     private String title;
     private String description;
     private LayoutType layoutType;
@@ -19,7 +19,7 @@ public class CatalogSection {
     public CatalogSection() {
     }
 
-    public CatalogSection(UUID sectionId, SectionCode sectionCode, String title, String description,
+    public CatalogSection(UUID sectionId, String sectionCode, String title, String description,
                          LayoutType layoutType, ScrollType scrollType, int displayOrder,
                          boolean enabled, boolean personalized, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.sectionId = sectionId;
@@ -44,11 +44,11 @@ public class CatalogSection {
         this.sectionId = sectionId;
     }
 
-    public SectionCode getSectionCode() {
+    public String getSectionCode() {
         return sectionCode;
     }
 
-    public void setSectionCode(SectionCode sectionCode) {
+    public void setSectionCode(String sectionCode) {
         this.sectionCode = sectionCode;
     }
 
