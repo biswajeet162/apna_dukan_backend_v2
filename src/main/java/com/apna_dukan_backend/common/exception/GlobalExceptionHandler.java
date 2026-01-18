@@ -13,6 +13,9 @@ import com.apna_dukan_backend.catalog.variant.exception.VariantNotFoundException
 import com.apna_dukan_backend.catalog.pricing.exception.PricingNotFoundException;
 import com.apna_dukan_backend.catalog.pricing.exception.InvalidPricingException;
 import com.apna_dukan_backend.catalog.pricing.exception.DuplicateActivePricingException;
+import com.apna_dukan_backend.inventory.exception.InventoryNotFoundException;
+import com.apna_dukan_backend.inventory.exception.InvalidInventoryException;
+import com.apna_dukan_backend.inventory.exception.DuplicateInventoryException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
@@ -262,6 +265,63 @@ public class GlobalExceptionHandler {
                 ex.getMessage(),
                 request.getRequestURI(),
                 ErrorCode.DUPLICATE_ACTIVE_PRICING.getCode()
+        );
+        
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
+    }
+
+    /**
+     * Handle inventory not found exceptions (404)
+     */
+    @ExceptionHandler(InventoryNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleInventoryNotFoundException(
+            InventoryNotFoundException ex, HttpServletRequest request) {
+        logger.warn("Inventory not found: {}", ex.getMessage());
+        
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.NOT_FOUND.value(),
+                HttpStatus.NOT_FOUND.getReasonPhrase(),
+                ex.getMessage(),
+                request.getRequestURI(),
+                ErrorCode.INVENTORY_NOT_FOUND.getCode()
+        );
+        
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
+
+    /**
+     * Handle invalid inventory exceptions (400)
+     */
+    @ExceptionHandler(InvalidInventoryException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidInventoryException(
+            InvalidInventoryException ex, HttpServletRequest request) {
+        logger.warn("Invalid inventory: {}", ex.getMessage());
+        
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.BAD_REQUEST.getReasonPhrase(),
+                ex.getMessage(),
+                request.getRequestURI(),
+                ErrorCode.INVALID_INVENTORY.getCode()
+        );
+        
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+    }
+
+    /**
+     * Handle duplicate inventory exceptions (409)
+     */
+    @ExceptionHandler(DuplicateInventoryException.class)
+    public ResponseEntity<ErrorResponse> handleDuplicateInventoryException(
+            DuplicateInventoryException ex, HttpServletRequest request) {
+        logger.warn("Duplicate inventory: {}", ex.getMessage());
+        
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.CONFLICT.value(),
+                HttpStatus.CONFLICT.getReasonPhrase(),
+                ex.getMessage(),
+                request.getRequestURI(),
+                ErrorCode.DUPLICATE_INVENTORY.getCode()
         );
         
         return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);

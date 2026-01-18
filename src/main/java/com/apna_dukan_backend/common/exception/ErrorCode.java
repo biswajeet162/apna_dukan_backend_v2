@@ -10,11 +10,13 @@ public enum ErrorCode {
     PRODUCT_NOT_FOUND("PRODUCT_NOT_FOUND", "Product not found"),
     VARIANT_NOT_FOUND("VARIANT_NOT_FOUND", "Variant not found"),
     PRICING_NOT_FOUND("PRICING_NOT_FOUND", "Pricing not found"),
+    INVENTORY_NOT_FOUND("INVENTORY_NOT_FOUND", "Inventory not found"),
     
     // Bad Request (400)
     INVALID_REQUEST("INVALID_REQUEST", "Invalid request data"),
     INVALID_SECTION_CODE("INVALID_SECTION_CODE", "Invalid section code"),
     INVALID_PRICING("INVALID_PRICING", "Invalid pricing data"),
+    INVALID_INVENTORY("INVALID_INVENTORY", "Invalid inventory data"),
     VALIDATION_ERROR("VALIDATION_ERROR", "Validation failed"),
     INVALID_INPUT("INVALID_INPUT", "Invalid input provided"),
     
@@ -23,6 +25,7 @@ public enum ErrorCode {
     DUPLICATE_ENTRY("DUPLICATE_ENTRY", "Duplicate entry detected"),
     DUPLICATE_SKU("DUPLICATE_SKU", "Duplicate SKU detected"),
     DUPLICATE_ACTIVE_PRICING("DUPLICATE_ACTIVE_PRICING", "Duplicate active pricing detected"),
+    DUPLICATE_INVENTORY("DUPLICATE_INVENTORY", "Duplicate inventory detected"),
     
     // Internal Server Error (500)
     INTERNAL_SERVER_ERROR("INTERNAL_SERVER_ERROR", "An internal server error occurred"),

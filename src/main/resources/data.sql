@@ -239,14 +239,14 @@ VALUES (CAST('c3a2b3c4-d5e6-4789-c012-345678901234' AS UUID), CAST('b3a2b3c4-d5e
 -- Inventory Data
 -- Inventory for variants of Apple - Red Delicious
 
-INSERT INTO inventory (inventory_id, variant_id, in_stock, created_at, updated_at)
-VALUES (CAST('d1a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b1a2b3c4-d5e6-4789-b012-345678901234' AS UUID), true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('d1a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b1a2b3c4-d5e6-4789-b012-345678901234' AS UUID), 'WH-001', 100, 0, 100, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO inventory (inventory_id, variant_id, in_stock, created_at, updated_at)
-VALUES (CAST('d2a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b2a2b3c4-d5e6-4789-b012-345678901234' AS UUID), true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('d2a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b2a2b3c4-d5e6-4789-b012-345678901234' AS UUID), 'WH-001', 50, 0, 50, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO inventory (inventory_id, variant_id, in_stock, created_at, updated_at)
-VALUES (CAST('d3a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b3a2b3c4-d5e6-4789-b012-345678901234' AS UUID), false, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('d3a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b3a2b3c4-d5e6-4789-b012-345678901234' AS UUID), 'WH-001', 0, 0, 0, false, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
 -- Additional Product Data for PDP Testing
 -- Product for Fresh Fruits (product_group_id: a1a2b3c4-d5e6-4789-a012-345678901234)
@@ -272,11 +272,11 @@ VALUES (CAST('c5a2b3c4-d5e6-4789-c012-345678901234' AS UUID), CAST('b5a2b3c4-d5e
 
 -- Inventory for Banana variants
 
-INSERT INTO inventory (inventory_id, variant_id, in_stock, created_at, updated_at)
-VALUES (CAST('d4a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b4a2b3c4-d5e6-4789-b012-345678901234' AS UUID), true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('d4a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b4a2b3c4-d5e6-4789-b012-345678901234' AS UUID), 'WH-001', 200, 0, 200, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO inventory (inventory_id, variant_id, in_stock, created_at, updated_at)
-VALUES (CAST('d5a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b5a2b3c4-d5e6-4789-b012-345678901234' AS UUID), true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('d5a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b5a2b3c4-d5e6-4789-b012-345678901234' AS UUID), 'WH-001', 150, 0, 150, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
 -- Product 3: Smartphone (Electronics - Mobile Phones)
 -- Product for Smartphones (product_group_id: a7a8b9c0-d1e2-4345-a678-901234567890)
@@ -314,17 +314,17 @@ VALUES (CAST('c9a2b3c4-d5e6-4789-c012-345678901234' AS UUID), CAST('b9a2b3c4-d5e
 
 -- Inventory for SmartPhone Pro Max variants
 
-INSERT INTO inventory (inventory_id, variant_id, in_stock, created_at, updated_at)
-VALUES (CAST('d6a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b6a2b3c4-d5e6-4789-b012-345678901234' AS UUID), true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('d6a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b6a2b3c4-d5e6-4789-b012-345678901234' AS UUID), 'WH-001', 25, 0, 25, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO inventory (inventory_id, variant_id, in_stock, created_at, updated_at)
-VALUES (CAST('d7a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b7a2b3c4-d5e6-4789-b012-345678901234' AS UUID), true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('d7a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b7a2b3c4-d5e6-4789-b012-345678901234' AS UUID), 'WH-001', 15, 0, 15, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO inventory (inventory_id, variant_id, in_stock, created_at, updated_at)
-VALUES (CAST('d8a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b8a2b3c4-d5e6-4789-b012-345678901234' AS UUID), false, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('d8a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b8a2b3c4-d5e6-4789-b012-345678901234' AS UUID), 'WH-001', 0, 0, 0, false, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO inventory (inventory_id, variant_id, in_stock, created_at, updated_at)
-VALUES (CAST('d9a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b9a2b3c4-d5e6-4789-b012-345678901234' AS UUID), true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('d9a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b9a2b3c4-d5e6-4789-b012-345678901234' AS UUID), 'WH-001', 10, 0, 10, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
 -- Product 4: Face Moisturizer (Beauty & Personal Care - Skincare)
 -- Product for Face Care (product_group_id: d3a4b5c6-d7e8-4901-a234-567890123456)
@@ -356,14 +356,14 @@ VALUES (CAST('cca2b3c4-d5e6-4789-c012-345678901234' AS UUID), CAST('bca2b3c4-d5e
 
 -- Inventory for Hydrating Face Moisturizer variants
 
-INSERT INTO inventory (inventory_id, variant_id, in_stock, created_at, updated_at)
-VALUES (CAST('daa2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('baa2b3c4-d5e6-4789-b012-345678901234' AS UUID), true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('daa2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('baa2b3c4-d5e6-4789-b012-345678901234' AS UUID), 'WH-001', 75, 0, 75, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO inventory (inventory_id, variant_id, in_stock, created_at, updated_at)
-VALUES (CAST('dba2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('bba2b3c4-d5e6-4789-b012-345678901234' AS UUID), true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('dba2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('bba2b3c4-d5e6-4789-b012-345678901234' AS UUID), 'WH-001', 60, 0, 60, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO inventory (inventory_id, variant_id, in_stock, created_at, updated_at)
-VALUES (CAST('dca2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('bca2b3c4-d5e6-4789-b012-345678901234' AS UUID), true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('dca2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('bca2b3c4-d5e6-4789-b012-345678901234' AS UUID), 'WH-001', 40, 0, 40, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
 -- Product 5: Men's Casual T-Shirt (Fashion - Men's Clothing)
 -- Product for Casual Wear (product_group_id: a0d1e2f3-a4b5-4678-a901-234567890123)
@@ -407,17 +407,17 @@ VALUES (CAST('c1a2b3c4-d5e6-4789-c012-345678901235' AS UUID), CAST('b1a2b3c4-d5e
 
 -- Inventory for Classic Cotton T-Shirt variants
 
-INSERT INTO inventory (inventory_id, variant_id, in_stock, created_at, updated_at)
-VALUES (CAST('dda2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('bda2b3c4-d5e6-4789-b012-345678901234' AS UUID), true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('dda2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('bda2b3c4-d5e6-4789-b012-345678901234' AS UUID), 'WH-001', 30, 0, 30, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO inventory (inventory_id, variant_id, in_stock, created_at, updated_at)
-VALUES (CAST('dea2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('bea2b3c4-d5e6-4789-b012-345678901234' AS UUID), true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('dea2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('bea2b3c4-d5e6-4789-b012-345678901234' AS UUID), 'WH-001', 50, 0, 50, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO inventory (inventory_id, variant_id, in_stock, created_at, updated_at)
-VALUES (CAST('dfa2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('bfa2b3c4-d5e6-4789-b012-345678901234' AS UUID), false, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('dfa2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('bfa2b3c4-d5e6-4789-b012-345678901234' AS UUID), 'WH-001', 0, 0, 0, false, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO inventory (inventory_id, variant_id, in_stock, created_at, updated_at)
-VALUES (CAST('d0a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b0a2b3c4-d5e6-4789-b012-345678901234' AS UUID), true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('d0a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b0a2b3c4-d5e6-4789-b012-345678901234' AS UUID), 'WH-001', 20, 0, 20, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO inventory (inventory_id, variant_id, in_stock, created_at, updated_at)
-VALUES (CAST('d1a2b3c4-d5e6-4789-d012-345678901235' AS UUID), CAST('b1a2b3c4-d5e6-4789-b012-345678901235' AS UUID), true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('d1a2b3c4-d5e6-4789-d012-345678901235' AS UUID), CAST('b1a2b3c4-d5e6-4789-b012-345678901235' AS UUID), 'WH-001', 35, 0, 35, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');

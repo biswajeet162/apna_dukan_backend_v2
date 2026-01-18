@@ -1,55 +1,24 @@
-package com.apna_dukan_backend.inventory.model;
-
-import jakarta.persistence.*;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+package com.apna_dukan_backend.inventory.model.domain;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Entity
-@Table(name = "inventory", uniqueConstraints = {
-    @UniqueConstraint(name = "uk_variant_warehouse", columnNames = {"variant_id", "warehouse_id"})
-})
-@EntityListeners(AuditingEntityListener.class)
-public class InventoryEntity {
-    @Id
-    @Column(name = "inventory_id", columnDefinition = "UUID")
+public class Inventory {
     private UUID inventoryId;
-
-    @Column(name = "variant_id", nullable = false, columnDefinition = "UUID")
     private UUID variantId;
-
-    @Column(name = "warehouse_id", nullable = false)
     private String warehouseId;
-
-    @Column(nullable = false)
     private Integer quantity;
-
-    @Column(name = "reserved_quantity", nullable = false)
     private Integer reservedQuantity;
-
-    @Column(name = "available_quantity", nullable = false)
     private Integer availableQuantity;
-
-    @Column(name = "in_stock", nullable = false)
     private boolean inStock;
-
-    @CreatedDate
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private LocalDateTime createdAt;
-
-    @LastModifiedDate
-    @Column(name = "last_updated_at", nullable = false)
     private LocalDateTime lastUpdatedAt;
 
-    public InventoryEntity() {
+    public Inventory() {
     }
 
-    public InventoryEntity(UUID inventoryId, UUID variantId, String warehouseId, Integer quantity,
-                          Integer reservedQuantity, Integer availableQuantity, boolean inStock,
-                          LocalDateTime createdAt, LocalDateTime lastUpdatedAt) {
+    public Inventory(UUID inventoryId, UUID variantId, String warehouseId, Integer quantity,
+                     Integer reservedQuantity, Integer availableQuantity, boolean inStock,
+                     LocalDateTime lastUpdatedAt) {
         this.inventoryId = inventoryId;
         this.variantId = variantId;
         this.warehouseId = warehouseId;
@@ -57,7 +26,6 @@ public class InventoryEntity {
         this.reservedQuantity = reservedQuantity;
         this.availableQuantity = availableQuantity;
         this.inStock = inStock;
-        this.createdAt = createdAt;
         this.lastUpdatedAt = lastUpdatedAt;
     }
 
@@ -116,14 +84,6 @@ public class InventoryEntity {
 
     public void setInStock(boolean inStock) {
         this.inStock = inStock;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
     }
 
     public LocalDateTime getLastUpdatedAt() {
