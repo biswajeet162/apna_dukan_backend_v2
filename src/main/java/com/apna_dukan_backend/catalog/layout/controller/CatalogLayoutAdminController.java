@@ -45,6 +45,18 @@ public class CatalogLayoutAdminController {
         return ResponseEntity.ok(sections);
     }
 
+    @GetMapping("/{sectionId}")
+    @Operation(summary = "Get catalog section by ID", description = "Returns a specific catalog section by its sectionId")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved section",
+                    content = @Content(schema = @Schema(implementation = CatalogSectionDto.class))),
+            @ApiResponse(responseCode = "404", description = "Section not found")
+    })
+    public ResponseEntity<CatalogSectionDto> getSectionById(@PathVariable UUID sectionId) {
+        CatalogSectionDto section = catalogLayoutQueryService.getSectionById(sectionId);
+        return ResponseEntity.ok(section);
+    }
+
     @PostMapping
     @Operation(summary = "Create new catalog section", description = "Creates a new catalog layout section")
     @ApiResponses(value = {
