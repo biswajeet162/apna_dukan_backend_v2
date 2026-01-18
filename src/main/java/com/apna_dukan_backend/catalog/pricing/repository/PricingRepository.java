@@ -1,6 +1,8 @@
 package com.apna_dukan_backend.catalog.pricing.repository;
 
 import com.apna_dukan_backend.catalog.pricing.model.PricingEntity;
+import com.apna_dukan_backend.catalog.product.model.ProductEntity;
+import com.apna_dukan_backend.catalog.variant.model.VariantEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -21,5 +23,14 @@ public interface PricingRepository extends JpaRepository<PricingEntity, UUID> {
     
     @Query("SELECT p FROM PricingEntity p WHERE p.variantId IN :variantIds")
     List<PricingEntity> findByVariantIdIn(@Param("variantIds") List<UUID> variantIds);
+    
+    @Query("SELECT p FROM PricingEntity p WHERE p.variantId IN " +
+           "(SELECT v.variantId FROM VariantEntity v WHERE v.productId = :productId)")
+    List<PricingEntity> findByProductId(@Param("productId") UUID productId);
+    
+    @Query("SELECT p FROM PricingEntity p WHERE p.variantId IN " +
+           "(SELECT v.variantId FROM VariantEntity v WHERE v.productId IN " +
+           "(SELECT pr.productId FROM ProductEntity pr WHERE pr.productGroupId = :productGroupId))")
+    List<PricingEntity> findByProductGroupId(@Param("productGroupId") UUID productGroupId);
 }
 

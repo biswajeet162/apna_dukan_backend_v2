@@ -64,5 +64,14 @@ public class PricingMapper {
                 entity.getUpdatedAt()
         );
     }
+
+    public java.util.List<PricingAdminResponseDto> toAdminDtoList(java.util.List<PricingEntity> entities) {
+        if (entities == null) {
+            return java.util.Collections.emptyList();
+        }
+        return entities.stream()
+                .map(this::toAdminDto)
+                .collect(java.util.stream.Collectors.toList());
+    }
 }
 
