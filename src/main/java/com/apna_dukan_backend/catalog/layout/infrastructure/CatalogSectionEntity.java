@@ -16,7 +16,7 @@ import java.util.UUID;
 @EntityListeners(AuditingEntityListener.class)
 public class CatalogSectionEntity {
     @Id
-    @Column(columnDefinition = "BINARY(16)")
+    @Column(columnDefinition = "UUID")
     private UUID sectionId;
 
     @Enumerated(EnumType.STRING)
