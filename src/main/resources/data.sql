@@ -2,19 +2,19 @@
 -- Using UUID strings directly (H2 supports UUID natively)
 
 INSERT INTO catalog_section (section_id, section_code, title, description, layout_type, scroll_type, display_order, enabled, personalized, created_at, updated_at)
-VALUES ('768d4ee5-0ef7-458d-9748-409260cf93aa', 'PRODUCT_CATEGORY', 'Category', 'Category section for displaying product categories', 'SINGLE_ROW', 'HORIZONTAL', 1, true, false, TIMESTAMP '2026-01-17 10:30:42.023172', TIMESTAMP '2026-01-17 10:30:42.023172');
+VALUES ('768d4ee5-0ef7-458d-9748-409260cf93aa', 'PRODUCT_CATEGORY', 'Category', 'Category section for displaying product categories', 'TWO_ROW', 'HORIZONTAL', 1, true, false, TIMESTAMP '2026-01-17 10:30:42.023172', TIMESTAMP '2026-01-17 10:30:42.023172');
 
 INSERT INTO catalog_section (section_id, section_code, title, description, layout_type, scroll_type, display_order, enabled, personalized, created_at, updated_at)
-VALUES ('d2aa248d-b67a-4a78-a001-4779711dcb14', 'BANNER', 'Banner', 'Banner section for promotional banners', 'SINGLE_ROW', 'HORIZONTAL', 2, true, false, TIMESTAMP '2026-01-17 10:30:42.035472', TIMESTAMP '2026-01-17 10:30:42.035472');
+VALUES ('d2aa248d-b67a-4a78-a001-4779711dcb14', 'BANNER', 'Banner', 'Banner section for promotional banners', 'TWO_ROW', 'HORIZONTAL', 2, true, false, TIMESTAMP '2026-01-17 10:30:42.035472', TIMESTAMP '2026-01-17 10:30:42.035472');
 
 INSERT INTO catalog_section (section_id, section_code, title, description, layout_type, scroll_type, display_order, enabled, personalized, created_at, updated_at)
-VALUES ('369c5104-ad24-44d0-b9e0-f55a125c1330', 'RECENTLY_VIEWED', 'Recently Viewed', 'Recently viewed products by the user', 'SINGLE_ROW', 'HORIZONTAL', 3, true, true, TIMESTAMP '2026-01-17 10:30:42.035472', TIMESTAMP '2026-01-17 10:30:42.035472');
+VALUES ('369c5104-ad24-44d0-b9e0-f55a125c1330', 'RECENTLY_VIEWED', 'Recently Viewed', 'Recently viewed products by the user', 'TWO_ROW', 'HORIZONTAL', 3, true, true, TIMESTAMP '2026-01-17 10:30:42.035472', TIMESTAMP '2026-01-17 10:30:42.035472');
 
 INSERT INTO catalog_section (section_id, section_code, title, description, layout_type, scroll_type, display_order, enabled, personalized, created_at, updated_at)
-VALUES ('c18747f2-7f42-4976-a485-19f97940ceb4', 'ADS', 'Ads', 'for showing added on sale', 'SINGLE_ROW', 'HORIZONTAL', 4, true, false, TIMESTAMP '2026-01-17 10:30:42.035472', TIMESTAMP '2026-01-17 10:30:42.035472');
+VALUES ('c18747f2-7f42-4976-a485-19f97940ceb4', 'ADS', 'Ads', 'for showing added on sale', 'TWO_ROW', 'HORIZONTAL', 4, true, false, TIMESTAMP '2026-01-17 10:30:42.035472', TIMESTAMP '2026-01-17 10:30:42.035472');
 
 INSERT INTO catalog_section (section_id, section_code, title, description, layout_type, scroll_type, display_order, enabled, personalized, created_at, updated_at)
-VALUES ('91571619-aa50-4c37-988a-409f0475b62b', 'HIGHLIGHT', 'Highlight', 'Highlighted products section', 'SINGLE_ROW', 'HORIZONTAL', 5, false, false, TIMESTAMP '2026-01-17 10:30:42.0405', TIMESTAMP '2026-01-17 10:30:42.0405');
+VALUES ('91571619-aa50-4c37-988a-409f0475b62b', 'HIGHLIGHT', 'Highlight', 'Highlighted products section', 'TWO_ROW', 'HORIZONTAL', 5, false, false, TIMESTAMP '2026-01-17 10:30:42.0405', TIMESTAMP '2026-01-17 10:30:42.0405');
 
 -- Category Data
 -- Categories for PRODUCT_CATEGORY section (section_id: 768d4ee5-0ef7-458d-9748-409260cf93aa)
@@ -90,6 +90,21 @@ VALUES ('c4d5e6f7-a8b9-4012-c345-678901234567', 'a1b2c3d4-e5f6-4789-a012-3456789
 
 INSERT INTO sub_category (sub_category_id, category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
 VALUES ('d5e6f7a8-b9c0-4123-d456-789012345678', 'a1b2c3d4-e5f6-4789-a012-345678901234', 'Snacks & Sweets', 'Chips, cookies, chocolates and snacks', 'SNACKS_SWEETS', 5, true, '["https://images.unsplash.com/photo-1599490659213-e2b9527bd087?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:40:00.000000', TIMESTAMP '2026-01-17 10:40:00.000000');
+
+INSERT INTO sub_category (sub_category_id, category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES ('a1b2c3d4-e5f6-4789-a012-345678901235', 'a1b2c3d4-e5f6-4789-a012-345678901234', 'Bakery & Bread', 'Fresh bread, pastries, cakes and baked goods', 'BAKERY_BREAD', 6, true, '["https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:40:00.000000', TIMESTAMP '2026-01-17 10:40:00.000000');
+
+INSERT INTO sub_category (sub_category_id, category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES ('a1b2c3d4-e5f6-4789-a012-345678901236', 'a1b2c3d4-e5f6-4789-a012-345678901234', 'Meat & Seafood', 'Fresh meat, poultry, fish and seafood products', 'MEAT_SEAFOOD', 7, true, '["https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:40:00.000000', TIMESTAMP '2026-01-17 10:40:00.000000');
+
+INSERT INTO sub_category (sub_category_id, category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES ('a1b2c3d4-e5f6-4789-a012-345678901237', 'a1b2c3d4-e5f6-4789-a012-345678901234', 'Pantry Staples', 'Rice, grains, pulses, spices and cooking essentials', 'PANTRY_STAPLES', 8, true, '["https://images.unsplash.com/photo-1596797038530-2c29b0f4e0e0?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1596797038530-2c29b0f4e0e0?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1596797038530-2c29b0f4e0e0?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:40:00.000000', TIMESTAMP '2026-01-17 10:40:00.000000');
+
+INSERT INTO sub_category (sub_category_id, category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES ('a1b2c3d4-e5f6-4789-a012-345678901238', 'a1b2c3d4-e5f6-4789-a012-345678901234', 'Organic & Natural', 'Organic fruits, vegetables and natural food products', 'ORGANIC_NATURAL', 9, true, '["https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:40:00.000000', TIMESTAMP '2026-01-17 10:40:00.000000');
+
+INSERT INTO sub_category (sub_category_id, category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES ('a1b2c3d4-e5f6-4789-a012-345678901239', 'a1b2c3d4-e5f6-4789-a012-345678901234', 'Baby Food & Care', 'Baby food, formula, diapers and baby care essentials', 'BABY_FOOD_CARE', 10, true, '["https://images.unsplash.com/photo-1515488042361-ee00e0d4ff87?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1515488042361-ee00e0d4ff87?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1515488042361-ee00e0d4ff87?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:40:00.000000', TIMESTAMP '2026-01-17 10:40:00.000000');
 
 -- SubCategories for Electronics (category_id: b2c3d4e5-f6a7-4890-b123-456789012345)
 
