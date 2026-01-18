@@ -39,3 +39,12 @@ springdoc:
   swagger-ui:
     path: /swagger-ui.html
     enabled: true
+  packages-to-exclude: com.apna_dukan_backend.common.exception
+
+# Error handling configuration
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-stacktrace: never
+    include-exception: false
