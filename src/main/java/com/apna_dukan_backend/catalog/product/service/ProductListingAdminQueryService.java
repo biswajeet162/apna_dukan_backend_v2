@@ -11,8 +11,8 @@ import com.apna_dukan_backend.catalog.variant.model.VariantEntity;
 import com.apna_dukan_backend.catalog.variant.repository.VariantRepository;
 import com.apna_dukan_backend.inventory.model.InventoryEntity;
 import com.apna_dukan_backend.inventory.repository.InventoryRepository;
-import com.apna_dukan_backend.pricing.model.PricingEntity;
-import com.apna_dukan_backend.pricing.repository.PricingRepository;
+import com.apna_dukan_backend.catalog.pricing.model.PricingEntity;
+import com.apna_dukan_backend.catalog.pricing.service.PricingQueryService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -27,7 +27,7 @@ public class ProductListingAdminQueryService {
     private final ProductRepository productRepository;
     private final ProductGroupRepository productGroupRepository;
     private final VariantRepository variantRepository;
-    private final PricingRepository pricingRepository;
+    private final PricingQueryService pricingQueryService;
     private final InventoryRepository inventoryRepository;
     private final ProductListingAdminAssembler assembler;
 
@@ -35,13 +35,13 @@ public class ProductListingAdminQueryService {
             ProductRepository productRepository,
             ProductGroupRepository productGroupRepository,
             VariantRepository variantRepository,
-            PricingRepository pricingRepository,
+            PricingQueryService pricingQueryService,
             InventoryRepository inventoryRepository,
             ProductListingAdminAssembler assembler) {
         this.productRepository = productRepository;
         this.productGroupRepository = productGroupRepository;
         this.variantRepository = variantRepository;
-        this.pricingRepository = pricingRepository;
+        this.pricingQueryService = pricingQueryService;
         this.inventoryRepository = inventoryRepository;
         this.assembler = assembler;
     }
@@ -123,12 +123,7 @@ public class ProductListingAdminQueryService {
                 .collect(Collectors.toList()));
 
         // Get all pricing (not just active) for admin view
-        List<PricingEntity> pricings = variantIds.isEmpty() 
-                ? Collections.emptyList() 
-                : pricingRepository.findByVariantIdIn(variantIds);
-
-        Map<UUID, PricingEntity> pricingMap = pricings.stream()
-                .collect(Collectors.toMap(PricingEntity::getVariantId, p -> p));
+        Map<UUID, PricingEntity> pricingMap = pricingQueryService.getAllPricingByVariantIds(variantIds);
 
         // 6. Batch fetch inventory for all default variants
         List<InventoryEntity> inventories = variantIds.isEmpty()

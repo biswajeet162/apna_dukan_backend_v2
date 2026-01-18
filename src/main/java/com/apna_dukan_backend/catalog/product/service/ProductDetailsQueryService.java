@@ -9,8 +9,8 @@ import com.apna_dukan_backend.catalog.variant.model.VariantEntity;
 import com.apna_dukan_backend.catalog.variant.repository.VariantRepository;
 import com.apna_dukan_backend.inventory.model.InventoryEntity;
 import com.apna_dukan_backend.inventory.repository.InventoryRepository;
-import com.apna_dukan_backend.pricing.model.PricingEntity;
-import com.apna_dukan_backend.pricing.repository.PricingRepository;
+import com.apna_dukan_backend.catalog.pricing.model.PricingEntity;
+import com.apna_dukan_backend.catalog.pricing.service.PricingQueryService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,19 +21,19 @@ import java.util.stream.Collectors;
 public class ProductDetailsQueryService {
     private final ProductRepository productRepository;
     private final VariantRepository variantRepository;
-    private final PricingRepository pricingRepository;
+    private final PricingQueryService pricingQueryService;
     private final InventoryRepository inventoryRepository;
     private final ProductDetailsAssembler assembler;
 
     public ProductDetailsQueryService(
             ProductRepository productRepository,
             VariantRepository variantRepository,
-            PricingRepository pricingRepository,
+            PricingQueryService pricingQueryService,
             InventoryRepository inventoryRepository,
             ProductDetailsAssembler assembler) {
         this.productRepository = productRepository;
         this.variantRepository = variantRepository;
-        this.pricingRepository = pricingRepository;
+        this.pricingQueryService = pricingQueryService;
         this.inventoryRepository = inventoryRepository;
         this.assembler = assembler;
     }
@@ -60,11 +60,7 @@ public class ProductDetailsQueryService {
                 .map(VariantEntity::getVariantId)
                 .collect(Collectors.toList());
 
-        List<PricingEntity> pricings = pricingRepository
-                .findByVariantIdInAndActiveTrue(variantIds);
-
-        Map<UUID, PricingEntity> pricingMap = pricings.stream()
-                .collect(Collectors.toMap(PricingEntity::getVariantId, p -> p));
+        Map<UUID, PricingEntity> pricingMap = pricingQueryService.getActivePricingByVariantIds(variantIds);
 
         // 4. Batch fetch inventory for all variants
         List<InventoryEntity> inventories = inventoryRepository

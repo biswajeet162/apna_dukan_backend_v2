@@ -4,7 +4,7 @@ import com.apna_dukan_backend.catalog.product.model.ProductEntity;
 import com.apna_dukan_backend.catalog.product.model.dto.*;
 import com.apna_dukan_backend.catalog.variant.model.VariantEntity;
 import com.apna_dukan_backend.inventory.model.InventoryEntity;
-import com.apna_dukan_backend.pricing.model.PricingEntity;
+import com.apna_dukan_backend.catalog.pricing.model.PricingEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -48,8 +48,8 @@ public class ProductListingAdminAssembler {
                 // Assemble pricing summary if available
                 if (pricing != null) {
                     pricingSummary = new PricingSummaryDto(
-                            pricing.getSellingPrice(),
-                            pricing.getMrp(),
+                            pricing.getSellingPrice().doubleValue(),
+                            pricing.getMrp().doubleValue(),
                             pricing.getDiscountPercent(),
                             pricing.getCurrency()
                     );

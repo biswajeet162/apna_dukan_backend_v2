@@ -1,6 +1,6 @@
-package com.apna_dukan_backend.pricing.repository;
+package com.apna_dukan_backend.catalog.pricing.repository;
 
-import com.apna_dukan_backend.pricing.model.PricingEntity;
+import com.apna_dukan_backend.catalog.pricing.model.PricingEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,6 +13,8 @@ import java.util.UUID;
 @Repository
 public interface PricingRepository extends JpaRepository<PricingEntity, UUID> {
     Optional<PricingEntity> findByVariantIdAndActiveTrue(UUID variantId);
+    
+    List<PricingEntity> findByVariantId(UUID variantId);
     
     @Query("SELECT p FROM PricingEntity p WHERE p.variantId IN :variantIds AND p.active = true")
     List<PricingEntity> findByVariantIdInAndActiveTrue(@Param("variantIds") List<UUID> variantIds);

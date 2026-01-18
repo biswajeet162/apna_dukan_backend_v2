@@ -10,6 +10,9 @@ import com.apna_dukan_backend.catalog.product.exception.DuplicateProductCodeExce
 import com.apna_dukan_backend.catalog.product.exception.ProductNotFoundException;
 import com.apna_dukan_backend.catalog.variant.exception.DuplicateSkuException;
 import com.apna_dukan_backend.catalog.variant.exception.VariantNotFoundException;
+import com.apna_dukan_backend.catalog.pricing.exception.PricingNotFoundException;
+import com.apna_dukan_backend.catalog.pricing.exception.InvalidPricingException;
+import com.apna_dukan_backend.catalog.pricing.exception.DuplicateActivePricingException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
@@ -202,6 +205,63 @@ public class GlobalExceptionHandler {
                 ex.getMessage(),
                 request.getRequestURI(),
                 ErrorCode.DUPLICATE_SKU.getCode()
+        );
+        
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
+    }
+
+    /**
+     * Handle pricing not found exceptions (404)
+     */
+    @ExceptionHandler(PricingNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handlePricingNotFoundException(
+            PricingNotFoundException ex, HttpServletRequest request) {
+        logger.warn("Pricing not found: {}", ex.getMessage());
+        
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.NOT_FOUND.value(),
+                HttpStatus.NOT_FOUND.getReasonPhrase(),
+                ex.getMessage(),
+                request.getRequestURI(),
+                ErrorCode.PRICING_NOT_FOUND.getCode()
+        );
+        
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
+
+    /**
+     * Handle invalid pricing exceptions (400)
+     */
+    @ExceptionHandler(InvalidPricingException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidPricingException(
+            InvalidPricingException ex, HttpServletRequest request) {
+        logger.warn("Invalid pricing: {}", ex.getMessage());
+        
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.BAD_REQUEST.getReasonPhrase(),
+                ex.getMessage(),
+                request.getRequestURI(),
+                ErrorCode.INVALID_PRICING.getCode()
+        );
+        
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+    }
+
+    /**
+     * Handle duplicate active pricing exceptions (409)
+     */
+    @ExceptionHandler(DuplicateActivePricingException.class)
+    public ResponseEntity<ErrorResponse> handleDuplicateActivePricingException(
+            DuplicateActivePricingException ex, HttpServletRequest request) {
+        logger.warn("Duplicate active pricing: {}", ex.getMessage());
+        
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.CONFLICT.value(),
+                HttpStatus.CONFLICT.getReasonPhrase(),
+                ex.getMessage(),
+                request.getRequestURI(),
+                ErrorCode.DUPLICATE_ACTIVE_PRICING.getCode()
         );
         
         return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);

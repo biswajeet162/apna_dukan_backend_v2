@@ -1,15 +1,18 @@
-package com.apna_dukan_backend.pricing.model;
+package com.apna_dukan_backend.catalog.pricing.model;
 
 import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "pricing")
+@Table(name = "pricing", indexes = {
+    @Index(name = "idx_variant_active", columnList = "variant_id,active")
+})
 @EntityListeners(AuditingEntityListener.class)
 public class PricingEntity {
     @Id
@@ -19,17 +22,23 @@ public class PricingEntity {
     @Column(name = "variant_id", nullable = false, columnDefinition = "UUID")
     private UUID variantId;
 
-    @Column(name = "selling_price", nullable = false)
-    private double sellingPrice;
-
-    @Column(nullable = false)
-    private double mrp;
-
-    @Column(name = "discount_percent")
-    private int discountPercent;
-
     @Column(nullable = false)
     private String currency;
+
+    @Column(nullable = false, precision = 19, scale = 2)
+    private BigDecimal mrp;
+
+    @Column(name = "selling_price", nullable = false, precision = 19, scale = 2)
+    private BigDecimal sellingPrice;
+
+    @Column(name = "discount_percent", nullable = false)
+    private Integer discountPercent;
+
+    @Column(name = "valid_from")
+    private LocalDateTime validFrom;
+
+    @Column(name = "valid_to")
+    private LocalDateTime validTo;
 
     @Column(nullable = false)
     private boolean active;
@@ -45,15 +54,17 @@ public class PricingEntity {
     public PricingEntity() {
     }
 
-    public PricingEntity(UUID pricingId, UUID variantId, double sellingPrice, double mrp,
-                        int discountPercent, String currency, boolean active,
-                        LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public PricingEntity(UUID pricingId, UUID variantId, String currency, BigDecimal mrp,
+                        BigDecimal sellingPrice, Integer discountPercent, LocalDateTime validFrom,
+                        LocalDateTime validTo, boolean active, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.pricingId = pricingId;
         this.variantId = variantId;
-        this.sellingPrice = sellingPrice;
-        this.mrp = mrp;
-        this.discountPercent = discountPercent;
         this.currency = currency;
+        this.mrp = mrp;
+        this.sellingPrice = sellingPrice;
+        this.discountPercent = discountPercent;
+        this.validFrom = validFrom;
+        this.validTo = validTo;
         this.active = active;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -76,36 +87,52 @@ public class PricingEntity {
         this.variantId = variantId;
     }
 
-    public double getSellingPrice() {
-        return sellingPrice;
-    }
-
-    public void setSellingPrice(double sellingPrice) {
-        this.sellingPrice = sellingPrice;
-    }
-
-    public double getMrp() {
-        return mrp;
-    }
-
-    public void setMrp(double mrp) {
-        this.mrp = mrp;
-    }
-
-    public int getDiscountPercent() {
-        return discountPercent;
-    }
-
-    public void setDiscountPercent(int discountPercent) {
-        this.discountPercent = discountPercent;
-    }
-
     public String getCurrency() {
         return currency;
     }
 
     public void setCurrency(String currency) {
         this.currency = currency;
+    }
+
+    public BigDecimal getMrp() {
+        return mrp;
+    }
+
+    public void setMrp(BigDecimal mrp) {
+        this.mrp = mrp;
+    }
+
+    public BigDecimal getSellingPrice() {
+        return sellingPrice;
+    }
+
+    public void setSellingPrice(BigDecimal sellingPrice) {
+        this.sellingPrice = sellingPrice;
+    }
+
+    public Integer getDiscountPercent() {
+        return discountPercent;
+    }
+
+    public void setDiscountPercent(Integer discountPercent) {
+        this.discountPercent = discountPercent;
+    }
+
+    public LocalDateTime getValidFrom() {
+        return validFrom;
+    }
+
+    public void setValidFrom(LocalDateTime validFrom) {
+        this.validFrom = validFrom;
+    }
+
+    public LocalDateTime getValidTo() {
+        return validTo;
+    }
+
+    public void setValidTo(LocalDateTime validTo) {
+        this.validTo = validTo;
     }
 
     public boolean isActive() {
