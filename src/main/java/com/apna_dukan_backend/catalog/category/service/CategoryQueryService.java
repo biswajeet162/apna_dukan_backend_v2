@@ -1,6 +1,8 @@
 package com.apna_dukan_backend.catalog.category.service;
 
+import com.apna_dukan_backend.catalog.category.dto.CategoryAdminDto;
 import com.apna_dukan_backend.catalog.category.dto.CategoryDto;
+import com.apna_dukan_backend.catalog.category.dto.CategorySectionAdminResponseDto;
 import com.apna_dukan_backend.catalog.category.dto.CategorySectionResponseDto;
 import com.apna_dukan_backend.catalog.category.exception.InvalidSectionException;
 import com.apna_dukan_backend.catalog.category.mapper.CategoryMapper;
@@ -30,14 +32,14 @@ public class CategoryQueryService {
         this.categoryMapper = categoryMapper;
     }
 
-    public CategorySectionResponseDto getCategoriesForAdmin(UUID sectionId) {
+    public CategorySectionAdminResponseDto getCategoriesForAdmin(UUID sectionId) {
         CatalogSectionEntity section = validateSection(sectionId);
         validateSectionCode(section);
 
         List<CategoryEntity> entities = categoryRepository.findBySectionIdOrderByDisplayOrderAsc(sectionId);
-        List<CategoryDto> categories = categoryMapper.toDtoList(entities);
+        List<CategoryAdminDto> categories = categoryMapper.toAdminDtoList(entities);
 
-        return new CategorySectionResponseDto(
+        return new CategorySectionAdminResponseDto(
                 sectionId,
                 section.getSectionCode(),
                 categories != null ? categories : List.of()

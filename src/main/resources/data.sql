@@ -102,3 +102,61 @@ VALUES ('50c824f5-84a0-45d2-87d4-3344076f7bd2', 'AI_RECOMMENDED', 'Ai Recommende
 
 INSERT INTO catalog_section (section_id, section_code, title, description, layout_type, scroll_type, display_order, enabled, personalized, created_at, updated_at)
 VALUES ('ff78373f-c3e5-4073-a3b2-4b74b9b60fd7', 'COLLAB_FILTER', 'Collab Filter', 'Collaborative filtering recommendations', 'SINGLE_ROW', 'HORIZONTAL', 34, false, true, TIMESTAMP '2026-01-17 10:30:42.070199', TIMESTAMP '2026-01-17 10:30:42.070199');
+
+-- Category Data
+-- All categories are linked to the PRODUCT_CATEGORY section (section_id: 768d4ee5-0ef7-458d-9748-409260cf93aa)
+
+INSERT INTO category (category_id, section_id, name, description, code, display_order, enabled, created_at, updated_at)
+VALUES ('a1b2c3d4-e5f6-4789-a012-345678901234', '768d4ee5-0ef7-458d-9748-409260cf93aa', 'Grocery', 'Fresh fruits, vegetables, dairy products, and daily essentials', 'GROCERY', 1, true, TIMESTAMP '2026-01-17 10:35:00.000000', TIMESTAMP '2026-01-17 10:35:00.000000');
+
+INSERT INTO category (category_id, section_id, name, description, code, display_order, enabled, created_at, updated_at)
+VALUES ('b2c3d4e5-f6a7-4890-b123-456789012345', '768d4ee5-0ef7-458d-9748-409260cf93aa', 'Electronics', 'Mobile phones, laptops, gadgets, and electronic accessories', 'ELECTRONICS', 2, true, TIMESTAMP '2026-01-17 10:35:00.000000', TIMESTAMP '2026-01-17 10:35:00.000000');
+
+INSERT INTO category (category_id, section_id, name, description, code, display_order, enabled, created_at, updated_at)
+VALUES ('c3d4e5f6-a7b8-4901-c234-567890123456', '768d4ee5-0ef7-458d-9748-409260cf93aa', 'Fashion', 'Clothing, shoes, accessories, and fashion items for men and women', 'FASHION', 3, true, TIMESTAMP '2026-01-17 10:35:00.000000', TIMESTAMP '2026-01-17 10:35:00.000000');
+
+INSERT INTO category (category_id, section_id, name, description, code, display_order, enabled, created_at, updated_at)
+VALUES ('d4e5f6a7-b8c9-4012-d345-678901234567', '768d4ee5-0ef7-458d-9748-409260cf93aa', 'Home & Kitchen', 'Home decor, kitchen appliances, furniture, and household items', 'HOME_KITCHEN', 4, true, TIMESTAMP '2026-01-17 10:35:00.000000', TIMESTAMP '2026-01-17 10:35:00.000000');
+
+INSERT INTO category (category_id, section_id, name, description, code, display_order, enabled, created_at, updated_at)
+VALUES ('e5f6a7b8-c9d0-4123-e456-789012345678', '768d4ee5-0ef7-458d-9748-409260cf93aa', 'Beauty & Personal Care', 'Skincare, makeup, personal hygiene, and beauty products', 'BEAUTY_CARE', 5, true, TIMESTAMP '2026-01-17 10:35:00.000000', TIMESTAMP '2026-01-17 10:35:00.000000');
+
+INSERT INTO category (category_id, section_id, name, description, code, display_order, enabled, created_at, updated_at)
+VALUES ('f6a7b8c9-d0e1-4234-f567-890123456789', '768d4ee5-0ef7-458d-9748-409260cf93aa', 'Sports & Fitness', 'Sports equipment, fitness gear, outdoor activities, and gym accessories', 'SPORTS_FITNESS', 6, true, TIMESTAMP '2026-01-17 10:35:00.000000', TIMESTAMP '2026-01-17 10:35:00.000000');
+
+INSERT INTO category (category_id, section_id, name, description, code, display_order, enabled, created_at, updated_at)
+VALUES ('a7b8c9d0-e1f2-4345-a678-901234567890', '768d4ee5-0ef7-458d-9748-409260cf93aa', 'Books & Media', 'Books, magazines, movies, music, and educational content', 'BOOKS_MEDIA', 7, true, TIMESTAMP '2026-01-17 10:35:00.000000', TIMESTAMP '2026-01-17 10:35:00.000000');
+
+INSERT INTO category (category_id, section_id, name, description, code, display_order, enabled, created_at, updated_at)
+VALUES ('b8c9d0e1-f2a3-4456-b789-012345678901', '768d4ee5-0ef7-458d-9748-409260cf93aa', 'Toys & Games', 'Toys for kids, board games, puzzles, and entertainment items', 'TOYS_GAMES', 8, true, TIMESTAMP '2026-01-17 10:35:00.000000', TIMESTAMP '2026-01-17 10:35:00.000000');
+
+INSERT INTO category (category_id, section_id, name, description, code, display_order, enabled, created_at, updated_at)
+VALUES ('c9d0e1f2-a3b4-4567-c890-123456789012', '768d4ee5-0ef7-458d-9748-409260cf93aa', 'Automotive', 'Car accessories, bike parts, automotive tools, and vehicle care products', 'AUTOMOTIVE', 9, true, TIMESTAMP '2026-01-17 10:35:00.000000', TIMESTAMP '2026-01-17 10:35:00.000000');
+
+INSERT INTO category (category_id, section_id, name, description, code, display_order, enabled, created_at, updated_at)
+VALUES ('d0e1f2a3-b4c5-4678-d901-234567890123', '768d4ee5-0ef7-458d-9748-409260cf93aa', 'Health & Wellness', 'Health supplements, vitamins, medical supplies, and wellness products', 'HEALTH_WELLNESS', 10, true, TIMESTAMP '2026-01-17 10:35:00.000000', TIMESTAMP '2026-01-17 10:35:00.000000');
+
+INSERT INTO category (category_id, section_id, name, description, code, display_order, enabled, created_at, updated_at)
+VALUES ('e1f2a3b4-c5d6-4789-e012-345678901234', '768d4ee5-0ef7-458d-9748-409260cf93aa', 'Pet Supplies', 'Pet food, toys, accessories, and care products for dogs, cats, and other pets', 'PET_SUPPLIES', 11, true, TIMESTAMP '2026-01-17 10:35:00.000000', TIMESTAMP '2026-01-17 10:35:00.000000');
+
+INSERT INTO category (category_id, section_id, name, description, code, display_order, enabled, created_at, updated_at)
+VALUES ('f2a3b4c5-d6e7-4890-f123-456789012345', '768d4ee5-0ef7-458d-9748-409260cf93aa', 'Baby Products', 'Baby food, diapers, clothing, toys, and care essentials for infants', 'BABY_PRODUCTS', 12, true, TIMESTAMP '2026-01-17 10:35:00.000000', TIMESTAMP '2026-01-17 10:35:00.000000');
+
+INSERT INTO category (category_id, section_id, name, description, code, display_order, enabled, created_at, updated_at)
+VALUES ('a3b4c5d6-e7f8-4901-a234-567890123456', '768d4ee5-0ef7-458d-9748-409260cf93aa', 'Jewelry & Watches', 'Gold, silver, diamond jewelry, watches, and luxury accessories', 'JEWELRY_WATCHES', 13, true, TIMESTAMP '2026-01-17 10:35:00.000000', TIMESTAMP '2026-01-17 10:35:00.000000');
+
+INSERT INTO category (category_id, section_id, name, description, code, display_order, enabled, created_at, updated_at)
+VALUES ('b4c5d6e7-f8a9-4012-b345-678901234567', '768d4ee5-0ef7-458d-9748-409260cf93aa', 'Garden & Outdoor', 'Plants, seeds, gardening tools, outdoor furniture, and patio accessories', 'GARDEN_OUTDOOR', 14, true, TIMESTAMP '2026-01-17 10:35:00.000000', TIMESTAMP '2026-01-17 10:35:00.000000');
+
+INSERT INTO category (category_id, section_id, name, description, code, display_order, enabled, created_at, updated_at)
+VALUES ('c5d6e7f8-a9b0-4123-c456-789012345678', '768d4ee5-0ef7-458d-9748-409260cf93aa', 'Office Supplies', 'Stationery, office furniture, printers, and business essentials', 'OFFICE_SUPPLIES', 15, true, TIMESTAMP '2026-01-17 10:35:00.000000', TIMESTAMP '2026-01-17 10:35:00.000000');
+
+-- Disabled categories (for testing admin vs user API behavior)
+INSERT INTO category (category_id, section_id, name, description, code, display_order, enabled, created_at, updated_at)
+VALUES ('d6e7f8a9-b0c1-4234-d567-890123456789', '768d4ee5-0ef7-458d-9748-409260cf93aa', 'Luxury Items', 'Premium luxury products and exclusive collections', 'LUXURY_ITEMS', 16, false, TIMESTAMP '2026-01-17 10:35:00.000000', TIMESTAMP '2026-01-17 10:35:00.000000');
+
+INSERT INTO category (category_id, section_id, name, description, code, display_order, enabled, created_at, updated_at)
+VALUES ('e7f8a9b0-c1d2-4345-e678-901234567890', '768d4ee5-0ef7-458d-9748-409260cf93aa', 'Seasonal Items', 'Holiday decorations, seasonal products, and limited-time items', 'SEASONAL_ITEMS', 17, false, TIMESTAMP '2026-01-17 10:35:00.000000', TIMESTAMP '2026-01-17 10:35:00.000000');
+
+INSERT INTO category (category_id, section_id, name, description, code, display_order, enabled, created_at, updated_at)
+VALUES ('f8a9b0c1-d2e3-4456-f789-012345678901', '768d4ee5-0ef7-458d-9748-409260cf93aa', 'Art & Crafts', 'Art supplies, craft materials, DIY kits, and creative tools', 'ART_CRAFTS', 18, false, TIMESTAMP '2026-01-17 10:35:00.000000', TIMESTAMP '2026-01-17 10:35:00.000000');
