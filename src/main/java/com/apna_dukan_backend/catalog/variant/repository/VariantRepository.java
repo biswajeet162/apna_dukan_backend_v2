@@ -19,5 +19,7 @@ public interface VariantRepository extends JpaRepository<VariantEntity, UUID> {
     Optional<VariantEntity> findDefaultVariantByProductId(@Param("productId") UUID productId);
     
     List<VariantEntity> findByProductIdInAndEnabledTrue(List<UUID> productIds);
+    
+    List<VariantEntity> findByProductIdIn(List<UUID> productIds);
 }
 

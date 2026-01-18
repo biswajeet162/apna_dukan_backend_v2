@@ -16,5 +16,8 @@ public interface PricingRepository extends JpaRepository<PricingEntity, UUID> {
     
     @Query("SELECT p FROM PricingEntity p WHERE p.variantId IN :variantIds AND p.active = true")
     List<PricingEntity> findByVariantIdInAndActiveTrue(@Param("variantIds") List<UUID> variantIds);
+    
+    @Query("SELECT p FROM PricingEntity p WHERE p.variantId IN :variantIds")
+    List<PricingEntity> findByVariantIdIn(@Param("variantIds") List<UUID> variantIds);
 }
 

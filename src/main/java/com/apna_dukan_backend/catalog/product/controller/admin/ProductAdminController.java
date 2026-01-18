@@ -3,8 +3,10 @@ package com.apna_dukan_backend.catalog.product.controller.admin;
 import com.apna_dukan_backend.catalog.product.model.dto.EnableDisableProductRequest;
 import com.apna_dukan_backend.catalog.product.model.dto.ProductAdminResponseDto;
 import com.apna_dukan_backend.catalog.product.model.dto.ProductCreateRequestDto;
+import com.apna_dukan_backend.catalog.product.model.dto.ProductListingResponseDto;
 import com.apna_dukan_backend.catalog.product.model.dto.ProductUpdateRequestDto;
 import com.apna_dukan_backend.catalog.product.service.ProductCommandService;
+import com.apna_dukan_backend.catalog.product.service.ProductListingAdminQueryService;
 import com.apna_dukan_backend.catalog.product.service.ProductQueryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -31,10 +33,14 @@ import java.util.UUID;
 public class ProductAdminController {
     private final ProductCommandService productCommandService;
     private final ProductQueryService productQueryService;
+    private final ProductListingAdminQueryService productListingAdminQueryService;
 
-    public ProductAdminController(ProductCommandService productCommandService, ProductQueryService productQueryService) {
+    public ProductAdminController(ProductCommandService productCommandService, 
+                                 ProductQueryService productQueryService,
+                                 ProductListingAdminQueryService productListingAdminQueryService) {
         this.productCommandService = productCommandService;
         this.productQueryService = productQueryService;
+        this.productListingAdminQueryService = productListingAdminQueryService;
     }
 
     @GetMapping("/{productId}")
@@ -94,6 +100,24 @@ public class ProductAdminController {
             @Valid @RequestBody EnableDisableProductRequest request) {
         ProductAdminResponseDto updated = productCommandService.updateProductEnabledStatus(productId, request.getEnabled());
         return ResponseEntity.ok(updated);
+    }
+
+    @GetMapping("/productGroup/{productGroupId}/products")
+    @Operation(summary = "Get product listing for admin",
+               description = "Returns a paginated list of ALL products (enabled and disabled) for a product group. " +
+                           "Shows products even if they have no variants, pricing, or inventory. " +
+                           "Supports pagination with page (0-based) and size (default: 20, max: 100) query parameters.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved product listing",
+                    content = @Content(schema = @Schema(implementation = ProductListingResponseDto.class))),
+            @ApiResponse(responseCode = "404", description = "ProductGroup not found")
+    })
+    public ResponseEntity<ProductListingResponseDto> getProductListingForAdmin(
+            @PathVariable UUID productGroupId,
+            @org.springframework.web.bind.annotation.RequestParam(defaultValue = "0") int page,
+            @org.springframework.web.bind.annotation.RequestParam(defaultValue = "20") int size) {
+        ProductListingResponseDto response = productListingAdminQueryService.getProductListingForAdmin(productGroupId, page, size);
+        return ResponseEntity.ok(response);
     }
 }
 
