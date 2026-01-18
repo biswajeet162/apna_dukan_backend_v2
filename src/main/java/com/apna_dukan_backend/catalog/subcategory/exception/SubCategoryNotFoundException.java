@@ -6,3 +6,4 @@ public class SubCategoryNotFoundException extends RuntimeException {
     }
 }
 
+

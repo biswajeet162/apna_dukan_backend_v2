@@ -13,3 +13,4 @@ public interface SubCategoryRepository extends JpaRepository<SubCategoryEntity, 
     List<SubCategoryEntity> findByCategoryIdAndEnabledTrueOrderByDisplayOrderAsc(UUID categoryId);
 }
 
+

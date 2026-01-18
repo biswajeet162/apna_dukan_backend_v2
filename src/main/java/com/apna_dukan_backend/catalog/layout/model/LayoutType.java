@@ -7,3 +7,4 @@ public enum LayoutType {
     FOUR_ROW
 }
 
+

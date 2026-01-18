@@ -13,3 +13,4 @@ public interface CatalogSectionRepository extends JpaRepository<CatalogSectionEn
     List<CatalogSectionEntity> findByEnabledTrueOrderByDisplayOrderAsc();
 }
 
+

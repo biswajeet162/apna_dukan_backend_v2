@@ -55,6 +55,13 @@ public class SubCategoryQueryService {
         );
     }
 
+    public SubCategoryAdminDto getSubCategoryById(UUID subCategoryId) {
+        SubCategoryEntity entity = subCategoryRepository.findById(subCategoryId)
+                .orElseThrow(() -> new com.apna_dukan_backend.catalog.subcategory.exception.SubCategoryNotFoundException(
+                        "SubCategory not found with id: " + subCategoryId));
+        return subCategoryMapper.toAdminDto(entity);
+    }
+
     private CategoryEntity validateCategory(UUID categoryId) {
         return categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new CategoryNotFoundException("Category not found with id: " + categoryId));
