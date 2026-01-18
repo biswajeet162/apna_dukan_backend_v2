@@ -1,9 +1,11 @@
 package com.apna_dukan_backend.catalog.product.controller.admin;
 
+import com.apna_dukan_backend.catalog.product.model.dto.EnableDisableProductRequest;
 import com.apna_dukan_backend.catalog.product.model.dto.ProductAdminResponseDto;
 import com.apna_dukan_backend.catalog.product.model.dto.ProductCreateRequestDto;
 import com.apna_dukan_backend.catalog.product.model.dto.ProductUpdateRequestDto;
 import com.apna_dukan_backend.catalog.product.service.ProductCommandService;
+import com.apna_dukan_backend.catalog.product.service.ProductQueryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -13,6 +15,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -20,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -28,9 +30,24 @@ import java.util.UUID;
 @Tag(name = "Product Admin", description = "Admin API for managing products")
 public class ProductAdminController {
     private final ProductCommandService productCommandService;
+    private final ProductQueryService productQueryService;
 
-    public ProductAdminController(ProductCommandService productCommandService) {
+    public ProductAdminController(ProductCommandService productCommandService, ProductQueryService productQueryService) {
         this.productCommandService = productCommandService;
+        this.productQueryService = productQueryService;
+    }
+
+    @GetMapping("/{productId}")
+    @Operation(summary = "Get product by ID",
+               description = "Returns a single product by its ID with all details including timestamps")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved product",
+                    content = @Content(schema = @Schema(implementation = ProductAdminResponseDto.class))),
+            @ApiResponse(responseCode = "404", description = "Product not found")
+    })
+    public ResponseEntity<ProductAdminResponseDto> getProductById(@PathVariable UUID productId) {
+        ProductAdminResponseDto product = productQueryService.getProductById(productId);
+        return ResponseEntity.ok(product);
     }
 
     @PostMapping
@@ -74,12 +91,8 @@ public class ProductAdminController {
     })
     public ResponseEntity<ProductAdminResponseDto> updateProductEnabledStatus(
             @PathVariable UUID productId,
-            @RequestBody Map<String, Boolean> request) {
-        Boolean enabled = request.get("enabled");
-        if (enabled == null) {
-            return ResponseEntity.badRequest().build();
-        }
-        ProductAdminResponseDto updated = productCommandService.updateProductEnabledStatus(productId, enabled);
+            @Valid @RequestBody EnableDisableProductRequest request) {
+        ProductAdminResponseDto updated = productCommandService.updateProductEnabledStatus(productId, request.getEnabled());
         return ResponseEntity.ok(updated);
     }
 }
