@@ -205,3 +205,27 @@ VALUES (CAST('e4b5c6d7-e8f9-4012-a345-678901234567' AS UUID), CAST('f9a0b1c2-d3e
 
 INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
 VALUES (CAST('f5c6d7e8-f9a0-4123-a456-789012345678' AS UUID), CAST('f9a0b1c2-d3e4-4567-f890-123456789012' AS UUID), 'Anti-Aging', 'Anti-aging serums and creams', 'ANTI_AGING', 3, true, '[]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+
+-- Product Data
+-- Product for Fresh Fruits (product_group_id: a1a2b3c4-d5e6-4789-a012-345678901234)
+
+INSERT INTO product (product_id, product_group_id, name, brand, primary_image_url, display_order, enabled, created_at, updated_at)
+VALUES (CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a1a2b3c4-d5e6-4789-a012-345678901234' AS UUID), 'Apple - Red Delicious', 'Fresh Farm', 'https://example.com/apple.jpg', 1, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+-- Variant Data
+-- Default variant for Apple - Red Delicious (product_id: f1a2b3c4-d5e6-4789-f012-345678901234)
+
+INSERT INTO variant (variant_id, product_id, label, enabled, is_default, display_order, created_at, updated_at)
+VALUES (CAST('b1a2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), '1 kg', true, true, 1, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+-- Pricing Data
+-- Pricing for variant (variant_id: b1a2b3c4-d5e6-4789-b012-345678901234)
+
+INSERT INTO pricing (pricing_id, variant_id, selling_price, mrp, discount_percent, currency, active, created_at, updated_at)
+VALUES (CAST('c1a2b3c4-d5e6-4789-c012-345678901234' AS UUID), CAST('b1a2b3c4-d5e6-4789-b012-345678901234' AS UUID), 80.0, 100.0, 20, 'INR', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+-- Inventory Data
+-- Inventory for variant (variant_id: b1a2b3c4-d5e6-4789-b012-345678901234)
+
+INSERT INTO inventory (inventory_id, variant_id, in_stock, created_at, updated_at)
+VALUES (CAST('d1a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b1a2b3c4-d5e6-4789-b012-345678901234' AS UUID), true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');

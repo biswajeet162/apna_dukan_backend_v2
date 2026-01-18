@@ -39,7 +39,7 @@ public class ProductListingController {
                             examples = {
                                     @ExampleObject(name = "Sample Product Listing Response",
                                             value = "{\n" +
-                                                    "  \"productGroupId\": \"a1b2c3d4-e5f6-4789-a012-345678901234\",\n" +
+                                                    "  \"productGroupId\": \"a1a2b3c4-d5e6-4789-a012-345678901234\",\n" +
                                                     "  \"productGroupName\": \"Fresh Fruits\",\n" +
                                                     "  \"products\": [\n" +
                                                     "    {\n" +
@@ -50,7 +50,7 @@ public class ProductListingController {
                                                     "        \"primary\": \"https://example.com/apple.jpg\"\n" +
                                                     "      },\n" +
                                                     "      \"defaultVariant\": {\n" +
-                                                    "        \"variantId\": \"v1a2b3c4-d5e6-4789-v012-345678901234\",\n" +
+                                                    "        \"variantId\": \"b1a2b3c4-d5e6-4789-b012-345678901234\",\n" +
                                                     "        \"label\": \"1 kg\"\n" +
                                                     "      },\n" +
                                                     "      \"pricing\": {\n" +
