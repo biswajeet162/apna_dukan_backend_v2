@@ -60,6 +60,13 @@ public class CategoryQueryService {
         );
     }
 
+    public CategoryAdminDto getCategoryById(UUID categoryId) {
+        CategoryEntity entity = categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new com.apna_dukan_backend.catalog.category.exception.CategoryNotFoundException(
+                        "Category not found with id: " + categoryId));
+        return categoryMapper.toAdminDto(entity);
+    }
+
     private CatalogSectionEntity validateSection(UUID sectionId) {
         return catalogSectionRepository.findById(sectionId)
                 .orElseThrow(() -> new SectionNotFoundException("Section not found with id: " + sectionId));

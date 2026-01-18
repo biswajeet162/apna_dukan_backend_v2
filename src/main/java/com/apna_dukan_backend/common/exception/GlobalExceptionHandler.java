@@ -1,6 +1,7 @@
 package com.apna_dukan_backend.common.exception;
 
 import com.apna_dukan_backend.common.exception.dto.ErrorResponse;
+import com.apna_dukan_backend.catalog.category.exception.CategoryNotFoundException;
 import com.apna_dukan_backend.catalog.category.exception.InvalidSectionException;
 import com.apna_dukan_backend.catalog.layout.exception.SectionNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -65,6 +66,25 @@ public class GlobalExceptionHandler {
         );
         
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+    }
+
+    /**
+     * Handle category not found exceptions (404)
+     */
+    @ExceptionHandler(CategoryNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleCategoryNotFoundException(
+            CategoryNotFoundException ex, HttpServletRequest request) {
+        logger.warn("Category not found: {}", ex.getMessage());
+        
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.NOT_FOUND.value(),
+                HttpStatus.NOT_FOUND.getReasonPhrase(),
+                ex.getMessage(),
+                request.getRequestURI(),
+                ErrorCode.CATEGORY_NOT_FOUND.getCode()
+        );
+        
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
 
     /**

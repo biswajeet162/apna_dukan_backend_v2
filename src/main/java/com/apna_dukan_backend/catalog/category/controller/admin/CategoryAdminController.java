@@ -1,6 +1,7 @@
 package com.apna_dukan_backend.catalog.category.controller.admin;
 
-import com.apna_dukan_backend.catalog.category.dto.CategorySectionAdminResponseDto;
+import com.apna_dukan_backend.catalog.category.dto.*;
+import com.apna_dukan_backend.catalog.category.service.CategoryCommandService;
 import com.apna_dukan_backend.catalog.category.service.CategoryQueryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -9,25 +10,28 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/v1/admin/section")
+@RequestMapping("/api/v1/admin")
 @Tag(name = "Category Admin", description = "Admin API for managing product categories within sections")
 public class CategoryAdminController {
     private final CategoryQueryService categoryQueryService;
+    private final CategoryCommandService categoryCommandService;
 
-    public CategoryAdminController(CategoryQueryService categoryQueryService) {
+    public CategoryAdminController(CategoryQueryService categoryQueryService,
+                                  CategoryCommandService categoryCommandService) {
         this.categoryQueryService = categoryQueryService;
+        this.categoryCommandService = categoryCommandService;
     }
 
-    @GetMapping("/{sectionId}/ProductCategories")
+    @GetMapping("/section/{sectionId}/ProductCategories")
     @Operation(summary = "Get all product categories for a section", 
                description = "Returns all categories (enabled and disabled) for a section with sectionCode = PRODUCT_CATEGORY")
     @ApiResponses(value = {
@@ -92,5 +96,75 @@ public class CategoryAdminController {
     public ResponseEntity<CategorySectionAdminResponseDto> getProductCategories(@PathVariable UUID sectionId) {
         CategorySectionAdminResponseDto response = categoryQueryService.getCategoriesForAdmin(sectionId);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/category/{categoryId}")
+    @Operation(summary = "Get category by ID", 
+               description = "Returns a single category by its ID with all details including timestamps")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved category",
+                    content = @Content(schema = @Schema(implementation = CategoryAdminDto.class))),
+            @ApiResponse(responseCode = "404", description = "Category not found")
+    })
+    public ResponseEntity<CategoryAdminDto> getCategoryById(@PathVariable UUID categoryId) {
+        CategoryAdminDto category = categoryQueryService.getCategoryById(categoryId);
+        return ResponseEntity.ok(category);
+    }
+
+    @PostMapping("/category")
+    @Operation(summary = "Create a new category", 
+               description = "Creates a new category in a section with sectionCode = PRODUCT_CATEGORY")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Category created successfully",
+                    content = @Content(schema = @Schema(implementation = CategoryAdminDto.class))),
+            @ApiResponse(responseCode = "400", description = "Invalid request data or invalid section code"),
+            @ApiResponse(responseCode = "404", description = "Section not found")
+    })
+    public ResponseEntity<CategoryAdminDto> createCategory(@Valid @RequestBody CreateCategoryRequest request) {
+        CategoryAdminDto created = categoryCommandService.createCategory(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
+    }
+
+    @PutMapping("/category/{categoryId}")
+    @Operation(summary = "Update a category", 
+               description = "Updates an existing category. Only provided fields will be updated.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Category updated successfully",
+                    content = @Content(schema = @Schema(implementation = CategoryAdminDto.class))),
+            @ApiResponse(responseCode = "404", description = "Category not found"),
+            @ApiResponse(responseCode = "400", description = "Invalid request data")
+    })
+    public ResponseEntity<CategoryAdminDto> updateCategory(
+            @PathVariable UUID categoryId,
+            @Valid @RequestBody UpdateCategoryRequest request) {
+        CategoryAdminDto updated = categoryCommandService.updateCategory(categoryId, request);
+        return ResponseEntity.ok(updated);
+    }
+
+    @DeleteMapping("/category/{categoryId}")
+    @Operation(summary = "Delete a category", 
+               description = "Deletes a category by its ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "Category deleted successfully"),
+            @ApiResponse(responseCode = "404", description = "Category not found")
+    })
+    public ResponseEntity<Void> deleteCategory(@PathVariable UUID categoryId) {
+        categoryCommandService.deleteCategory(categoryId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/category/bulk")
+    @Operation(summary = "Bulk update categories", 
+               description = "Updates multiple categories at once. Each category can have different field values. Only provided fields will be updated.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Categories updated successfully",
+                    content = @Content(schema = @Schema(implementation = CategoryAdminDto.class))),
+            @ApiResponse(responseCode = "400", description = "Invalid request data"),
+            @ApiResponse(responseCode = "404", description = "Some categories not found")
+    })
+    public ResponseEntity<List<CategoryAdminDto>> bulkUpdateCategories(
+            @Valid @RequestBody BulkUpdateCategoryRequest request) {
+        List<CategoryAdminDto> updated = categoryCommandService.bulkUpdate(request);
+        return ResponseEntity.ok(updated);
     }
 }
