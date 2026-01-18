@@ -6,6 +6,7 @@ import com.apna_dukan_backend.catalog.category.exception.InvalidSectionException
 import com.apna_dukan_backend.catalog.layout.exception.SectionNotFoundException;
 import com.apna_dukan_backend.catalog.subcategory.exception.SubCategoryNotFoundException;
 import com.apna_dukan_backend.catalog.productgroup.exception.ProductGroupNotFoundException;
+import com.apna_dukan_backend.catalog.product.exception.DuplicateProductCodeException;
 import com.apna_dukan_backend.catalog.product.exception.ProductNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolation;
@@ -145,6 +146,25 @@ public class GlobalExceptionHandler {
         );
         
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
+
+    /**
+     * Handle duplicate product code exceptions (409)
+     */
+    @ExceptionHandler(DuplicateProductCodeException.class)
+    public ResponseEntity<ErrorResponse> handleDuplicateProductCodeException(
+            DuplicateProductCodeException ex, HttpServletRequest request) {
+        logger.warn("Duplicate product code: {}", ex.getMessage());
+        
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.CONFLICT.value(),
+                HttpStatus.CONFLICT.getReasonPhrase(),
+                ex.getMessage(),
+                request.getRequestURI(),
+                ErrorCode.DUPLICATE_ENTRY.getCode()
+        );
+        
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
     }
 
     /**

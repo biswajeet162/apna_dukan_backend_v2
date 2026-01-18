@@ -209,8 +209,8 @@ VALUES (CAST('f5c6d7e8-f9a0-4123-a456-789012345678' AS UUID), CAST('f9a0b1c2-d3e
 -- Product Data
 -- Product for Fresh Fruits (product_group_id: a1a2b3c4-d5e6-4789-a012-345678901234)
 
-INSERT INTO product (product_id, product_group_id, name, brand, primary_image_url, display_order, enabled, created_at, updated_at)
-VALUES (CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a1a2b3c4-d5e6-4789-a012-345678901234' AS UUID), 'Apple - Red Delicious', 'Fresh Farm', 'https://example.com/apple.jpg', 1, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO product (product_id, product_group_id, name, brand, code, primary_image_url, display_order, enabled, created_at, updated_at)
+VALUES (CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a1a2b3c4-d5e6-4789-a012-345678901234' AS UUID), 'Apple - Red Delicious', 'Fresh Farm', 'APPLE_RED_DELICIOUS', 'https://example.com/apple.jpg', 1, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
 -- Variant Data
 -- Variants for Apple - Red Delicious (product_id: f1a2b3c4-d5e6-4789-f012-345678901234)
@@ -251,8 +251,8 @@ VALUES (CAST('d3a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b3a2b3c4-d5e
 -- Additional Product Data for PDP Testing
 -- Product for Fresh Fruits (product_group_id: a1a2b3c4-d5e6-4789-a012-345678901234)
 
-INSERT INTO product (product_id, product_group_id, name, brand, primary_image_url, display_order, enabled, created_at, updated_at)
-VALUES (CAST('f2a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a1a2b3c4-d5e6-4789-a012-345678901234' AS UUID), 'Banana - Cavendish', 'Tropical Fresh', 'https://example.com/banana.jpg', 2, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO product (product_id, product_group_id, name, brand, code, primary_image_url, display_order, enabled, created_at, updated_at)
+VALUES (CAST('f2a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a1a2b3c4-d5e6-4789-a012-345678901234' AS UUID), 'Banana - Cavendish', 'Tropical Fresh', 'BANANA_CAVENDISH', 'https://example.com/banana.jpg', 2, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
 -- Variants for Banana - Cavendish (product_id: f2a2b3c4-d5e6-4789-f012-345678901234)
 
@@ -281,8 +281,8 @@ VALUES (CAST('d5a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b5a2b3c4-d5e
 -- Product 3: Smartphone (Electronics - Mobile Phones)
 -- Product for Smartphones (product_group_id: a7a8b9c0-d1e2-4345-a678-901234567890)
 
-INSERT INTO product (product_id, product_group_id, name, brand, primary_image_url, display_order, enabled, created_at, updated_at)
-VALUES (CAST('f3a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a7a8b9c0-d1e2-4345-a678-901234567890' AS UUID), 'SmartPhone Pro Max', 'TechBrand', 'https://example.com/smartphone.jpg', 1, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO product (product_id, product_group_id, name, brand, code, primary_image_url, display_order, enabled, created_at, updated_at)
+VALUES (CAST('f3a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a7a8b9c0-d1e2-4345-a678-901234567890' AS UUID), 'SmartPhone Pro Max', 'TechBrand', 'SMARTPHONE_PRO_MAX', 'https://example.com/smartphone.jpg', 1, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
 -- Variants for SmartPhone Pro Max (product_id: f3a2b3c4-d5e6-4789-f012-345678901234)
 
@@ -329,8 +329,8 @@ VALUES (CAST('d9a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b9a2b3c4-d5e
 -- Product 4: Face Moisturizer (Beauty & Personal Care - Skincare)
 -- Product for Face Care (product_group_id: d3a4b5c6-d7e8-4901-a234-567890123456)
 
-INSERT INTO product (product_id, product_group_id, name, brand, primary_image_url, display_order, enabled, created_at, updated_at)
-VALUES (CAST('f4a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('d3a4b5c6-d7e8-4901-a234-567890123456' AS UUID), 'Hydrating Face Moisturizer', 'GlowSkin', 'https://example.com/moisturizer.jpg', 1, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO product (product_id, product_group_id, name, brand, code, primary_image_url, display_order, enabled, created_at, updated_at)
+VALUES (CAST('f4a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('d3a4b5c6-d7e8-4901-a234-567890123456' AS UUID), 'Hydrating Face Moisturizer', 'GlowSkin', 'HYDRATING_FACE_MOISTURIZER', 'https://example.com/moisturizer.jpg', 1, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
 -- Variants for Hydrating Face Moisturizer (product_id: f4a2b3c4-d5e6-4789-f012-345678901234)
 
@@ -368,8 +368,8 @@ VALUES (CAST('dca2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('bca2b3c4-d5e
 -- Product 5: Men's Casual T-Shirt (Fashion - Men's Clothing)
 -- Product for Casual Wear (product_group_id: a0d1e2f3-a4b5-4678-a901-234567890123)
 
-INSERT INTO product (product_id, product_group_id, name, brand, primary_image_url, display_order, enabled, created_at, updated_at)
-VALUES (CAST('f5a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a0d1e2f3-a4b5-4678-a901-234567890123' AS UUID), 'Classic Cotton T-Shirt', 'StyleWear', 'https://example.com/tshirt.jpg', 1, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO product (product_id, product_group_id, name, brand, code, primary_image_url, display_order, enabled, created_at, updated_at)
+VALUES (CAST('f5a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a0d1e2f3-a4b5-4678-a901-234567890123' AS UUID), 'Classic Cotton T-Shirt', 'StyleWear', 'CLASSIC_COTTON_TSHIRT', 'https://example.com/tshirt.jpg', 1, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
 -- Variants for Classic Cotton T-Shirt (product_id: f5a2b3c4-d5e6-4789-f012-345678901234)
 

@@ -17,5 +17,7 @@ public interface ProductRepository extends JpaRepository<ProductEntity, UUID> {
     Page<ProductEntity> findByProductGroupIdAndEnabledTrueOrderByDisplayOrderAsc(UUID productGroupId, Pageable pageable);
     
     Optional<ProductEntity> findByProductIdAndEnabledTrue(UUID productId);
+    
+    Optional<ProductEntity> findByCode(String code);
 }
 
