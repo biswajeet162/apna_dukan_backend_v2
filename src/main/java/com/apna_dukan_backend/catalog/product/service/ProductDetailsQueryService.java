@@ -47,7 +47,7 @@ public class ProductDetailsQueryService {
 
         // 2. Fetch all enabled variants for product
         List<VariantEntity> variants = variantRepository
-                .findByProductIdAndEnabledTrueOrderByIsDefaultDescDisplayOrderAsc(productId);
+                .findByProductIdAndEnabledTrue(productId);
 
         if (variants.isEmpty()) {
             // Return product with empty variants list

@@ -8,6 +8,8 @@ import com.apna_dukan_backend.catalog.subcategory.exception.SubCategoryNotFoundE
 import com.apna_dukan_backend.catalog.productgroup.exception.ProductGroupNotFoundException;
 import com.apna_dukan_backend.catalog.product.exception.DuplicateProductCodeException;
 import com.apna_dukan_backend.catalog.product.exception.ProductNotFoundException;
+import com.apna_dukan_backend.catalog.variant.exception.DuplicateSkuException;
+import com.apna_dukan_backend.catalog.variant.exception.VariantNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
@@ -162,6 +164,44 @@ public class GlobalExceptionHandler {
                 ex.getMessage(),
                 request.getRequestURI(),
                 ErrorCode.DUPLICATE_ENTRY.getCode()
+        );
+        
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
+    }
+
+    /**
+     * Handle variant not found exceptions (404)
+     */
+    @ExceptionHandler(VariantNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleVariantNotFoundException(
+            VariantNotFoundException ex, HttpServletRequest request) {
+        logger.warn("Variant not found: {}", ex.getMessage());
+        
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.NOT_FOUND.value(),
+                HttpStatus.NOT_FOUND.getReasonPhrase(),
+                ex.getMessage(),
+                request.getRequestURI(),
+                ErrorCode.VARIANT_NOT_FOUND.getCode()
+        );
+        
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
+
+    /**
+     * Handle duplicate SKU exceptions (409)
+     */
+    @ExceptionHandler(DuplicateSkuException.class)
+    public ResponseEntity<ErrorResponse> handleDuplicateSkuException(
+            DuplicateSkuException ex, HttpServletRequest request) {
+        logger.warn("Duplicate SKU: {}", ex.getMessage());
+        
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.CONFLICT.value(),
+                HttpStatus.CONFLICT.getReasonPhrase(),
+                ex.getMessage(),
+                request.getRequestURI(),
+                ErrorCode.DUPLICATE_SKU.getCode()
         );
         
         return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);

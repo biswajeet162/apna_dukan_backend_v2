@@ -8,6 +8,7 @@ public enum ErrorCode {
     SUB_CATEGORY_NOT_FOUND("SUB_CATEGORY_NOT_FOUND", "SubCategory not found"),
     PRODUCT_GROUP_NOT_FOUND("PRODUCT_GROUP_NOT_FOUND", "ProductGroup not found"),
     PRODUCT_NOT_FOUND("PRODUCT_NOT_FOUND", "Product not found"),
+    VARIANT_NOT_FOUND("VARIANT_NOT_FOUND", "Variant not found"),
     
     // Bad Request (400)
     INVALID_REQUEST("INVALID_REQUEST", "Invalid request data"),
@@ -18,6 +19,7 @@ public enum ErrorCode {
     // Conflict (409)
     RESOURCE_CONFLICT("RESOURCE_CONFLICT", "Resource conflict"),
     DUPLICATE_ENTRY("DUPLICATE_ENTRY", "Duplicate entry detected"),
+    DUPLICATE_SKU("DUPLICATE_SKU", "Duplicate SKU detected"),
     
     // Internal Server Error (500)
     INTERNAL_SERVER_ERROR("INTERNAL_SERVER_ERROR", "An internal server error occurred"),

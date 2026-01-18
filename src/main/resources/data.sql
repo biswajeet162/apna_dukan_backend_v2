@@ -215,14 +215,14 @@ VALUES (CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a1a2b3c4-d5e
 -- Variant Data
 -- Variants for Apple - Red Delicious (product_id: f1a2b3c4-d5e6-4789-f012-345678901234)
 
-INSERT INTO variant (variant_id, product_id, label, enabled, is_default, display_order, created_at, updated_at)
-VALUES (CAST('b1a2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), '1 kg', true, true, 1, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('b1a2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'APPLE-RED-1KG', '1 kg', '{"weight": "1 kg", "packaging": "bag"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO variant (variant_id, product_id, label, enabled, is_default, display_order, created_at, updated_at)
-VALUES (CAST('b2a2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), '2 kg', true, false, 2, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('b2a2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'APPLE-RED-2KG', '2 kg', '{"weight": "2 kg", "packaging": "bag"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO variant (variant_id, product_id, label, enabled, is_default, display_order, created_at, updated_at)
-VALUES (CAST('b3a2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), '5 kg', true, false, 3, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('b3a2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'APPLE-RED-5KG', '5 kg', '{"weight": "5 kg", "packaging": "box"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
 -- Pricing Data
 -- Pricing for variants of Apple - Red Delicious
@@ -256,11 +256,11 @@ VALUES (CAST('f2a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a1a2b3c4-d5e
 
 -- Variants for Banana - Cavendish (product_id: f2a2b3c4-d5e6-4789-f012-345678901234)
 
-INSERT INTO variant (variant_id, product_id, label, enabled, is_default, display_order, created_at, updated_at)
-VALUES (CAST('b4a2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f2a2b3c4-d5e6-4789-f012-345678901234' AS UUID), '500 g', true, true, 1, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('b4a2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f2a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'BANANA-CAV-500G', '500 g', '{"weight": "500 g", "packaging": "bunch"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO variant (variant_id, product_id, label, enabled, is_default, display_order, created_at, updated_at)
-VALUES (CAST('b5a2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f2a2b3c4-d5e6-4789-f012-345678901234' AS UUID), '1 kg', true, false, 2, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('b5a2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f2a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'BANANA-CAV-1KG', '1 kg', '{"weight": "1 kg", "packaging": "bunch"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
 -- Pricing for Banana variants
 
@@ -286,17 +286,17 @@ VALUES (CAST('f3a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a7a8b9c0-d1e
 
 -- Variants for SmartPhone Pro Max (product_id: f3a2b3c4-d5e6-4789-f012-345678901234)
 
-INSERT INTO variant (variant_id, product_id, label, enabled, is_default, display_order, created_at, updated_at)
-VALUES (CAST('b6a2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f3a2b3c4-d5e6-4789-f012-345678901234' AS UUID), '128GB - Black', true, true, 1, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('b6a2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f3a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'SMARTPHONE-PRO-128GB-BLACK', '128GB - Black', '{"storage": "128GB", "color": "Black"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO variant (variant_id, product_id, label, enabled, is_default, display_order, created_at, updated_at)
-VALUES (CAST('b7a2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f3a2b3c4-d5e6-4789-f012-345678901234' AS UUID), '256GB - Black', true, false, 2, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('b7a2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f3a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'SMARTPHONE-PRO-256GB-BLACK', '256GB - Black', '{"storage": "256GB", "color": "Black"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO variant (variant_id, product_id, label, enabled, is_default, display_order, created_at, updated_at)
-VALUES (CAST('b8a2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f3a2b3c4-d5e6-4789-f012-345678901234' AS UUID), '128GB - Blue', true, false, 3, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('b8a2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f3a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'SMARTPHONE-PRO-128GB-BLUE', '128GB - Blue', '{"storage": "128GB", "color": "Blue"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO variant (variant_id, product_id, label, enabled, is_default, display_order, created_at, updated_at)
-VALUES (CAST('b9a2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f3a2b3c4-d5e6-4789-f012-345678901234' AS UUID), '256GB - Blue', true, false, 4, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('b9a2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f3a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'SMARTPHONE-PRO-256GB-BLUE', '256GB - Blue', '{"storage": "256GB", "color": "Blue"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
 -- Pricing for SmartPhone Pro Max variants
 
@@ -334,14 +334,14 @@ VALUES (CAST('f4a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('d3a4b5c6-d7e
 
 -- Variants for Hydrating Face Moisturizer (product_id: f4a2b3c4-d5e6-4789-f012-345678901234)
 
-INSERT INTO variant (variant_id, product_id, label, enabled, is_default, display_order, created_at, updated_at)
-VALUES (CAST('baa2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f4a2b3c4-d5e6-4789-f012-345678901234' AS UUID), '50 ml', true, true, 1, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('baa2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f4a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'MOISTURIZER-50ML', '50 ml', '{"volume": "50 ml", "size": "small"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO variant (variant_id, product_id, label, enabled, is_default, display_order, created_at, updated_at)
-VALUES (CAST('bba2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f4a2b3c4-d5e6-4789-f012-345678901234' AS UUID), '100 ml', true, false, 2, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('bba2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f4a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'MOISTURIZER-100ML', '100 ml', '{"volume": "100 ml", "size": "medium"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO variant (variant_id, product_id, label, enabled, is_default, display_order, created_at, updated_at)
-VALUES (CAST('bca2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f4a2b3c4-d5e6-4789-f012-345678901234' AS UUID), '200 ml', true, false, 3, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('bca2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f4a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'MOISTURIZER-200ML', '200 ml', '{"volume": "200 ml", "size": "large"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
 -- Pricing for Hydrating Face Moisturizer variants
 
@@ -373,20 +373,20 @@ VALUES (CAST('f5a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a0d1e2f3-a4b
 
 -- Variants for Classic Cotton T-Shirt (product_id: f5a2b3c4-d5e6-4789-f012-345678901234)
 
-INSERT INTO variant (variant_id, product_id, label, enabled, is_default, display_order, created_at, updated_at)
-VALUES (CAST('bda2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f5a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'S - Black', true, true, 1, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('bda2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f5a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'TSHIRT-S-BLACK', 'S - Black', '{"size": "S", "color": "Black"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO variant (variant_id, product_id, label, enabled, is_default, display_order, created_at, updated_at)
-VALUES (CAST('bea2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f5a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'M - Black', true, false, 2, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('bea2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f5a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'TSHIRT-M-BLACK', 'M - Black', '{"size": "M", "color": "Black"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO variant (variant_id, product_id, label, enabled, is_default, display_order, created_at, updated_at)
-VALUES (CAST('bfa2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f5a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'L - Black', true, false, 3, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('bfa2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f5a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'TSHIRT-L-BLACK', 'L - Black', '{"size": "L", "color": "Black"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO variant (variant_id, product_id, label, enabled, is_default, display_order, created_at, updated_at)
-VALUES (CAST('b0a2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f5a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'XL - Black', true, false, 4, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('b0a2b3c4-d5e6-4789-b012-345678901234' AS UUID), CAST('f5a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'TSHIRT-XL-BLACK', 'XL - Black', '{"size": "XL", "color": "Black"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
-INSERT INTO variant (variant_id, product_id, label, enabled, is_default, display_order, created_at, updated_at)
-VALUES (CAST('b1a2b3c4-d5e6-4789-b012-345678901235' AS UUID), CAST('f5a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'M - White', true, false, 5, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('b1a2b3c4-d5e6-4789-b012-345678901235' AS UUID), CAST('f5a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'TSHIRT-M-WHITE', 'M - White', '{"size": "M", "color": "White"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
 -- Pricing for Classic Cotton T-Shirt variants
 

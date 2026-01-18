@@ -106,13 +106,11 @@ public class ProductListingQueryService {
             UUID productId = entry.getKey();
             List<VariantEntity> productVariants = entry.getValue();
 
-            // Find default variant: first check for isDefault=true, else lowest displayOrder
+            // Pick first variant for each product
+            // TODO: When default variant feature is implemented, use that logic instead
             VariantEntity defaultVariant = productVariants.stream()
-                    .filter(v -> v.isDefault())
                     .findFirst()
-                    .orElse(productVariants.stream()
-                            .min(Comparator.comparingInt(VariantEntity::getDisplayOrder))
-                            .orElse(null));
+                    .orElse(null);
 
             if (defaultVariant != null) {
                 variantMap.put(productId, defaultVariant);
