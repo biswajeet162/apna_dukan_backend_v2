@@ -19,6 +19,7 @@ spring:
   # JPA Configuration
   jpa:
     # database-platform removed - Hibernate auto-detects H2Dialect
+    open-in-view: false  # Disabled in production to prevent lazy loading issues
     hibernate:
       ddl-auto: update  # Use 'update' for production to preserve data
     show-sql: false  # Disabled in production
