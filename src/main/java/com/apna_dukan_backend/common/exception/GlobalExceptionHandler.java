@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.NoHandlerFoundException;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -487,6 +488,41 @@ public class GlobalExceptionHandler {
                 HttpStatus.NOT_FOUND.getReasonPhrase(),
                 String.format("No handler found for %s %s", ex.getHttpMethod(), ex.getRequestURL()),
                 request.getRequestURI(),
+                ErrorCode.RESOURCE_NOT_FOUND.getCode()
+        );
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
+
+    /**
+     * Handle static resource not found (404) - e.g., favicon.ico
+     */
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity<ErrorResponse> handleNoResourceFoundException(
+            NoResourceFoundException ex, HttpServletRequest request) {
+        String resourcePath = request.getRequestURI();
+        
+        // Silently handle favicon.ico requests (browsers auto-request this)
+        if (resourcePath.equals("/favicon.ico")) {
+            // Return 404 without logging as error
+            ErrorResponse errorResponse = new ErrorResponse(
+                    HttpStatus.NOT_FOUND.value(),
+                    HttpStatus.NOT_FOUND.getReasonPhrase(),
+                    "Resource not found",
+                    resourcePath,
+                    ErrorCode.RESOURCE_NOT_FOUND.getCode()
+            );
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+        }
+        
+        // Log other missing static resources as warnings
+        logger.debug("Static resource not found: {}", resourcePath);
+        
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.NOT_FOUND.value(),
+                HttpStatus.NOT_FOUND.getReasonPhrase(),
+                "Static resource not found",
+                resourcePath,
                 ErrorCode.RESOURCE_NOT_FOUND.getCode()
         );
 
