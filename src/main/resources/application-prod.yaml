@@ -31,7 +31,8 @@ spring:
   # SQL Scripts
   sql:
     init:
-      mode: never  # Disable SQL initialization in production
+      mode: always  # Load initial data on startup (H2 file database)
+      data-locations: classpath:data.sql
 
 springdoc:
   api-docs:
