@@ -26,13 +26,12 @@ spring:
     properties:
       hibernate:
         format_sql: false
-    defer-datasource-initialization: false
+    defer-datasource-initialization: true  # Defer SQL init so Hibernate creates tables first
   
-  # SQL Scripts
+  # SQL Scripts - Disabled, using custom DataInitializer instead
   sql:
     init:
-      mode: always  # Load initial data on startup (H2 file database)
-      data-locations: classpath:data.sql
+      mode: never  # Disabled - using DataInitializer component to load data after tables are created
 
 springdoc:
   api-docs:
