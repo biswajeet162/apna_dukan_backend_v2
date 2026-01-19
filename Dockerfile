@@ -14,9 +14,10 @@ WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 
 # Render uses the PORT environment variable
-ENV PORT 8080
-EXPOSE ${PORT}
+# EXPOSE is just documentation - Render will use the PORT env var
+EXPOSE 8080
 
 # Run with production profile
+# Render automatically sets PORT env var, which Spring Boot will use via -Dserver.port=${PORT}
 ENTRYPOINT ["java", "-Dserver.port=${PORT}", "-Dspring.profiles.active=prod", "-jar", "app.jar"]
 
