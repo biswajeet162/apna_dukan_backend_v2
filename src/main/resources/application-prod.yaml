@@ -18,7 +18,7 @@ spring:
   
   # JPA Configuration
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    # database-platform removed - Hibernate auto-detects H2Dialect
     hibernate:
       ddl-auto: update  # Use 'update' for production to preserve data
     show-sql: false  # Disabled in production

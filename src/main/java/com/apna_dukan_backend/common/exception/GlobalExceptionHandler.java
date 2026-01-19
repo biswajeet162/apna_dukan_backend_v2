@@ -495,16 +495,18 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * Handle static resource not found (404) - e.g., favicon.ico
+     * Handle static resource not found (404) - e.g., favicon.ico, health check endpoints
      */
     @ExceptionHandler(NoResourceFoundException.class)
     public ResponseEntity<ErrorResponse> handleNoResourceFoundException(
             NoResourceFoundException ex, HttpServletRequest request) {
         String resourcePath = request.getRequestURI();
         
-        // Silently handle favicon.ico requests (browsers auto-request this)
-        if (resourcePath.equals("/favicon.ico")) {
-            // Return 404 without logging as error
+        // Silently handle common auto-requested resources and health check endpoints
+        if (resourcePath.equals("/favicon.ico") || 
+            resourcePath.startsWith("/health") || 
+            resourcePath.equals("/robots.txt")) {
+            // Return 404 without logging as error for these common requests
             ErrorResponse errorResponse = new ErrorResponse(
                     HttpStatus.NOT_FOUND.value(),
                     HttpStatus.NOT_FOUND.getReasonPhrase(),
@@ -515,7 +517,7 @@ public class GlobalExceptionHandler {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
         }
         
-        // Log other missing static resources as warnings
+        // Log other missing static resources as debug (not error)
         logger.debug("Static resource not found: {}", resourcePath);
         
         ErrorResponse errorResponse = new ErrorResponse(
@@ -535,6 +537,36 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGenericException(
             Exception ex, HttpServletRequest request) {
+        String resourcePath = request.getRequestURI();
+        
+        // Handle NoResourceFoundException that might fall through (as fallback)
+        if (ex instanceof NoResourceFoundException) {
+            // Silently handle common auto-requested resources and health check endpoints
+            if (resourcePath.equals("/favicon.ico") || 
+                resourcePath.startsWith("/health") || 
+                resourcePath.equals("/robots.txt")) {
+                ErrorResponse errorResponse = new ErrorResponse(
+                        HttpStatus.NOT_FOUND.value(),
+                        HttpStatus.NOT_FOUND.getReasonPhrase(),
+                        "Resource not found",
+                        resourcePath,
+                        ErrorCode.RESOURCE_NOT_FOUND.getCode()
+                );
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+            }
+            // For other missing resources, log as debug
+            logger.debug("Static resource not found: {}", resourcePath);
+            ErrorResponse errorResponse = new ErrorResponse(
+                    HttpStatus.NOT_FOUND.value(),
+                    HttpStatus.NOT_FOUND.getReasonPhrase(),
+                    "Static resource not found",
+                    resourcePath,
+                    ErrorCode.RESOURCE_NOT_FOUND.getCode()
+            );
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+        }
+        
+        // Log other unexpected errors
         logger.error("Unexpected error occurred: {}", ex.getMessage(), ex);
         
         ErrorResponse errorResponse = new ErrorResponse(
