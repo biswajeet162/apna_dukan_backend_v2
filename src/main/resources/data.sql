@@ -171,6 +171,35 @@ VALUES ('b1c2d3e4-f5a6-4789-b012-345678901234', 'e5f6a7b8-c9d0-4123-e456-7890123
 INSERT INTO sub_category (sub_category_id, category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
 VALUES ('c2d3e4f5-a6b7-4890-c123-456789012345', 'e5f6a7b8-c9d0-4123-e456-789012345678', 'Personal Hygiene', 'Soaps, deodorants, and hygiene products', 'PERSONAL_HYGIENE', 4, true, '["https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:40:00.000000', TIMESTAMP '2026-01-17 10:40:00.000000');
 
+-- SubCategories for Sports & Outdoors (category_id: f6a7b8c9-d0e1-4234-f567-890123456789)
+
+INSERT INTO sub_category (sub_category_id, category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES ('f6a7b8c9-d0e1-4234-f567-890123456790', 'f6a7b8c9-d0e1-4234-f567-890123456789', 'Fitness Equipment', 'Dumbbells, resistance bands, yoga mats and fitness gear', 'FITNESS_EQUIPMENT', 1, true, '["https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:40:00.000000', TIMESTAMP '2026-01-17 10:40:00.000000');
+
+INSERT INTO sub_category (sub_category_id, category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES ('f6a7b8c9-d0e1-4234-f567-890123456791', 'f6a7b8c9-d0e1-4234-f567-890123456789', 'Outdoor Sports', 'Camping gear, hiking equipment and outdoor adventure supplies', 'OUTDOOR_SPORTS', 2, true, '["https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:40:00.000000', TIMESTAMP '2026-01-17 10:40:00.000000');
+
+INSERT INTO sub_category (sub_category_id, category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES ('f6a7b8c9-d0e1-4234-f567-890123456792', 'f6a7b8c9-d0e1-4234-f567-890123456789', 'Team Sports', 'Basketballs, footballs, soccer balls and team sport equipment', 'TEAM_SPORTS', 3, true, '["https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:40:00.000000', TIMESTAMP '2026-01-17 10:40:00.000000');
+
+INSERT INTO sub_category (sub_category_id, category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES ('f6a7b8c9-d0e1-4234-f567-890123456793', 'f6a7b8c9-d0e1-4234-f567-890123456789', 'Water Sports', 'Swimming gear, water sports equipment and aquatic accessories', 'WATER_SPORTS', 4, true, '["https://images.unsplash.com/photo-1530549387789-4c1017266635?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1530549387789-4c1017266635?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1530549387789-4c1017266635?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:40:00.000000', TIMESTAMP '2026-01-17 10:40:00.000000');
+
+INSERT INTO sub_category (sub_category_id, category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES ('f6a7b8c9-d0e1-4234-f567-890123456794', 'f6a7b8c9-d0e1-4234-f567-890123456789', 'Cycling', 'Bicycles, bike accessories, helmets and cycling gear', 'CYCLING', 5, true, '["https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:40:00.000000', TIMESTAMP '2026-01-17 10:40:00.000000');
+
+INSERT INTO sub_category (sub_category_id, category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES ('f6a7b8c9-d0e1-4234-f567-890123456795', 'f6a7b8c9-d0e1-4234-f567-890123456789', 'Running & Jogging', 'Running shoes, athletic wear and jogging accessories', 'RUNNING_JOGGING', 6, true, '["https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:40:00.000000', TIMESTAMP '2026-01-17 10:40:00.000000');
+
+INSERT INTO sub_category (sub_category_id, category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES ('f6a7b8c9-d0e1-4234-f567-890123456796', 'f6a7b8c9-d0e1-4234-f567-890123456789', 'Winter Sports', 'Skiing, snowboarding equipment and winter sports gear', 'WINTER_SPORTS', 7, true, '["https://images.unsplash.com/photo-1551524164-6cf77f7e1e2f?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1551524164-6cf77f7e1e2f?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1551524164-6cf77f7e1e2f?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:40:00.000000', TIMESTAMP '2026-01-17 10:40:00.000000');
+
+INSERT INTO sub_category (sub_category_id, category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES ('f6a7b8c9-d0e1-4234-f567-890123456797', 'f6a7b8c9-d0e1-4234-f567-890123456789', 'Racket Sports', 'Tennis, badminton, table tennis equipment and rackets', 'RACKET_SPORTS', 8, true, '["https://images.unsplash.com/photo-1622163642992-9c6188299c60?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1622163642992-9c6188299c60?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1622163642992-9c6188299c60?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:40:00.000000', TIMESTAMP '2026-01-17 10:40:00.000000');
+
+INSERT INTO sub_category (sub_category_id, category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES ('f6a7b8c9-d0e1-4234-f567-890123456798', 'f6a7b8c9-d0e1-4234-f567-890123456789', 'Sports Apparel', 'Athletic clothing, sportswear and performance wear', 'SPORTS_APPAREL', 9, true, '["https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:40:00.000000', TIMESTAMP '2026-01-17 10:40:00.000000');
+
 -- Product Group Data
 -- Product Groups for Fruits & Vegetables (sub_category_id: f1a2b3c4-d5e6-4789-f012-345678901234)
 
