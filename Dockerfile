@@ -11,6 +11,10 @@ RUN mvn clean package -DskipTests
 # Run stage
 FROM eclipse-temurin:17-jdk
 WORKDIR /app
+
+# Create data directory for H2 file database
+RUN mkdir -p /app/data
+
 COPY --from=build /app/target/*.jar app.jar
 
 # Render uses the PORT environment variable
@@ -18,6 +22,7 @@ COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
 
 # Run with production profile
-# Render automatically sets PORT env var, which Spring Boot will use via -Dserver.port=${PORT}
-ENTRYPOINT ["java", "-Dserver.port=${PORT}", "-Dspring.profiles.active=prod", "-jar", "app.jar"]
+# Use shell form to properly expand ${PORT} environment variable
+# Render automatically sets PORT env var
+ENTRYPOINT ["sh", "-c", "java -Dserver.port=${PORT:-8080} -Dspring.profiles.active=prod -jar app.jar"]
 
