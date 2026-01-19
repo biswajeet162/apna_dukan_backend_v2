@@ -2,16 +2,16 @@ spring:
   application:
     name: apna_dukan_backend
   
-  # H2 Database Configuration (for local/development)
+  # H2 Database Configuration (for production)
   datasource:
-    url: jdbc:h2:mem:apnadukan
+    url: jdbc:h2:file:./data/apnadukan
     driver-class-name: org.h2.Driver
-    username: sa
-    password: 
+    username: ${DB_USERNAME:sa}
+    password: ${DB_PASSWORD:}
   
   h2:
     console:
-      enabled: true
+      enabled: false  # Disabled for security in production
       path: /h2-console
       settings:
         web-allow-others: false
@@ -20,18 +20,17 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
-      ddl-auto: create-drop
-    show-sql: true
+      ddl-auto: update  # Use 'update' for production to preserve data
+    show-sql: false  # Disabled in production
     properties:
       hibernate:
-        format_sql: true
-    defer-datasource-initialization: true
+        format_sql: false
+    defer-datasource-initialization: false
   
   # SQL Scripts
   sql:
     init:
-      mode: always
-      data-locations: classpath:data.sql
+      mode: never  # Disable SQL initialization in production
 
 springdoc:
   api-docs:
@@ -48,3 +47,4 @@ server:
     include-binding-errors: always
     include-stacktrace: never
     include-exception: false
+
