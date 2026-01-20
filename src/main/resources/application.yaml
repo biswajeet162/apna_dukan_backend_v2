@@ -48,3 +48,8 @@ server:
     include-binding-errors: always
     include-stacktrace: never
     include-exception: false
+
+# JWT Configuration
+jwt:
+  secret: your-secret-key-should-be-at-least-256-bits-long-for-hs256-algorithm-change-this-in-production
+  expiration: 86400000 # 24 hours in milliseconds

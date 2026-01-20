@@ -30,7 +30,7 @@ public class SwaggerConfig {
     public GroupedOpenApi publicApi() {
         return GroupedOpenApi.builder()
                 .group("public")
-                .packagesToScan("com.apna_dukan_backend.catalog", "com.apna_dukan_backend.inventory")
+                .packagesToScan("com.apna_dukan_backend")
                 .build();
     }
 }

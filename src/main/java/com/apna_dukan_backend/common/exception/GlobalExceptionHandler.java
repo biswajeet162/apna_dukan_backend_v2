@@ -16,6 +16,11 @@ import com.apna_dukan_backend.catalog.pricing.exception.DuplicateActivePricingEx
 import com.apna_dukan_backend.inventory.exception.InventoryNotFoundException;
 import com.apna_dukan_backend.inventory.exception.InvalidInventoryException;
 import com.apna_dukan_backend.inventory.exception.DuplicateInventoryException;
+import com.apna_dukan_backend.auth.exception.UserAlreadyExistsException;
+import com.apna_dukan_backend.auth.exception.InvalidCredentialsException;
+import com.apna_dukan_backend.user.exception.UserNotFoundException;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
@@ -329,6 +334,25 @@ public class GlobalExceptionHandler {
     }
 
     /**
+     * Handle user not found exceptions (404)
+     */
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleUserNotFoundException(
+            UserNotFoundException ex, HttpServletRequest request) {
+        logger.warn("User not found: {}", ex.getMessage());
+        
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.NOT_FOUND.value(),
+                HttpStatus.NOT_FOUND.getReasonPhrase(),
+                ex.getMessage(),
+                request.getRequestURI(),
+                ErrorCode.USER_NOT_FOUND.getCode()
+        );
+        
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
+
+    /**
      * Handle validation errors from @Valid annotations (400)
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -529,6 +553,44 @@ public class GlobalExceptionHandler {
         );
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
+
+    /**
+     * Handle user already exists exceptions (409)
+     */
+    @ExceptionHandler(UserAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponse> handleUserAlreadyExistsException(
+            UserAlreadyExistsException ex, HttpServletRequest request) {
+        logger.warn("User already exists: {}", ex.getMessage());
+        
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.CONFLICT.value(),
+                HttpStatus.CONFLICT.getReasonPhrase(),
+                ex.getMessage(),
+                request.getRequestURI(),
+                ErrorCode.USER_ALREADY_EXISTS.getCode()
+        );
+        
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
+    }
+
+    /**
+     * Handle invalid credentials exceptions (401)
+     */
+    @ExceptionHandler({InvalidCredentialsException.class, BadCredentialsException.class, UsernameNotFoundException.class})
+    public ResponseEntity<ErrorResponse> handleAuthenticationException(
+            Exception ex, HttpServletRequest request) {
+        logger.warn("Authentication failed: {}", ex.getMessage());
+        
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.UNAUTHORIZED.value(),
+                HttpStatus.UNAUTHORIZED.getReasonPhrase(),
+                "Invalid credentials provided",
+                request.getRequestURI(),
+                ErrorCode.INVALID_CREDENTIALS.getCode()
+        );
+        
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
     }
 
     /**

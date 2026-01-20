@@ -11,6 +11,7 @@ public enum ErrorCode {
     VARIANT_NOT_FOUND("VARIANT_NOT_FOUND", "Variant not found"),
     PRICING_NOT_FOUND("PRICING_NOT_FOUND", "Pricing not found"),
     INVENTORY_NOT_FOUND("INVENTORY_NOT_FOUND", "Inventory not found"),
+    USER_NOT_FOUND("USER_NOT_FOUND", "User not found"),
     
     // Bad Request (400)
     INVALID_REQUEST("INVALID_REQUEST", "Invalid request data"),
@@ -35,7 +36,12 @@ public enum ErrorCode {
     METHOD_NOT_ALLOWED("METHOD_NOT_ALLOWED", "HTTP method not allowed"),
     
     // Unsupported Media Type (415)
-    UNSUPPORTED_MEDIA_TYPE("UNSUPPORTED_MEDIA_TYPE", "Unsupported media type");
+    UNSUPPORTED_MEDIA_TYPE("UNSUPPORTED_MEDIA_TYPE", "Unsupported media type"),
+    
+    // Authentication & Authorization (401, 403)
+    UNAUTHORIZED("UNAUTHORIZED", "Authentication required"),
+    INVALID_CREDENTIALS("INVALID_CREDENTIALS", "Invalid credentials provided"),
+    USER_ALREADY_EXISTS("USER_ALREADY_EXISTS", "User already exists");
 
     private final String code;
     private final String defaultMessage;
