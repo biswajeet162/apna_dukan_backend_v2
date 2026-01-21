@@ -204,13 +204,28 @@ VALUES ('f6a7b8c9-d0e1-4234-f567-890123456798', 'f6a7b8c9-d0e1-4234-f567-8901234
 -- Product Groups for Fruits & Vegetables (sub_category_id: f1a2b3c4-d5e6-4789-f012-345678901234)
 
 INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
-VALUES (CAST('a1a2b3c4-d5e6-4789-a012-345678901234' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Fresh Fruits', 'Fresh seasonal fruits', 'FRESH_FRUITS', 1, true, '["https://example.com/fruits1.jpg", "https://example.com/fruits2.jpg"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+VALUES (CAST('a1a2b3c4-d5e6-4789-a012-345678901234' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Fresh Fruits', 'Fresh seasonal fruits', 'FRESH_FRUITS', 1, true, '["https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
 
 INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
-VALUES (CAST('a2b3c4d5-e6f7-4890-a123-456789012345' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Fresh Vegetables', 'Fresh seasonal vegetables', 'FRESH_VEGETABLES', 2, true, '["https://example.com/vegetables1.jpg"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+VALUES (CAST('a2b3c4d5-e6f7-4890-a123-456789012345' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Fresh Vegetables', 'Fresh seasonal vegetables', 'FRESH_VEGETABLES', 2, true, '["https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
 
 INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
-VALUES (CAST('a3c4d5e6-f7a8-4901-a234-567890123456' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Organic Produce', 'Organic fruits and vegetables', 'ORGANIC_PRODUCE', 3, false, '[]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+VALUES (CAST('a3c4d5e6-f7a8-4901-a234-567890123456' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Organic Produce', 'Organic fruits and vegetables', 'ORGANIC_PRODUCE', 3, true, '["https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+
+INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES (CAST('b1c2d3e4-f5a6-4901-b234-567890123456' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Tropical Fruits', 'Exotic tropical fruits and berries', 'TROPICAL_FRUITS', 4, true, '["https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+
+INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES (CAST('b2d3e4f5-a6b7-4902-b345-678901234567' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Leafy Greens', 'Fresh leafy greens and salad vegetables', 'LEAFY_GREENS', 5, true, '["https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+
+INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES (CAST('b3e4f5a6-b7c8-4903-b456-789012345678' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Root Vegetables', 'Fresh root vegetables and tubers', 'ROOT_VEGETABLES', 6, true, '["https://images.unsplash.com/photo-1518977822534-7049a61ee0c2?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+
+INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES (CAST('b4f5a6b7-c8d9-4904-b567-890123456789' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Citrus Fruits', 'Fresh citrus fruits and lemons', 'CITRUS_FRUITS', 7, true, '["https://images.unsplash.com/photo-1580052614034-c55d20bfee3b?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+
+INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
+VALUES (CAST('b5a6b7c8-d9e0-4905-b678-901234567890' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Berries & Grapes', 'Fresh berries, grapes and small fruits', 'BERRIES_GRAPES', 8, true, '["https://images.unsplash.com/photo-1615485925506-04d0fbc54a08?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
 
 -- Product Groups for Dairy Products (sub_category_id: a2b3c4d5-e6f7-4890-a123-456789012345)
 
