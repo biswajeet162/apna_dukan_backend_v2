@@ -2,6 +2,7 @@ package com.apna_dukan_backend.catalog.product.service.assembler;
 
 import com.apna_dukan_backend.catalog.product.model.ProductEntity;
 import com.apna_dukan_backend.catalog.product.model.dto.*;
+import com.apna_dukan_backend.catalog.productmetrics.model.dto.ProductMetricsViewDto;
 import com.apna_dukan_backend.catalog.variant.model.VariantEntity;
 import com.apna_dukan_backend.inventory.model.InventoryEntity;
 import com.apna_dukan_backend.catalog.pricing.model.PricingEntity;
@@ -21,7 +22,8 @@ public class ProductListingAssembler {
             List<ProductEntity> products,
             Map<UUID, VariantEntity> variantMap,
             Map<UUID, PricingEntity> pricingMap,
-            Map<UUID, InventoryEntity> inventoryMap) {
+            Map<UUID, InventoryEntity> inventoryMap,
+            Map<UUID, ProductMetricsViewDto> metricsMap) {
 
         List<ProductListItemDto> productItems = new ArrayList<>();
 
@@ -45,11 +47,15 @@ public class ProductListingAssembler {
             InventoryEntity inventory = inventoryMap.get(variantId);
             boolean inStock = inventory != null && inventory.isInStock();
 
+            // Get metrics for this product (optional)
+            ProductMetricsViewDto metrics = metricsMap != null ? metricsMap.get(productId) : null;
+
             ProductListItemDto item = assembleProductItem(
                     product,
                     defaultVariant,
                     pricing,
-                    inStock
+                    inStock,
+                    metrics
             );
 
             productItems.add(item);
@@ -62,7 +68,8 @@ public class ProductListingAssembler {
             ProductEntity product,
             VariantEntity variant,
             PricingEntity pricing,
-            boolean inStock) {
+            boolean inStock,
+            ProductMetricsViewDto metrics) {
 
         // Assemble image
         ProductImageDto image = new ProductImageDto(
@@ -95,7 +102,8 @@ public class ProductListingAssembler {
                 image,
                 variantSummary,
                 pricingSummary,
-                availability
+                availability,
+                metrics
         );
     }
 }

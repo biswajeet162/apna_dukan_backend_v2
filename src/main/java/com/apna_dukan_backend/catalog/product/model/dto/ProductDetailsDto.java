@@ -1,5 +1,7 @@
 package com.apna_dukan_backend.catalog.product.model.dto;
 
+import com.apna_dukan_backend.catalog.productmetrics.model.dto.ProductMetricsViewDto;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -10,18 +12,21 @@ public class ProductDetailsDto {
     private String description;
     private ProductImageDto images;
     private List<VariantDetailsDto> variants;
+    private ProductMetricsViewDto metrics;
 
     public ProductDetailsDto() {
     }
 
     public ProductDetailsDto(UUID productId, String name, String brand, String description,
-                            ProductImageDto images, List<VariantDetailsDto> variants) {
+                            ProductImageDto images, List<VariantDetailsDto> variants,
+                            ProductMetricsViewDto metrics) {
         this.productId = productId;
         this.name = name;
         this.brand = brand;
         this.description = description;
         this.images = images;
         this.variants = variants;
+        this.metrics = metrics;
     }
 
     public UUID getProductId() {
@@ -70,6 +75,14 @@ public class ProductDetailsDto {
 
     public void setVariants(List<VariantDetailsDto> variants) {
         this.variants = variants;
+    }
+
+    public ProductMetricsViewDto getMetrics() {
+        return metrics;
+    }
+
+    public void setMetrics(ProductMetricsViewDto metrics) {
+        this.metrics = metrics;
     }
 }
 

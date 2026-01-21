@@ -2,6 +2,7 @@ package com.apna_dukan_backend.catalog.product.service.assembler;
 
 import com.apna_dukan_backend.catalog.product.model.ProductEntity;
 import com.apna_dukan_backend.catalog.product.model.dto.*;
+import com.apna_dukan_backend.catalog.productmetrics.model.dto.ProductMetricsViewDto;
 import com.apna_dukan_backend.catalog.variant.model.VariantEntity;
 import com.apna_dukan_backend.inventory.model.InventoryEntity;
 import com.apna_dukan_backend.catalog.pricing.model.PricingEntity;
@@ -21,7 +22,8 @@ public class ProductListingAdminAssembler {
             List<ProductEntity> products,
             Map<UUID, VariantEntity> variantMap,
             Map<UUID, PricingEntity> pricingMap,
-            Map<UUID, InventoryEntity> inventoryMap) {
+            Map<UUID, InventoryEntity> inventoryMap,
+            Map<UUID, ProductMetricsViewDto> metricsMap) {
 
         List<ProductListItemDto> productItems = new ArrayList<>();
 
@@ -66,6 +68,9 @@ public class ProductListingAdminAssembler {
                     product.getImageUrls() != null ? product.getImageUrls() : Collections.emptyList()
             );
 
+            // Get metrics for this product (optional)
+            ProductMetricsViewDto metrics = metricsMap != null ? metricsMap.get(productId) : null;
+
             // Assemble product item (always include, even with null variant/pricing)
             ProductListItemDto item = new ProductListItemDto(
                     product.getProductId(),
@@ -74,7 +79,8 @@ public class ProductListingAdminAssembler {
                     image,
                     variantSummary,
                     pricingSummary,
-                    availability
+                    availability,
+                    metrics
             );
 
             productItems.add(item);

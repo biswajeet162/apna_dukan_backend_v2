@@ -42,6 +42,8 @@ public class SecurityConfig {
                         // Admin endpoints - require SUPER_ADMIN or ADMIN
                         .requestMatchers("/api/v1/admin/**").hasAnyAuthority("ROLE_SUPER_ADMIN", "ROLE_ADMIN")
                         .requestMatchers("/api/admin/**").hasAnyAuthority("ROLE_SUPER_ADMIN", "ROLE_ADMIN")
+                        // System endpoints - require authentication (internal use)
+                        .requestMatchers("/api/system/**").authenticated()
                         // User endpoints - no authentication required (can be called with or without Authorization header)
                         .requestMatchers("/api/v1/product/**").permitAll()
                         .requestMatchers("/api/user/**").permitAll()

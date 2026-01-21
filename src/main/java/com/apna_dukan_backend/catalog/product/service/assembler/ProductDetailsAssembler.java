@@ -2,6 +2,7 @@ package com.apna_dukan_backend.catalog.product.service.assembler;
 
 import com.apna_dukan_backend.catalog.product.model.ProductEntity;
 import com.apna_dukan_backend.catalog.product.model.dto.*;
+import com.apna_dukan_backend.catalog.productmetrics.model.dto.ProductMetricsViewDto;
 import com.apna_dukan_backend.catalog.variant.model.VariantEntity;
 import com.apna_dukan_backend.inventory.model.InventoryEntity;
 import com.apna_dukan_backend.catalog.pricing.model.PricingEntity;
@@ -19,7 +20,8 @@ public class ProductDetailsAssembler {
             ProductEntity product,
             List<VariantEntity> variants,
             Map<java.util.UUID, PricingEntity> pricingMap,
-            Map<java.util.UUID, InventoryEntity> inventoryMap) {
+            Map<java.util.UUID, InventoryEntity> inventoryMap,
+            ProductMetricsViewDto metrics) {
 
         // Assemble images
         ProductImageDto images = assembleImages(product);
@@ -36,9 +38,10 @@ public class ProductDetailsAssembler {
                 product.getProductId(),
                 product.getName(),
                 product.getBrand(),
-                null, // ProductEntity doesn't have description field
+                product.getDescription(), // Use description from ProductEntity
                 images,
-                variantDetails
+                variantDetails,
+                metrics
         );
     }
 

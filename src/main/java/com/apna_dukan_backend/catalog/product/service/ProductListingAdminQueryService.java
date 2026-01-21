@@ -7,6 +7,8 @@ import com.apna_dukan_backend.catalog.product.service.assembler.ProductListingAd
 import com.apna_dukan_backend.catalog.productgroup.exception.ProductGroupNotFoundException;
 import com.apna_dukan_backend.catalog.productgroup.model.ProductGroupEntity;
 import com.apna_dukan_backend.catalog.productgroup.repository.ProductGroupRepository;
+import com.apna_dukan_backend.catalog.productmetrics.model.dto.ProductMetricsViewDto;
+import com.apna_dukan_backend.catalog.productmetrics.service.ProductMetricsQueryService;
 import com.apna_dukan_backend.catalog.variant.model.VariantEntity;
 import com.apna_dukan_backend.catalog.variant.repository.VariantRepository;
 import com.apna_dukan_backend.inventory.model.InventoryEntity;
@@ -29,6 +31,7 @@ public class ProductListingAdminQueryService {
     private final VariantRepository variantRepository;
     private final PricingQueryService pricingQueryService;
     private final InventoryRepository inventoryRepository;
+    private final ProductMetricsQueryService metricsQueryService;
     private final ProductListingAdminAssembler assembler;
 
     public ProductListingAdminQueryService(
@@ -37,12 +40,14 @@ public class ProductListingAdminQueryService {
             VariantRepository variantRepository,
             PricingQueryService pricingQueryService,
             InventoryRepository inventoryRepository,
+            ProductMetricsQueryService metricsQueryService,
             ProductListingAdminAssembler assembler) {
         this.productRepository = productRepository;
         this.productGroupRepository = productGroupRepository;
         this.variantRepository = variantRepository;
         this.pricingQueryService = pricingQueryService;
         this.inventoryRepository = inventoryRepository;
+        this.metricsQueryService = metricsQueryService;
         this.assembler = assembler;
     }
 
@@ -133,15 +138,19 @@ public class ProductListingAdminQueryService {
         Map<UUID, InventoryEntity> inventoryMap = inventories.stream()
                 .collect(Collectors.toMap(InventoryEntity::getVariantId, i -> i));
 
-        // 7. Assemble response (includes products even without variants/pricing)
+        // 7. Batch fetch metrics for all products
+        Map<UUID, ProductMetricsViewDto> metricsMap = metricsQueryService.getMetricsViewByProductIds(productIds);
+
+        // 8. Assemble response (includes products even without variants/pricing)
         List<com.apna_dukan_backend.catalog.product.model.dto.ProductListItemDto> productItems = assembler.assemble(
                 products,
                 variantMap,
                 pricingMap,
-                inventoryMap
+                inventoryMap,
+                metricsMap
         );
 
-        // 8. Create pagination metadata
+        // 9. Create pagination metadata
         long totalElements = productPage.getTotalElements();
         int totalPages = productPage.getTotalPages();
         boolean hasNext = productPage.hasNext();

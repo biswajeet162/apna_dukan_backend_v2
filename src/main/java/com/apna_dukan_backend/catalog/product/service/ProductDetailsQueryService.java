@@ -5,6 +5,8 @@ import com.apna_dukan_backend.catalog.product.model.ProductEntity;
 import com.apna_dukan_backend.catalog.product.model.dto.ProductDetailsDto;
 import com.apna_dukan_backend.catalog.product.repository.ProductRepository;
 import com.apna_dukan_backend.catalog.product.service.assembler.ProductDetailsAssembler;
+import com.apna_dukan_backend.catalog.productmetrics.model.dto.ProductMetricsViewDto;
+import com.apna_dukan_backend.catalog.productmetrics.service.ProductMetricsQueryService;
 import com.apna_dukan_backend.catalog.variant.model.VariantEntity;
 import com.apna_dukan_backend.catalog.variant.repository.VariantRepository;
 import com.apna_dukan_backend.inventory.model.InventoryEntity;
@@ -23,6 +25,7 @@ public class ProductDetailsQueryService {
     private final VariantRepository variantRepository;
     private final PricingQueryService pricingQueryService;
     private final InventoryRepository inventoryRepository;
+    private final ProductMetricsQueryService metricsQueryService;
     private final ProductDetailsAssembler assembler;
 
     public ProductDetailsQueryService(
@@ -30,11 +33,13 @@ public class ProductDetailsQueryService {
             VariantRepository variantRepository,
             PricingQueryService pricingQueryService,
             InventoryRepository inventoryRepository,
+            ProductMetricsQueryService metricsQueryService,
             ProductDetailsAssembler assembler) {
         this.productRepository = productRepository;
         this.variantRepository = variantRepository;
         this.pricingQueryService = pricingQueryService;
         this.inventoryRepository = inventoryRepository;
+        this.metricsQueryService = metricsQueryService;
         this.assembler = assembler;
     }
 
@@ -49,10 +54,13 @@ public class ProductDetailsQueryService {
         List<VariantEntity> variants = variantRepository
                 .findByProductIdAndEnabledTrue(productId);
 
+        // 2.5. Fetch metrics for product
+        ProductMetricsViewDto metrics = metricsQueryService.getMetricsViewByProductId(productId);
+
         if (variants.isEmpty()) {
             // Return product with empty variants list
             return assembler.assemble(product, Collections.emptyList(), 
-                    Collections.emptyMap(), Collections.emptyMap());
+                    Collections.emptyMap(), Collections.emptyMap(), metrics);
         }
 
         // 3. Batch fetch pricing for all variants
@@ -71,7 +79,7 @@ public class ProductDetailsQueryService {
 
         // 5. Assemble ProductDetailsDto
         // Variants without pricing will be skipped in the assembler
-        return assembler.assemble(product, variants, pricingMap, inventoryMap);
+        return assembler.assemble(product, variants, pricingMap, inventoryMap, metrics);
     }
 }
 
