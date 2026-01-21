@@ -1,5 +1,6 @@
 package com.apna_dukan_backend.config;
 
+import com.apna_dukan_backend.auth.exception.SecurityExceptionHandler;
 import com.apna_dukan_backend.auth.filter.JwtAuthenticationFilter;
 import com.apna_dukan_backend.auth.service.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -26,20 +27,38 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
     private final UserDetailsServiceImpl userDetailsService;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final SecurityExceptionHandler securityExceptionHandler;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
+                        // Public endpoints
                         .requestMatchers("/api/v1/auth/**").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/api-docs/**", "/v3/api-docs/**").permitAll()
                         .requestMatchers("/api/v1/health/**").permitAll()
+                        // Admin endpoints - require SUPER_ADMIN or ADMIN
+                        .requestMatchers("/api/v1/admin/**").hasAnyAuthority("ROLE_SUPER_ADMIN", "ROLE_ADMIN")
+                        .requestMatchers("/api/admin/**").hasAnyAuthority("ROLE_SUPER_ADMIN", "ROLE_ADMIN")
+                        // User endpoints - no authentication required (can be called with or without Authorization header)
+                        .requestMatchers("/api/v1/product/**").permitAll()
+                        .requestMatchers("/api/user/**").permitAll()
+                        .requestMatchers("/api/v1/section/**").permitAll()
+                        .requestMatchers("/api/v1/category/**").permitAll()
+                        .requestMatchers("/api/v1/subCategory/**").permitAll()
+                        .requestMatchers("/api/v1/productGroup/**").permitAll()
+                        .requestMatchers("/api/variants/**").permitAll()
+                        // All other requests require authentication (any role)
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
+                .exceptionHandling(exceptions -> exceptions
+                        .authenticationEntryPoint(securityExceptionHandler)
+                        .accessDeniedHandler(securityExceptionHandler)
                 )
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
