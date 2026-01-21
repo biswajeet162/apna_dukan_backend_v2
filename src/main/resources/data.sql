@@ -204,28 +204,28 @@ VALUES ('f6a7b8c9-d0e1-4234-f567-890123456798', 'f6a7b8c9-d0e1-4234-f567-8901234
 -- Product Groups for Fruits & Vegetables (sub_category_id: f1a2b3c4-d5e6-4789-f012-345678901234)
 
 INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
-VALUES (CAST('a1a2b3c4-d5e6-4789-a012-345678901234' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Fresh Fruits', 'Fresh seasonal fruits', 'FRESH_FRUITS', 1, true, '["https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+VALUES (CAST('a1a2b3c4-d5e6-4789-a012-345678901234' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Fresh Fruits', 'Fresh seasonal fruits', 'FRESH_FRUITS', 1, true, '["https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
 
 INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
-VALUES (CAST('a2b3c4d5-e6f7-4890-a123-456789012345' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Fresh Vegetables', 'Fresh seasonal vegetables', 'FRESH_VEGETABLES', 2, true, '["https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+VALUES (CAST('a2b3c4d5-e6f7-4890-a123-456789012345' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Fresh Vegetables', 'Fresh seasonal vegetables', 'FRESH_VEGETABLES', 2, true, '["https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1518977822534-7049a61ee0c2?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1518977822534-7049a61ee0c2?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
 
 INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
-VALUES (CAST('a3c4d5e6-f7a8-4901-a234-567890123456' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Organic Produce', 'Organic fruits and vegetables', 'ORGANIC_PRODUCE', 3, true, '["https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+VALUES (CAST('a3c4d5e6-f7a8-4901-a234-567890123456' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Organic Produce', 'Organic fruits and vegetables', 'ORGANIC_PRODUCE', 3, true, '["https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
 
 INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
-VALUES (CAST('b1c2d3e4-f5a6-4901-b234-567890123456' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Tropical Fruits', 'Exotic tropical fruits and berries', 'TROPICAL_FRUITS', 4, true, '["https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+VALUES (CAST('b1c2d3e4-f5a6-4901-b234-567890123456' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Tropical Fruits', 'Exotic tropical fruits and berries', 'TROPICAL_FRUITS', 4, true, '["https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1550258987-190a2d41a8ba?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1550258987-190a2d41a8ba?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
 
 INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
-VALUES (CAST('b2d3e4f5-a6b7-4902-b345-678901234567' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Leafy Greens', 'Fresh leafy greens and salad vegetables', 'LEAFY_GREENS', 5, true, '["https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+VALUES (CAST('b2d3e4f5-a6b7-4902-b345-678901234567' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Leafy Greens', 'Fresh leafy greens and salad vegetables', 'LEAFY_GREENS', 5, true, '["https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
 
 INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
-VALUES (CAST('b3e4f5a6-b7c8-4903-b456-789012345678' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Root Vegetables', 'Fresh root vegetables and tubers', 'ROOT_VEGETABLES', 6, true, '["https://images.unsplash.com/photo-1518977822534-7049a61ee0c2?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+VALUES (CAST('b3e4f5a6-b7c8-4903-b456-789012345678' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Root Vegetables', 'Fresh root vegetables and tubers', 'ROOT_VEGETABLES', 6, true, '["https://images.unsplash.com/photo-1518977822534-7049a61ee0c2?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1518977822534-7049a61ee0c2?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
 
 INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
-VALUES (CAST('b4f5a6b7-c8d9-4904-b567-890123456789' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Citrus Fruits', 'Fresh citrus fruits and lemons', 'CITRUS_FRUITS', 7, true, '["https://images.unsplash.com/photo-1580052614034-c55d20bfee3b?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+VALUES (CAST('b4f5a6b7-c8d9-4904-b567-890123456789' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Citrus Fruits', 'Fresh citrus fruits and lemons', 'CITRUS_FRUITS', 7, true, '["https://images.unsplash.com/photo-1580052614034-c55d20bfee3b?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1611080626919-7cf5a9dab675?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1580052614034-c55d20bfee3b?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1611080626919-7cf5a9dab675?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
 
 INSERT INTO product_group (product_group_id, sub_category_id, name, description, code, display_order, enabled, image_urls, created_at, updated_at)
-VALUES (CAST('b5a6b7c8-d9e0-4905-b678-901234567890' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Berries & Grapes', 'Fresh berries, grapes and small fruits', 'BERRIES_GRAPES', 8, true, '["https://images.unsplash.com/photo-1615485925506-04d0fbc54a08?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
+VALUES (CAST('b5a6b7c8-d9e0-4905-b678-901234567890' AS UUID), CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'Berries & Grapes', 'Fresh berries, grapes and small fruits', 'BERRIES_GRAPES', 8, true, '["https://images.unsplash.com/photo-1615485925506-04d0fbc54a08?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1615485925506-04d0fbc54a08?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=800&h=600&fit=crop"]', TIMESTAMP '2026-01-17 10:45:00.000000', TIMESTAMP '2026-01-17 10:45:00.000000');
 
 -- Product Groups for Dairy Products (sub_category_id: a2b3c4d5-e6f7-4890-a123-456789012345)
 
@@ -274,8 +274,8 @@ VALUES (CAST('f5c6d7e8-f9a0-4123-a456-789012345678' AS UUID), CAST('f9a0b1c2-d3e
 -- Product Data
 -- Product for Fresh Fruits (product_group_id: a1a2b3c4-d5e6-4789-a012-345678901234)
 
-INSERT INTO product (product_id, product_group_id, name, brand, code, primary_image_url, display_order, enabled, created_at, updated_at)
-VALUES (CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a1a2b3c4-d5e6-4789-a012-345678901234' AS UUID), 'Apple - Red Delicious', 'Fresh Farm', 'APPLE_RED_DELICIOUS', 'https://example.com/apple.jpg', 1, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO product (product_id, product_group_id, name, brand, description, code, primary_image_url, image_urls, display_order, enabled, created_at, updated_at)
+VALUES (CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a1a2b3c4-d5e6-4789-a012-345678901234' AS UUID), 'Apple - Red Delicious', 'Fresh Farm', 'Crisp and sweet red delicious apples', 'APPLE_RED_DELICIOUS', 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop', '["https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop"]', 1, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
 -- Variant Data
 -- Variants for Apple - Red Delicious (product_id: f1a2b3c4-d5e6-4789-f012-345678901234)
@@ -316,8 +316,8 @@ VALUES (CAST('d3a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b3a2b3c4-d5e
 -- Additional Product Data for PDP Testing
 -- Product for Fresh Fruits (product_group_id: a1a2b3c4-d5e6-4789-a012-345678901234)
 
-INSERT INTO product (product_id, product_group_id, name, brand, code, primary_image_url, display_order, enabled, created_at, updated_at)
-VALUES (CAST('f2a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a1a2b3c4-d5e6-4789-a012-345678901234' AS UUID), 'Banana - Cavendish', 'Tropical Fresh', 'BANANA_CAVENDISH', 'https://example.com/banana.jpg', 2, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+INSERT INTO product (product_id, product_group_id, name, brand, description, code, primary_image_url, image_urls, display_order, enabled, created_at, updated_at)
+VALUES (CAST('f2a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a1a2b3c4-d5e6-4789-a012-345678901234' AS UUID), 'Banana - Cavendish', 'Tropical Fresh', 'Sweet and creamy Cavendish bananas', 'BANANA_CAVENDISH', 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop', '["https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop"]', 2, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
 
 -- Variants for Banana - Cavendish (product_id: f2a2b3c4-d5e6-4789-f012-345678901234)
 
@@ -486,3 +486,188 @@ VALUES (CAST('d0a2b3c4-d5e6-4789-d012-345678901234' AS UUID), CAST('b0a2b3c4-d5e
 
 INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
 VALUES (CAST('d1a2b3c4-d5e6-4789-d012-345678901235' AS UUID), CAST('b1a2b3c4-d5e6-4789-b012-345678901235' AS UUID), 'WH-001', 35, 0, 35, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+-- Additional Products for Fresh Fruits (product_group_id: a1a2b3c4-d5e6-4789-a012-345678901234)
+-- Product 6: Orange
+
+INSERT INTO product (product_id, product_group_id, name, brand, description, code, primary_image_url, image_urls, display_order, enabled, created_at, updated_at)
+VALUES (CAST('f6a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a1a2b3c4-d5e6-4789-a012-345678901234' AS UUID), 'Orange - Navel', 'Citrus Fresh', 'Sweet and juicy navel oranges, rich in Vitamin C', 'ORANGE_NAVEL', 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop', '["https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop"]', 3, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('b2a2b3c4-d5e6-4789-b012-345678901236' AS UUID), CAST('f6a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'ORANGE-NAV-1KG', '1 kg', '{"weight": "1 kg", "packaging": "net"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('b3a2b3c4-d5e6-4789-b012-345678901236' AS UUID), CAST('f6a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'ORANGE-NAV-2KG', '2 kg', '{"weight": "2 kg", "packaging": "net"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO pricing (pricing_id, variant_id, selling_price, mrp, discount_percent, currency, active, created_at, updated_at)
+VALUES (CAST('c2a2b3c4-d5e6-4789-c012-345678901236' AS UUID), CAST('b2a2b3c4-d5e6-4789-b012-345678901236' AS UUID), 90.0, 110.0, 18, 'INR', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO pricing (pricing_id, variant_id, selling_price, mrp, discount_percent, currency, active, created_at, updated_at)
+VALUES (CAST('c3a2b3c4-d5e6-4789-c012-345678901236' AS UUID), CAST('b3a2b3c4-d5e6-4789-b012-345678901236' AS UUID), 170.0, 200.0, 15, 'INR', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('d2a2b3c4-d5e6-4789-d012-345678901236' AS UUID), CAST('b2a2b3c4-d5e6-4789-b012-345678901236' AS UUID), 'WH-001', 120, 0, 120, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('d3a2b3c4-d5e6-4789-d012-345678901236' AS UUID), CAST('b3a2b3c4-d5e6-4789-b012-345678901236' AS UUID), 'WH-001', 80, 0, 80, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+-- Product 7: Mango
+
+INSERT INTO product (product_id, product_group_id, name, brand, description, code, primary_image_url, image_urls, display_order, enabled, created_at, updated_at)
+VALUES (CAST('f7a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a1a2b3c4-d5e6-4789-a012-345678901234' AS UUID), 'Mango - Alphonso', 'Tropical Delight', 'Premium Alphonso mangoes, known as the king of fruits', 'MANGO_ALPHONSO', 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop', '["https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop"]', 4, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('b4a2b3c4-d5e6-4789-b012-345678901237' AS UUID), CAST('f7a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'MANGO-ALP-1KG', '1 kg', '{"weight": "1 kg", "packaging": "box"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('b5a2b3c4-d5e6-4789-b012-345678901237' AS UUID), CAST('f7a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'MANGO-ALP-2KG', '2 kg', '{"weight": "2 kg", "packaging": "box"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO pricing (pricing_id, variant_id, selling_price, mrp, discount_percent, currency, active, created_at, updated_at)
+VALUES (CAST('c4a2b3c4-d5e6-4789-c012-345678901237' AS UUID), CAST('b4a2b3c4-d5e6-4789-b012-345678901237' AS UUID), 150.0, 180.0, 17, 'INR', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO pricing (pricing_id, variant_id, selling_price, mrp, discount_percent, currency, active, created_at, updated_at)
+VALUES (CAST('c5a2b3c4-d5e6-4789-c012-345678901237' AS UUID), CAST('b5a2b3c4-d5e6-4789-b012-345678901237' AS UUID), 280.0, 330.0, 15, 'INR', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('d4a2b3c4-d5e6-4789-d012-345678901237' AS UUID), CAST('b4a2b3c4-d5e6-4789-b012-345678901237' AS UUID), 'WH-001', 90, 0, 90, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('d5a2b3c4-d5e6-4789-d012-345678901237' AS UUID), CAST('b5a2b3c4-d5e6-4789-b012-345678901237' AS UUID), 'WH-001', 60, 0, 60, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+-- Product 8: Grapes
+
+INSERT INTO product (product_id, product_group_id, name, brand, description, code, primary_image_url, image_urls, display_order, enabled, created_at, updated_at)
+VALUES (CAST('f8a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a1a2b3c4-d5e6-4789-a012-345678901234' AS UUID), 'Grapes - Black Seedless', 'Vineyard Fresh', 'Sweet and juicy black seedless grapes', 'GRAPES_BLACK_SEEDLESS', 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop', '["https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop"]', 5, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('b6a2b3c4-d5e6-4789-b012-345678901238' AS UUID), CAST('f8a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'GRAPES-BLK-500G', '500 g', '{"weight": "500 g", "packaging": "pack"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('b7a2b3c4-d5e6-4789-b012-345678901238' AS UUID), CAST('f8a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'GRAPES-BLK-1KG', '1 kg', '{"weight": "1 kg", "packaging": "pack"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO pricing (pricing_id, variant_id, selling_price, mrp, discount_percent, currency, active, created_at, updated_at)
+VALUES (CAST('c6a2b3c4-d5e6-4789-c012-345678901238' AS UUID), CAST('b6a2b3c4-d5e6-4789-b012-345678901238' AS UUID), 120.0, 150.0, 20, 'INR', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO pricing (pricing_id, variant_id, selling_price, mrp, discount_percent, currency, active, created_at, updated_at)
+VALUES (CAST('c7a2b3c4-d5e6-4789-c012-345678901238' AS UUID), CAST('b7a2b3c4-d5e6-4789-b012-345678901238' AS UUID), 220.0, 280.0, 21, 'INR', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('d6a2b3c4-d5e6-4789-d012-345678901238' AS UUID), CAST('b6a2b3c4-d5e6-4789-b012-345678901238' AS UUID), 'WH-001', 70, 0, 70, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('d7a2b3c4-d5e6-4789-d012-345678901238' AS UUID), CAST('b7a2b3c4-d5e6-4789-b012-345678901238' AS UUID), 'WH-001', 50, 0, 50, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+-- Product 9: Strawberry
+
+INSERT INTO product (product_id, product_group_id, name, brand, description, code, primary_image_url, image_urls, display_order, enabled, created_at, updated_at)
+VALUES (CAST('f9a2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a1a2b3c4-d5e6-4789-a012-345678901234' AS UUID), 'Strawberry - Fresh', 'Berry Farm', 'Fresh and sweet strawberries, perfect for desserts', 'STRAWBERRY_FRESH', 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop', '["https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop"]', 6, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('b8a2b3c4-d5e6-4789-b012-345678901239' AS UUID), CAST('f9a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'STRAWBERRY-250G', '250 g', '{"weight": "250 g", "packaging": "box"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('b9a2b3c4-d5e6-4789-b012-345678901239' AS UUID), CAST('f9a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'STRAWBERRY-500G', '500 g', '{"weight": "500 g", "packaging": "box"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO pricing (pricing_id, variant_id, selling_price, mrp, discount_percent, currency, active, created_at, updated_at)
+VALUES (CAST('c8a2b3c4-d5e6-4789-c012-345678901239' AS UUID), CAST('b8a2b3c4-d5e6-4789-b012-345678901239' AS UUID), 180.0, 220.0, 18, 'INR', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO pricing (pricing_id, variant_id, selling_price, mrp, discount_percent, currency, active, created_at, updated_at)
+VALUES (CAST('c9a2b3c4-d5e6-4789-c012-345678901239' AS UUID), CAST('b9a2b3c4-d5e6-4789-b012-345678901239' AS UUID), 340.0, 420.0, 19, 'INR', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('d8a2b3c4-d5e6-4789-d012-345678901239' AS UUID), CAST('b8a2b3c4-d5e6-4789-b012-345678901239' AS UUID), 'WH-001', 40, 0, 40, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('d9a2b3c4-d5e6-4789-d012-345678901239' AS UUID), CAST('b9a2b3c4-d5e6-4789-b012-345678901239' AS UUID), 'WH-001', 30, 0, 30, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+-- Product 10: Watermelon
+
+INSERT INTO product (product_id, product_group_id, name, brand, description, code, primary_image_url, image_urls, display_order, enabled, created_at, updated_at)
+VALUES (CAST('faa2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a1a2b3c4-d5e6-4789-a012-345678901234' AS UUID), 'Watermelon - Seedless', 'Fresh Farm', 'Juicy and refreshing seedless watermelon', 'WATERMELON_SEEDLESS', 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop', '["https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop"]', 7, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('baa2b3c4-d5e6-4789-b012-345678901240' AS UUID), CAST('faa2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'WATERMELON-2KG', '2 kg', '{"weight": "2 kg", "packaging": "whole"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('bba2b3c4-d5e6-4789-b012-345678901240' AS UUID), CAST('faa2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'WATERMELON-4KG', '4 kg', '{"weight": "4 kg", "packaging": "whole"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO pricing (pricing_id, variant_id, selling_price, mrp, discount_percent, currency, active, created_at, updated_at)
+VALUES (CAST('caa2b3c4-d5e6-4789-c012-345678901240' AS UUID), CAST('baa2b3c4-d5e6-4789-b012-345678901240' AS UUID), 60.0, 75.0, 20, 'INR', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO pricing (pricing_id, variant_id, selling_price, mrp, discount_percent, currency, active, created_at, updated_at)
+VALUES (CAST('cba2b3c4-d5e6-4789-c012-345678901240' AS UUID), CAST('bba2b3c4-d5e6-4789-b012-345678901240' AS UUID), 110.0, 140.0, 21, 'INR', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('daa2b3c4-d5e6-4789-d012-345678901240' AS UUID), CAST('baa2b3c4-d5e6-4789-b012-345678901240' AS UUID), 'WH-001', 100, 0, 100, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('dba2b3c4-d5e6-4789-d012-345678901240' AS UUID), CAST('bba2b3c4-d5e6-4789-b012-345678901240' AS UUID), 'WH-001', 80, 0, 80, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+-- Product 11: Pineapple
+
+INSERT INTO product (product_id, product_group_id, name, brand, description, code, primary_image_url, image_urls, display_order, enabled, created_at, updated_at)
+VALUES (CAST('fba2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a1a2b3c4-d5e6-4789-a012-345678901234' AS UUID), 'Pineapple - Golden', 'Tropical Fresh', 'Sweet and tangy golden pineapple', 'PINEAPPLE_GOLDEN', 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop', '["https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop"]', 8, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('bca2b3c4-d5e6-4789-b012-345678901241' AS UUID), CAST('fba2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'PINEAPPLE-1PC', '1 piece', '{"weight": "1-1.5 kg", "packaging": "whole"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('bda2b3c4-d5e6-4789-b012-345678901241' AS UUID), CAST('fba2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'PINEAPPLE-2PC', '2 pieces', '{"weight": "2-3 kg", "packaging": "whole"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO pricing (pricing_id, variant_id, selling_price, mrp, discount_percent, currency, active, created_at, updated_at)
+VALUES (CAST('cca2b3c4-d5e6-4789-c012-345678901241' AS UUID), CAST('bca2b3c4-d5e6-4789-b012-345678901241' AS UUID), 85.0, 100.0, 15, 'INR', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO pricing (pricing_id, variant_id, selling_price, mrp, discount_percent, currency, active, created_at, updated_at)
+VALUES (CAST('cda2b3c4-d5e6-4789-c012-345678901241' AS UUID), CAST('bda2b3c4-d5e6-4789-b012-345678901241' AS UUID), 160.0, 190.0, 16, 'INR', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('dca2b3c4-d5e6-4789-d012-345678901241' AS UUID), CAST('bca2b3c4-d5e6-4789-b012-345678901241' AS UUID), 'WH-001', 110, 0, 110, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('dda2b3c4-d5e6-4789-d012-345678901241' AS UUID), CAST('bda2b3c4-d5e6-4789-b012-345678901241' AS UUID), 'WH-001', 90, 0, 90, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+-- Product 12: Pomegranate
+
+INSERT INTO product (product_id, product_group_id, name, brand, description, code, primary_image_url, image_urls, display_order, enabled, created_at, updated_at)
+VALUES (CAST('fca2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a1a2b3c4-d5e6-4789-a012-345678901234' AS UUID), 'Pomegranate - Ruby Red', 'Fresh Farm', 'Sweet and juicy ruby red pomegranates', 'POMEGRANATE_RUBY', 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop', '["https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop"]', 9, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('bea2b3c4-d5e6-4789-b012-345678901242' AS UUID), CAST('fca2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'POMEGRANATE-500G', '500 g', '{"weight": "500 g", "packaging": "pack"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('bfa2b3c4-d5e6-4789-b012-345678901242' AS UUID), CAST('fca2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'POMEGRANATE-1KG', '1 kg', '{"weight": "1 kg", "packaging": "pack"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO pricing (pricing_id, variant_id, selling_price, mrp, discount_percent, currency, active, created_at, updated_at)
+VALUES (CAST('cea2b3c4-d5e6-4789-c012-345678901242' AS UUID), CAST('bea2b3c4-d5e6-4789-b012-345678901242' AS UUID), 140.0, 170.0, 18, 'INR', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO pricing (pricing_id, variant_id, selling_price, mrp, discount_percent, currency, active, created_at, updated_at)
+VALUES (CAST('cfa2b3c4-d5e6-4789-c012-345678901242' AS UUID), CAST('bfa2b3c4-d5e6-4789-b012-345678901242' AS UUID), 260.0, 320.0, 19, 'INR', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('dea2b3c4-d5e6-4789-d012-345678901242' AS UUID), CAST('bea2b3c4-d5e6-4789-b012-345678901242' AS UUID), 'WH-001', 65, 0, 65, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('dfa2b3c4-d5e6-4789-d012-345678901242' AS UUID), CAST('bfa2b3c4-d5e6-4789-b012-345678901242' AS UUID), 'WH-001', 45, 0, 45, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+-- Product 13: Kiwi
+
+INSERT INTO product (product_id, product_group_id, name, brand, description, code, primary_image_url, image_urls, display_order, enabled, created_at, updated_at)
+VALUES (CAST('fda2b3c4-d5e6-4789-f012-345678901234' AS UUID), CAST('a1a2b3c4-d5e6-4789-a012-345678901234' AS UUID), 'Kiwi - Green', 'Exotic Fruits', 'Fresh and tangy green kiwi fruits', 'KIWI_GREEN', 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop', '["https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop", "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&h=600&fit=crop"]', 10, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('b0a2b3c4-d5e6-4789-b012-345678901243' AS UUID), CAST('fda2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'KIWI-250G', '250 g (3-4 pcs)', '{"weight": "250 g", "packaging": "pack", "pieces": "3-4"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO variant (variant_id, product_id, sku, label, attributes, enabled, created_at, updated_at)
+VALUES (CAST('b1a2b3c4-d5e6-4789-b012-345678901243' AS UUID), CAST('fda2b3c4-d5e6-4789-f012-345678901234' AS UUID), 'KIWI-500G', '500 g (6-8 pcs)', '{"weight": "500 g", "packaging": "pack", "pieces": "6-8"}', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO pricing (pricing_id, variant_id, selling_price, mrp, discount_percent, currency, active, created_at, updated_at)
+VALUES (CAST('c0a2b3c4-d5e6-4789-c012-345678901243' AS UUID), CAST('b0a2b3c4-d5e6-4789-b012-345678901243' AS UUID), 95.0, 120.0, 21, 'INR', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO pricing (pricing_id, variant_id, selling_price, mrp, discount_percent, currency, active, created_at, updated_at)
+VALUES (CAST('c1a2b3c4-d5e6-4789-c012-345678901243' AS UUID), CAST('b1a2b3c4-d5e6-4789-b012-345678901243' AS UUID), 180.0, 230.0, 22, 'INR', true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('d0a2b3c4-d5e6-4789-d012-345678901243' AS UUID), CAST('b0a2b3c4-d5e6-4789-b012-345678901243' AS UUID), 'WH-001', 55, 0, 55, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
+VALUES (CAST('d1a2b3c4-d5e6-4789-d012-345678901243' AS UUID), CAST('b1a2b3c4-d5e6-4789-b012-345678901243' AS UUID), 'WH-001', 40, 0, 40, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');

@@ -4,7 +4,7 @@
 - Docker Desktop installed and running
 - Git repository cloned locally
 
-## Step 1: Build the Docker Image
+## Step 1: Build the Docker Image dfg
 
 Open terminal/command prompt in your project root directory and run:
 
