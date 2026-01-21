@@ -671,3 +671,46 @@ VALUES (CAST('d0a2b3c4-d5e6-4789-d012-345678901243' AS UUID), CAST('b0a2b3c4-d5e
 
 INSERT INTO inventory (inventory_id, variant_id, warehouse_id, quantity, reserved_quantity, available_quantity, in_stock, created_at, last_updated_at)
 VALUES (CAST('d1a2b3c4-d5e6-4789-d012-345678901243' AS UUID), CAST('b1a2b3c4-d5e6-4789-b012-345678901243' AS UUID), 'WH-001', 40, 0, 40, true, TIMESTAMP '2026-01-17 10:50:00.000000', TIMESTAMP '2026-01-17 10:50:00.000000');
+
+-- Product Metrics Data
+-- Metrics for products in Fresh Fruits product group
+
+-- Apple - Red Delicious (product_id: f1a2b3c4-d5e6-4789-f012-345678901234)
+INSERT INTO product_metrics (product_id, average_rating, rating_count, total_purchased, last_updated_at)
+VALUES (CAST('f1a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 4.5, 1245, 8421, TIMESTAMP '2026-01-21 20:00:00.000000');
+
+-- Banana - Cavendish (product_id: f2a2b3c4-d5e6-4789-f012-345678901234)
+INSERT INTO product_metrics (product_id, average_rating, rating_count, total_purchased, last_updated_at)
+VALUES (CAST('f2a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 4.3, 892, 6543, TIMESTAMP '2026-01-21 19:45:00.000000');
+
+-- Orange - Navel (product_id: f6a2b3c4-d5e6-4789-f012-345678901234)
+INSERT INTO product_metrics (product_id, average_rating, rating_count, total_purchased, last_updated_at)
+VALUES (CAST('f6a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 4.6, 1567, 9234, TIMESTAMP '2026-01-21 20:15:00.000000');
+
+-- Mango - Alphonso (product_id: f7a2b3c4-d5e6-4789-f012-345678901234)
+INSERT INTO product_metrics (product_id, average_rating, rating_count, total_purchased, last_updated_at)
+VALUES (CAST('f7a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 4.8, 2134, 12456, TIMESTAMP '2026-01-21 20:20:00.000000');
+
+-- Grapes - Black Seedless (product_id: f8a2b3c4-d5e6-4789-f012-345678901234)
+INSERT INTO product_metrics (product_id, average_rating, rating_count, total_purchased, last_updated_at)
+VALUES (CAST('f8a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 4.4, 678, 4567, TIMESTAMP '2026-01-21 19:30:00.000000');
+
+-- Strawberry - Fresh (product_id: f9a2b3c4-d5e6-4789-f012-345678901234)
+INSERT INTO product_metrics (product_id, average_rating, rating_count, total_purchased, last_updated_at)
+VALUES (CAST('f9a2b3c4-d5e6-4789-f012-345678901234' AS UUID), 4.7, 1123, 7890, TIMESTAMP '2026-01-21 20:10:00.000000');
+
+-- Watermelon - Seedless (product_id: faa2b3c4-d5e6-4789-f012-345678901234)
+INSERT INTO product_metrics (product_id, average_rating, rating_count, total_purchased, last_updated_at)
+VALUES (CAST('faa2b3c4-d5e6-4789-f012-345678901234' AS UUID), 4.2, 445, 3210, TIMESTAMP '2026-01-21 19:20:00.000000');
+
+-- Pineapple - Golden (product_id: fba2b3c4-d5e6-4789-f012-345678901234)
+INSERT INTO product_metrics (product_id, average_rating, rating_count, total_purchased, last_updated_at)
+VALUES (CAST('fba2b3c4-d5e6-4789-f012-345678901234' AS UUID), 4.5, 987, 5678, TIMESTAMP '2026-01-21 20:05:00.000000');
+
+-- Pomegranate - Ruby Red (product_id: fca2b3c4-d5e6-4789-f012-345678901234)
+INSERT INTO product_metrics (product_id, average_rating, rating_count, total_purchased, last_updated_at)
+VALUES (CAST('fca2b3c4-d5e6-4789-f012-345678901234' AS UUID), 4.6, 756, 4321, TIMESTAMP '2026-01-21 19:50:00.000000');
+
+-- Kiwi - Green (product_id: fda2b3c4-d5e6-4789-f012-345678901234)
+INSERT INTO product_metrics (product_id, average_rating, rating_count, total_purchased, last_updated_at)
+VALUES (CAST('fda2b3c4-d5e6-4789-f012-345678901234' AS UUID), 4.4, 523, 3456, TIMESTAMP '2026-01-21 19:40:00.000000');
