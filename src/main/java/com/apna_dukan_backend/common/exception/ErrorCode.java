@@ -40,6 +40,7 @@ public enum ErrorCode {
     
     // Authentication & Authorization (401, 403)
     UNAUTHORIZED("UNAUTHORIZED", "Authentication required"),
+    FORBIDDEN("FORBIDDEN", "Access denied"),
     INVALID_CREDENTIALS("INVALID_CREDENTIALS", "Invalid credentials provided"),
     USER_ALREADY_EXISTS("USER_ALREADY_EXISTS", "User already exists");
 
