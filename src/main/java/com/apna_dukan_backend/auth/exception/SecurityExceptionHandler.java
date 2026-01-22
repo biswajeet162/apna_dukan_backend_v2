@@ -3,6 +3,7 @@ package com.apna_dukan_backend.auth.exception;
 import com.apna_dukan_backend.common.exception.ErrorCode;
 import com.apna_dukan_backend.common.exception.dto.ErrorResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
@@ -21,7 +22,12 @@ import java.io.IOException;
 public class SecurityExceptionHandler implements AuthenticationEntryPoint, AccessDeniedHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(SecurityExceptionHandler.class);
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper;
+
+    public SecurityExceptionHandler() {
+        this.objectMapper = new ObjectMapper();
+        this.objectMapper.registerModule(new JavaTimeModule());
+    }
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response,
