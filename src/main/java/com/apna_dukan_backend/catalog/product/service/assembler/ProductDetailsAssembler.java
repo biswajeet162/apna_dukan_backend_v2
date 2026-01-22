@@ -47,7 +47,7 @@ public class ProductDetailsAssembler {
 
     private ProductImageDto assembleImages(ProductEntity product) {
         String primary = product.getPrimaryImageUrl();
-        List<String> gallery = Collections.emptyList(); // ProductEntity doesn't have gallery field
+        List<String> gallery = product.getImageUrls() != null ? product.getImageUrls() : Collections.emptyList();
         
         return new ProductImageDto(primary, gallery);
     }
