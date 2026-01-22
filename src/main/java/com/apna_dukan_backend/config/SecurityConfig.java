@@ -34,27 +34,55 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        // Public endpoints
+                        // ============================================
+                        // PUBLIC APIs (JWT Optional - permitAll)
+                        // ============================================
+                        // Authentication endpoints
                         .requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers("/h2-console/**").permitAll()
-                        .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/api-docs/**", "/v3/api-docs/**").permitAll()
-                        .requestMatchers("/api/v1/health/**", "/api/health").permitAll()
-                        // Admin endpoints - require ADMIN or SYSTEM role
-                        .requestMatchers("/api/admin/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_SYSTEM")
-                        // System endpoints - require SYSTEM role
-                        .requestMatchers("/api/system/**").hasAuthority("ROLE_SYSTEM")
-                        // User endpoints - require USER role
-                        .requestMatchers("/api/user/**").hasAuthority("ROLE_USER")
-                        // Legacy endpoints - keep for backward compatibility
                         .requestMatchers("/api/v1/auth/**").permitAll()
-                        .requestMatchers("/api/v1/admin/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_SUPER_ADMIN")
-                        .requestMatchers("/api/v1/product/**").permitAll()
+                        
+                        // Health check
+                        .requestMatchers("/api/v1/health/**", "/api/health").permitAll()
+                        
+                        // Swagger/API docs
+                        .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/api-docs/**", "/v3/api-docs/**").permitAll()
+                        .requestMatchers("/h2-console/**").permitAll()
+                        
+                        // Public catalog APIs (JWT optional - will be set if token present)
+                        .requestMatchers("/api/v1/layout/**").permitAll()
                         .requestMatchers("/api/v1/section/**").permitAll()
                         .requestMatchers("/api/v1/category/**").permitAll()
                         .requestMatchers("/api/v1/subCategory/**").permitAll()
                         .requestMatchers("/api/v1/productGroup/**").permitAll()
+                        .requestMatchers("/api/v1/product/**").permitAll()
+                        .requestMatchers("/api/v1/products/**").permitAll()
                         .requestMatchers("/api/variants/**").permitAll()
-                        // All other requests require authentication (any role)
+                        
+                        // ============================================
+                        // USER APIs (JWT Required - ROLE_USER)
+                        // ============================================
+                        .requestMatchers("/api/user/**").hasAuthority("ROLE_USER")
+                        .requestMatchers("/api/cart/**").hasAuthority("ROLE_USER")
+                        .requestMatchers("/api/order/**").hasAuthority("ROLE_USER")
+                        .requestMatchers("/api/review/**").hasAuthority("ROLE_USER")
+                        
+                        // ============================================
+                        // ADMIN APIs (JWT Required - ROLE_ADMIN)
+                        // ============================================
+                        // Strictly require ROLE_ADMIN (SYSTEM can also access)
+                        .requestMatchers("/api/admin/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_SYSTEM")
+                        
+                        // Legacy admin endpoints
+                        .requestMatchers("/api/v1/admin/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_SYSTEM")
+                        
+                        // ============================================
+                        // SYSTEM APIs (JWT Required - ROLE_SYSTEM)
+                        // ============================================
+                        .requestMatchers("/api/system/**").hasAuthority("ROLE_SYSTEM")
+                        
+                        // ============================================
+                        // All other requests require authentication
+                        // ============================================
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
