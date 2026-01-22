@@ -35,18 +35,20 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         // Public endpoints
-                        .requestMatchers("/api/v1/auth/**").permitAll()
+                        .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/api-docs/**", "/v3/api-docs/**").permitAll()
                         .requestMatchers("/api/v1/health/**", "/api/health").permitAll()
-                        // Admin endpoints - require SUPER_ADMIN or ADMIN
-                        .requestMatchers("/api/v1/admin/**").hasAnyAuthority("ROLE_SUPER_ADMIN", "ROLE_ADMIN")
-                        .requestMatchers("/api/admin/**").hasAnyAuthority("ROLE_SUPER_ADMIN", "ROLE_ADMIN")
-                        // System endpoints - require authentication (internal use)
-                        .requestMatchers("/api/system/**").authenticated()
-                        // User endpoints - no authentication required (can be called with or without Authorization header)
+                        // Admin endpoints - require ADMIN or SYSTEM role
+                        .requestMatchers("/api/admin/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_SYSTEM")
+                        // System endpoints - require SYSTEM role
+                        .requestMatchers("/api/system/**").hasAuthority("ROLE_SYSTEM")
+                        // User endpoints - require USER role
+                        .requestMatchers("/api/user/**").hasAuthority("ROLE_USER")
+                        // Legacy endpoints - keep for backward compatibility
+                        .requestMatchers("/api/v1/auth/**").permitAll()
+                        .requestMatchers("/api/v1/admin/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_SUPER_ADMIN")
                         .requestMatchers("/api/v1/product/**").permitAll()
-                        .requestMatchers("/api/user/**").permitAll()
                         .requestMatchers("/api/v1/section/**").permitAll()
                         .requestMatchers("/api/v1/category/**").permitAll()
                         .requestMatchers("/api/v1/subCategory/**").permitAll()

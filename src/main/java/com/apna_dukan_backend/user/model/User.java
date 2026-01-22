@@ -1,6 +1,7 @@
 package com.apna_dukan_backend.user.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,45 +24,62 @@ import java.util.UUID;
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @Column(name = "user_id")
+    private UUID userId;
 
     @Column(nullable = false)
-    private String firstName;
+    private String name;
 
-    @Column(nullable = false)
-    private String lastName;
-
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String email;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String phone;
 
-    @Column(nullable = false)
-    private String password;
+    @Column(name = "password_hash")
+    private String passwordHash;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    @NotNull
     private Role role;
 
-    @Column(nullable = false)
-    private Boolean enabled = true;
+    @Column(name = "email_verified", nullable = false)
+    @Builder.Default
+    private Boolean emailVerified = false;
 
+    @Column(name = "phone_verified", nullable = false)
+    @Builder.Default
+    private Boolean phoneVerified = false;
+
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    @Builder.Default
+    private AccountStatus status = AccountStatus.ACTIVE;
+
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @Column(nullable = false)
+    @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();
         updatedAt = LocalDateTime.now();
+        // Ensure either email or phone exists
+        if (email == null && phone == null) {
+            throw new IllegalStateException("Either email or phone must be provided");
+        }
     }
 
     @PreUpdate
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();
+        // Ensure either email or phone exists
+        if (email == null && phone == null) {
+            throw new IllegalStateException("Either email or phone must be provided");
+        }
     }
 
     @Override
@@ -71,7 +89,13 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email;
+        // Return email if available, otherwise phone
+        return email != null ? email : phone;
+    }
+
+    @Override
+    public String getPassword() {
+        return passwordHash;
     }
 
     @Override
@@ -81,7 +105,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return status == AccountStatus.ACTIVE;
     }
 
     @Override
@@ -91,7 +115,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return enabled;
+        return status == AccountStatus.ACTIVE;
     }
 }
 

@@ -21,29 +21,64 @@ public class AdminInitializer {
     private final PasswordEncoder passwordEncoder;
 
     @EventListener(ApplicationReadyEvent.class)
-    public void createSuperAdminIfMissing() {
-        String superAdminEmail = "boss@gmail.com";
+    public void createSystemUsersIfMissing() {
+        // Create SYSTEM user
+        createSystemUser();
+        // Create ADMIN user
+        createAdminUser();
+    }
 
-        if (userRepository.existsByEmail(superAdminEmail)) {
-            logger.info("Super admin user already exists. Skipping creation.");
+    private void createSystemUser() {
+        String systemEmail = "system@apnadukan.com";
+
+        if (userRepository.existsByEmail(systemEmail)) {
+            logger.info("System user already exists. Skipping creation.");
             return;
         }
 
         try {
-            User superAdmin = User.builder()
-                    .firstName("Boss")
-                    .lastName("Roy")
-                    .email(superAdminEmail)
-                    .phone("9990099900")
-                    .password(passwordEncoder.encode("999000"))
-                    .role(Role.SUPER_ADMIN_ROLE)
-                    .enabled(true)
+            User systemUser = User.builder()
+                    .name("System Administrator")
+                    .email(systemEmail)
+                    .phone("0000000000")
+                    .passwordHash(passwordEncoder.encode("System@123")) // Change this in production!
+                    .role(Role.SYSTEM)
+                    .emailVerified(true)
+                    .phoneVerified(true)
+                    .status(com.apna_dukan_backend.user.model.AccountStatus.ACTIVE)
                     .build();
 
-            userRepository.save(superAdmin);
-            logger.info("Super admin user created successfully: {}", superAdminEmail);
+            userRepository.save(systemUser);
+            logger.info("System user created successfully: {} (Password: System@123)", systemEmail);
         } catch (Exception e) {
-            logger.error("Error creating super admin user: {}", e.getMessage(), e);
+            logger.error("Error creating system user: {}", e.getMessage(), e);
+        }
+    }
+
+    private void createAdminUser() {
+        String adminEmail = "admin@apnadukan.com";
+
+        if (userRepository.existsByEmail(adminEmail)) {
+            logger.info("Admin user already exists. Skipping creation.");
+            return;
+        }
+
+        try {
+            User adminUser = User.builder()
+                    .name("Admin User")
+                    .email(adminEmail)
+                    .phone("9990099900")
+                    .passwordHash(passwordEncoder.encode("Admin@123")) // Change this in production!
+                    .role(Role.ADMIN)
+                    .emailVerified(true)
+                    .phoneVerified(true)
+                    .status(com.apna_dukan_backend.user.model.AccountStatus.ACTIVE)
+                    .build();
+
+            userRepository.save(adminUser);
+            logger.info("Admin user created successfully: {} (Password: Admin@123)", adminEmail);
+        } catch (Exception e) {
+            logger.error("Error creating admin user: {}", e.getMessage(), e);
         }
     }
 }
