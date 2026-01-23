@@ -20,6 +20,7 @@ import java.util.Map;
 @Tag(name = "Health", description = "Application health check endpoint")
 public class HealthController {
 
+    // health endpoint is used to check if the application is running
     @GetMapping("/health")
     @Operation(summary = "Health check endpoint", 
                description = "Returns the health status of the application")
