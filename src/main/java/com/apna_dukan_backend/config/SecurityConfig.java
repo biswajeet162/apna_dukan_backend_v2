@@ -58,6 +58,9 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/products/**").permitAll()
                         .requestMatchers("/api/variants/**").permitAll()
                         
+                        // Public user catalog endpoint (accessible to guests, token optional)
+                        .requestMatchers("/api/user/catalog/layout").permitAll()
+                        
                         // ============================================
                         // USER APIs (JWT Required - ROLE_USER)
                         // ============================================
