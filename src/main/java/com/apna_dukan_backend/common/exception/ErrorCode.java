@@ -12,6 +12,7 @@ public enum ErrorCode {
     PRICING_NOT_FOUND("PRICING_NOT_FOUND", "Pricing not found"),
     INVENTORY_NOT_FOUND("INVENTORY_NOT_FOUND", "Inventory not found"),
     USER_NOT_FOUND("USER_NOT_FOUND", "User not found"),
+    ADDRESS_NOT_FOUND("ADDRESS_NOT_FOUND", "Address not found"),
     
     // Bad Request (400)
     INVALID_REQUEST("INVALID_REQUEST", "Invalid request data"),

@@ -19,6 +19,8 @@ import com.apna_dukan_backend.inventory.exception.DuplicateInventoryException;
 import com.apna_dukan_backend.auth.exception.UserAlreadyExistsException;
 import com.apna_dukan_backend.auth.exception.InvalidCredentialsException;
 import com.apna_dukan_backend.user.exception.UserNotFoundException;
+import com.apna_dukan_backend.user.exception.AddressNotFoundException;
+import com.apna_dukan_backend.user.exception.AddressAccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -350,6 +352,44 @@ public class GlobalExceptionHandler {
         );
         
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
+
+    /**
+     * Handle address not found exceptions (404)
+     */
+    @ExceptionHandler(AddressNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleAddressNotFoundException(
+            AddressNotFoundException ex, HttpServletRequest request) {
+        logger.warn("Address not found: {}", ex.getMessage());
+        
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.NOT_FOUND.value(),
+                HttpStatus.NOT_FOUND.getReasonPhrase(),
+                ex.getMessage(),
+                request.getRequestURI(),
+                ErrorCode.ADDRESS_NOT_FOUND.getCode()
+        );
+        
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
+
+    /**
+     * Handle address access denied exceptions (403)
+     */
+    @ExceptionHandler(AddressAccessDeniedException.class)
+    public ResponseEntity<ErrorResponse> handleAddressAccessDeniedException(
+            AddressAccessDeniedException ex, HttpServletRequest request) {
+        logger.warn("Address access denied: {}", ex.getMessage());
+        
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.FORBIDDEN.value(),
+                HttpStatus.FORBIDDEN.getReasonPhrase(),
+                ex.getMessage(),
+                request.getRequestURI(),
+                ErrorCode.FORBIDDEN.getCode()
+        );
+        
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorResponse);
     }
 
     /**
