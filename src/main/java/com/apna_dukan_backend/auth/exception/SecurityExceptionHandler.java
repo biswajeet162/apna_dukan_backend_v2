@@ -50,12 +50,25 @@ public class SecurityExceptionHandler implements AuthenticationEntryPoint, Acces
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response,
                        AccessDeniedException accessDeniedException) throws IOException {
-        logger.warn("Access denied: {}", accessDeniedException.getMessage());
+        // Log user's actual authorities for debugging
+        String authorities = "unknown";
+        try {
+            org.springframework.security.core.Authentication auth = 
+                org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication();
+            if (auth != null && auth.getAuthorities() != null) {
+                authorities = auth.getAuthorities().toString();
+            }
+        } catch (Exception e) {
+            // Ignore
+        }
+        
+        logger.warn("Access denied for path: {} - User authorities: {} - Error: {}", 
+                request.getRequestURI(), authorities, accessDeniedException.getMessage());
 
         ErrorResponse errorResponse = new ErrorResponse(
                 HttpStatus.FORBIDDEN.value(),
                 HttpStatus.FORBIDDEN.getReasonPhrase(),
-                "Access denied. You do not have permission to access this resource.",
+                "Access denied. You do not have permission to access this resource. Required role: ROLE_USER",
                 request.getRequestURI(),
                 ErrorCode.FORBIDDEN.getCode()
         );

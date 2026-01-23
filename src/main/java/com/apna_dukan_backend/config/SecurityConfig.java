@@ -64,8 +64,14 @@ public class SecurityConfig {
                         .requestMatchers("/api/user/catalog/layout").permitAll()
                         
                         // ============================================
-                        // USER APIs (JWT Required - ROLE_USER)
+                        // USER APIs (JWT Required - ROLE_USER, ROLE_ADMIN, ROLE_SYSTEM)
                         // ============================================
+                        // User profile and addresses - accessible to all authenticated users (USER, ADMIN, SYSTEM)
+                        // This allows admins and system users to access their own profile/addresses
+                        .requestMatchers("/api/user/debug/**").authenticated()
+                        .requestMatchers("/api/user/profile", "/api/user/addresses", "/api/user/addresses/**")
+                            .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN", "ROLE_SYSTEM")
+                        // Other user endpoints still require ROLE_USER only
                         .requestMatchers("/api/user/**").hasAuthority("ROLE_USER")
                         .requestMatchers("/api/cart/**").hasAuthority("ROLE_USER")
                         .requestMatchers("/api/order/**").hasAuthority("ROLE_USER")

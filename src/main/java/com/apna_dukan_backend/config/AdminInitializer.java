@@ -28,6 +28,27 @@ public class AdminInitializer {
         createAdminUser();
         // Create regular USER
         createRegularUser();
+        // Fix users without role (set to USER by default)
+        fixUsersWithoutRole();
+    }
+    
+    private void fixUsersWithoutRole() {
+        try {
+            long count = userRepository.findAll().stream()
+                    .filter(user -> user.getRole() == null)
+                    .peek(user -> {
+                        user.setRole(Role.USER);
+                        userRepository.save(user);
+                        logger.info("Fixed user role for: {} - set to USER", user.getEmail());
+                    })
+                    .count();
+            
+            if (count > 0) {
+                logger.info("Fixed {} users without role - set to USER", count);
+            }
+        } catch (Exception e) {
+            logger.error("Error fixing users without role: {}", e.getMessage(), e);
+        }
     }
 
     private void createSystemUser() {

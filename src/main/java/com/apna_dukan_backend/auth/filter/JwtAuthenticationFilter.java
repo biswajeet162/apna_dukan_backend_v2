@@ -113,7 +113,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                     SecurityContextHolder.getContext().setAuthentication(authToken);
                     
-                    logger.debug("Successfully authenticated user: {}", userId);
+                    logger.info("Successfully authenticated user: {} with roles: {}", 
+                            userId, userDetails.getAuthorities());
                 } catch (UsernameNotFoundException e) {
                     logger.warn("User not found for userId: {}", userIdStr);
                     sendUnauthorizedResponse(request, response, "Invalid token: user not found");
