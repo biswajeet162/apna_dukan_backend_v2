@@ -97,7 +97,7 @@ public class AdminInitializer {
                     .name("Regular User")
                     .email(userEmail)
                     .phone("8880088800")
-                    .passwordHash(passwordEncoder.encode("user@123"))
+                    .passwordHash(passwordEncoder.encode("User@123"))
                     .role(Role.USER)
                     .emailVerified(true)
                     .phoneVerified(true)
