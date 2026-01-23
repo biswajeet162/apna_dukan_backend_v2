@@ -31,7 +31,7 @@ public class AdminInitializer {
     }
 
     private void createSystemUser() {
-        String systemEmail = "system@apnadukan.com";
+        String systemEmail = "system@gmail.com";
 
         if (userRepository.existsByEmail(systemEmail)) {
             logger.info("System user already exists. Skipping creation.");
@@ -58,7 +58,7 @@ public class AdminInitializer {
     }
 
     private void createAdminUser() {
-        String adminEmail = "admin@apnadukan.com";
+        String adminEmail = "admin@gmail.com";
 
         if (userRepository.existsByEmail(adminEmail)) {
             logger.info("Admin user already exists. Skipping creation.");
@@ -85,7 +85,7 @@ public class AdminInitializer {
     }
 
     private void createRegularUser() {
-        String userEmail = "user@apnadukan.com";
+        String userEmail = "user@gmail.com";
 
         if (userRepository.existsByEmail(userEmail)) {
             logger.info("Regular user already exists. Skipping creation.");
