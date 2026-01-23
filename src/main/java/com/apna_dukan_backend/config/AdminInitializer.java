@@ -26,6 +26,8 @@ public class AdminInitializer {
         createSystemUser();
         // Create ADMIN user
         createAdminUser();
+        // Create regular USER
+        createRegularUser();
     }
 
     private void createSystemUser() {
@@ -79,6 +81,33 @@ public class AdminInitializer {
             logger.info("Admin user created successfully: {} (Password: Admin@123)", adminEmail);
         } catch (Exception e) {
             logger.error("Error creating admin user: {}", e.getMessage(), e);
+        }
+    }
+
+    private void createRegularUser() {
+        String userEmail = "user@apnadukan.com";
+
+        if (userRepository.existsByEmail(userEmail)) {
+            logger.info("Regular user already exists. Skipping creation.");
+            return;
+        }
+
+        try {
+            User regularUser = User.builder()
+                    .name("Regular User")
+                    .email(userEmail)
+                    .phone("8880088800")
+                    .passwordHash(passwordEncoder.encode("user@123"))
+                    .role(Role.USER)
+                    .emailVerified(true)
+                    .phoneVerified(true)
+                    .status(com.apna_dukan_backend.user.model.AccountStatus.ACTIVE)
+                    .build();
+
+            userRepository.save(regularUser);
+            logger.info("Regular user created successfully: {} (Password: user@123)", userEmail);
+        } catch (Exception e) {
+            logger.error("Error creating regular user: {}", e.getMessage(), e);
         }
     }
 }
