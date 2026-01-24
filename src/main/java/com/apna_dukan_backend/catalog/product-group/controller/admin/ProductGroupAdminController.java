@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/v1/admin/subCategory")
+@RequestMapping({"/api/v1/admin/subCategory", "/api/admin/subCategory"})
 @Tag(name = "ProductGroup Admin", description = "Admin API for managing product groups within subcategories")
 public class ProductGroupAdminController {
     private final ProductGroupQueryService productGroupQueryService;

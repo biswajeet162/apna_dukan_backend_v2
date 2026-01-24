@@ -81,10 +81,12 @@ public class SecurityConfig {
                         // ADMIN APIs (JWT Required - ROLE_ADMIN)
                         // ============================================
                         // Strictly require ROLE_ADMIN (SYSTEM can also access)
-                        .requestMatchers("/api/admin/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_SYSTEM")
+                        .requestMatchers("/api/admin/**")
+                            .hasAnyAuthority("ROLE_ADMIN", "ROLE_SYSTEM", "ADMIN", "SYSTEM")
                         
                         // Legacy admin endpoints
-                        .requestMatchers("/api/v1/admin/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_SYSTEM")
+                        .requestMatchers("/api/v1/admin/**")
+                            .hasAnyAuthority("ROLE_ADMIN", "ROLE_SYSTEM", "ADMIN", "SYSTEM")
                         
                         // ============================================
                         // SYSTEM APIs (JWT Required - ROLE_SYSTEM)
